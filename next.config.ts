@@ -1,16 +1,13 @@
 import type { NextConfig } from "next";
 
+const isGithubPages = process.env.DEPLOY_TARGET === "gh-pages";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGithubPages ? "/portfolio" : "");
+
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
+  output: isGithubPages ? "export" : undefined,
+  basePath: basePath || undefined,
+  images: {
+    unoptimized: true,
   },
 };
 

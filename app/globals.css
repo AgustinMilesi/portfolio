@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Geist+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap');
 @import "tailwindcss";
 
-@theme {
+:root {
   --color-obsidian: #0A0E14;
   --color-carbon: #121824;
   --color-musgo: #9A9E86;
@@ -10,18 +10,8 @@
   --color-panel: #161F30;
   --color-border-subtle: #1E293B;
   --color-border-active: #334155;
-
-  --font-display: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
-  --font-mono: 'Geist Mono', monospace;
-}
-
-:root {
   --bg-obsidian: #0A0E14;
   --bg-carbon: #121824;
-  --color-bone: #E9E7E0;
-  --color-senal: #C6F827;
-  --color-musgo: #9A9E86;
 }
 
 html, body {
