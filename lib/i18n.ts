@@ -46,7 +46,7 @@ export const translations = {
       "Traditional software assumes persistent connectivity and patient operators. In the real world, every second lost during checkout or container clearance is lost revenue at the counter.",
     heroPillar2Title: "THE VOUT ENGINEERING PRINCIPLE",
     heroPillar2Desc1:
-      "VOUT was forged directly in wholesale trade and customs logistics. We build software with resilient offline-first architecture, blind shift cash closures that eliminate discrepancies, atomic transactions, and zero tolerance for vibecoding.",
+      "VOUT was forged directly in wholesale trade and customs logistics. We build software with resilient offline-first architecture, blind shift cash closures that eliminate discrepancies, atomic transactions, and AI vibecoding done right: with discipline, professional standards, and delivered on time and in proper form.",
     heroPillar2Desc2:
       "Proprietary end-to-end typed TypeScript, strict HTTP contracts, PostgreSQL with local IndexedDB/SQLite replicas, and 100% merchant data sovereignty.",
     heroMetric1Num: "04",
@@ -77,16 +77,16 @@ export const translations = {
     stickerOfflineResult:
       "STATUS: LINK DOWN | Offline Mode Active | Local Queue: 3 sales buffered | Checkout Latency: 0.00ms | 0 Freezes.",
 
-    stickerNoVibeLabel: "PRODUCTION WITHOUT VIBECODING",
-    stickerNoVibeSub: "Prisma Models · Strict TypeScript",
-    stickerNoVibeCat: "ENGINEERING QUALITY",
+    stickerNoVibeLabel: "VIBECODING IN PROPER FORM & TIME",
+    stickerNoVibeSub: "Professional Discipline · Strict TypeScript",
+    stickerNoVibeCat: "ENGINEERING METHOD",
     stickerNoVibeProb:
-      "Vibecoding outputs pretty prototypes riddled with 'any' types, loose HTTP contracts, silent rounding bugs, and catastrophic failure under concurrency.",
+      "Unchecked vibecoding produces fragile prototypes with loose types and unverified contracts that fail under load.",
     stickerNoVibeSol:
-      "Zero tolerance for loose types. Exact monetary math in integer cents with Decimal(12,2) and BigInt. End-to-end Zod schemas validated by automated test suites.",
-    stickerNoVibeAction: "Audit Typing & HTTP Contracts",
+      "At VOUT we practice vibecoding with discipline, elegance, and precision: strict end-to-end typing, validated Prisma schemas, and delivering in proper form and on time.",
+    stickerNoVibeAction: "Audit Code Standards & Contracts",
     stickerNoVibeResult:
-      "PRISMA SCHEMA: 100% STRICT | TypeScript 'any' count: 0 | Zod Schemas: 18 | Money Tests: 13 PASSED (0 cents lost).",
+      "STANDARDS: 100% STRICT | TypeScript 'any': 0 | Zod Schemas: 18 | High-velocity delivery in full production form.",
 
     stickerZeroResellLabel: "ZERO DATA RESELLING",
     stickerZeroResellSub: "100% Merchant Sovereignty",
@@ -172,7 +172,7 @@ export const translations = {
     footerBadge: "DIRECT CHANNEL WITH AGUSTÍN MILESI",
     footerH2: "Let's talk.",
     footerClaim: "«Chaos enters. Clean data leaves.»",
-    footerDesc: "Have a business with checkout and stock headaches, a freight operation bleeding cash in demurrage, or need critical software without vibecoding? Reach out directly.",
+    footerDesc: "Have a business with checkout and stock headaches, a freight operation bleeding cash in demurrage, or need mission-critical software built with precision and on time? Reach out directly.",
     footerEmailTitle: "OFFICIAL INBOUND EMAIL:",
     footerCopyBtn: "COPY ADDRESS",
     footerCopied: "✓ COPIED TO CLIPBOARD",
@@ -221,7 +221,7 @@ export const translations = {
       "El software tradicional asume conectividad perfecta y operadores pacientes. En el mundo real, cada segundo de demora en cobrar o en despachar un contenedor es dinero que se pierde en el mostrador.",
     heroPillar2Title: "EL PRINCIPIO DE INGENIERÍA VOUT",
     heroPillar2Desc1:
-      "VOUT nació en el comercio mayorista y la logística aduanera de Buenos Aires. Construimos software con arquitectura offline-first resiliente, arqueos ciegos de caja que eliminan descuadres, transacciones atómicas y cero tolerancia al vibecoding.",
+      "VOUT nació en el comercio mayorista y la logística aduanera de Buenos Aires. Construimos software con arquitectura offline-first resiliente, arqueos ciegos de caja que eliminan descuadres, transacciones atómicas y vibecoding profesional: con buenos modos, tiempo y forma.",
     heroPillar2Desc2:
       "Código propio tipado en TypeScript de punta a punta, contratos HTTP estrictos, bases de datos PostgreSQL con réplicas locales en IndexedDB/SQLite y 100% de soberanía sobre los datos del comercio.",
     heroMetric1Num: "04",
@@ -252,16 +252,16 @@ export const translations = {
     stickerOfflineResult:
       "STATUS: ENLACE DOWN | Modo Offline Activado | Cola Local: 3 ventas encoladas | Latencia de Cobro: 0.00ms | 0 Bloqueos.",
 
-    stickerNoVibeLabel: "PRODUCCIÓN SIN VIBECODING",
-    stickerNoVibeSub: "Prisma Models · Strict TypeScript",
-    stickerNoVibeCat: "CALIDAD DE INGENIERÍA",
+    stickerNoVibeLabel: "VIBECODING EN TIEMPO Y FORMA",
+    stickerNoVibeSub: "Buenos Modos · Strict TypeScript · Prisma",
+    stickerNoVibeCat: "DISCIPLINA Y MÉTODO",
     stickerNoVibeProb:
-      "El 'vibecoding' genera prototipos visualmente atractivos pero con tipos 'any', contratos HTTP laxos, bugs silenciosos en redondeo monetario y caída catastrófica bajo concurrencia.",
+      "El vibecoding sin rigor produce código desordenado, tipos 'any' y fallas imprevistas en producción.",
     stickerNoVibeSol:
-      "Cero tolerancia a tipos sueltos. Matemática monetaria exacta en centavos enteros con BigInt / Decimal(12,2) en base de datos. Contratos de esquema Zod en cliente y servidor validados por suite de tests automáticos en TypeScript.",
-    stickerNoVibeAction: "Auditar Tipado & Contratos HTTP",
+      "En VOUT usamos vibecoding con buenos modos, tiempo y forma: arquitectura limpia, tipado estricto de punta a punta, esquemas Prisma validados y control milimétrico de cada entrega.",
+    stickerNoVibeAction: "Verificar Estándar de Código & Contratos",
     stickerNoVibeResult:
-      "PRISMA SCHEMA: 100% STRICT | Typescript 'any' count: 0 | Zod Schemas: 18 | Tests de Dinero: 13 PASADOS (0 centavos perdidos).",
+      "ESTÁNDAR: 100% CUMPLIDO | Typescript 'any' count: 0 | Zod Schemas: 18 | Entregas en tiempo y forma impecables.",
 
     stickerZeroResellLabel: "CERO REVENTA DE DATOS",
     stickerZeroResellSub: "Soberanía 100% del Comercio",
@@ -347,7 +347,7 @@ export const translations = {
     footerBadge: "CANAL DIRECTO CON AGUSTÍN MILESI",
     footerH2: "Hablemos.",
     footerClaim: "«Entra el caos. Sale el dato.»",
-    footerDesc: "¿Tenés un comercio con problemas de caja y stock, una operación logística que pierde dinero en demurrage, o necesitas un sistema crítico diseñado sin vibecoding? Escribime directamente.",
+    footerDesc: "¿Tenés un comercio con problemas de caja y stock, una operación logística que pierde dinero en demurrage, o necesitás software de misión crítica entregado en tiempo y forma? Escribime directamente.",
     footerEmailTitle: "CORREO ELECTRÓNICO OFICIAL:",
     footerCopyBtn: "COPIAR DIRECCIÓN",
     footerCopied: "✓ COPIADO AL PORTAPAPELES",
@@ -396,7 +396,7 @@ export const translations = {
       "O software tradicional presume conectividade contínua e operadores pacientes. No mundo real, cada segundo de atraso no pagamento ou desembaraço é receita perdida no balcão.",
     heroPillar2Title: "O PRINCÍPIO DE ENGENHARIA VOUT",
     heroPillar2Desc1:
-      "VOUT nasceu no comércio atacadista e na logística aduaneira. Construímos software com arquitetura offline-first resiliente, fechamentos cegos de caixa que eliminam discrepâncias e tolerância zero a vibecoding.",
+      "VOUT nasceu no comércio atacadista e na logística aduaneira. Construímos software com arquitetura offline-first resiliente, fechamentos cegos de caixa que eliminam discrepâncias e vibecoding profissional: com bons modos, tempo e forma.",
     heroPillar2Desc2:
       "Código em TypeScript estrito de ponta a ponta, contratos HTTP rigorosos, bancos PostgreSQL com réplicas locais em IndexedDB/SQLite e 100% de soberania sobre os dados da empresa.",
     heroMetric1Num: "04",
@@ -427,16 +427,16 @@ export const translations = {
     stickerOfflineResult:
       "STATUS: LINK DOWN | Modo Offline Ativo | Fila Local: 3 vendas na fila | Latência: 0.00ms | 0 Bloqueios.",
 
-    stickerNoVibeLabel: "PRODUÇÃO SEM VIBECODING",
-    stickerNoVibeSub: "Modelos Prisma · Strict TypeScript",
-    stickerNoVibeCat: "QUALIDADE DE ENGENHARIA",
+    stickerNoVibeLabel: "VIBECODING EM TEMPO E FORMA",
+    stickerNoVibeSub: "Bons Modos · Strict TypeScript · Prisma",
+    stickerNoVibeCat: "DISCIPLINA E MÉTODO",
     stickerNoVibeProb:
-      "Vibecoding produz protótipos bonitos com tipos 'any', contratos frouxos, falhas de arredondamento e colapso sob concorrência.",
+      "O vibecoding descontrolado gera protótipos frágeis com tipos 'any' e falhas imprevistas em produção.",
     stickerNoVibeSol:
-      "Tolerância zero a tipos soltos. Aritmética monetária exata em centavos inteiros com Decimal(12,2) e BigInt. Esquemas Zod validados por testes automáticos.",
-    stickerNoVibeAction: "Auditar Tipagem e Contratos HTTP",
+      "Na VOUT usamos vibecoding com bons modos, tempo e forma: arquitetura limpa, tipagem estrita de ponta a ponta e entrega impecável.",
+    stickerNoVibeAction: "Auditar Padrão de Código e Contratos",
     stickerNoVibeResult:
-      "PRISMA SCHEMA: 100% STRICT | Contagem 'any': 0 | Zod Schemas: 18 | Testes Financeiros: 13 APROVADOS (0 centavos perdidos).",
+      "PADRÃO: 100% CUMPRIDO | Contagem 'any': 0 | Zod Schemas: 18 | Entregas em tempo e forma impecáveis.",
 
     stickerZeroResellLabel: "ZERO REVENDA DE DADOS",
     stickerZeroResellSub: "100% Soberania da Empresa",
@@ -522,7 +522,7 @@ export const translations = {
     footerBadge: "CANAL DIRETO COM AGUSTÍN MILESI",
     footerH2: "Vamos conversar.",
     footerClaim: "«Entra o caos. Sai o dado.»",
-    footerDesc: "Tem um comércio com gargalos de estoque e caixa, uma operação logística sofrendo com demurrage, ou precisa de um sistema crítico construído sem vibecoding? Fale diretamente comigo.",
+    footerDesc: "Tem um comércio com gargalos de estoque e caixa, uma operação logística com demurrage, ou precisa de software de missão crítica entregue em tempo e forma? Fale diretamente comigo.",
     footerEmailTitle: "E-MAIL OFICIAL DE CONTATO:",
     footerCopyBtn: "COPIAR E-MAIL",
     footerCopied: "✓ COPIADO PARA A ÁREA DE TRANSFERÊNCIA",
@@ -571,7 +571,7 @@ export const translations = {
       "传统软件默认网络恒定连接且操作员耐心。但在现实世界中，结账或清关每延迟一秒，柜台都在实实在在地损失金钱。",
     heroPillar2Title: "VOUT 工程核心原则",
     heroPillar2Desc1:
-      "VOUT 诞生于批发贸易和海关物流一线。我们构建具有离线优先韧性的软件，采用杜绝账实不符的盲盘交接班、原子化事务以及对 vibecoding 的零容忍。",
+      "VOUT 诞生于批发贸易和海关物流一线。我们构建具有离线优先韧性的软件，采用杜绝账实不符的盲盘交接班、原子化事务，并以严谨、得体、按时保质的方式践行 Vibecoding 开发。",
     heroPillar2Desc2:
       "全链路严格 TypeScript 类型化、严苛的 HTTP 契约、PostgreSQL 搭配本地 IndexedDB/SQLite 副本，实现商业数据 100% 自主掌控。",
     heroMetric1Num: "04",
@@ -602,16 +602,16 @@ export const translations = {
     stickerOfflineResult:
       "状态: 网络断开 | 离线模式已激活 | 本地队列: 3 笔销售已排队 | 结账延迟: 0.00ms | 0 卡顿。",
 
-    stickerNoVibeLabel: "杜绝随意编码的生产质量",
-    stickerNoVibeSub: "Prisma 模型 · 严格 TypeScript",
-    stickerNoVibeCat: "工程质量",
+    stickerNoVibeLabel: "规范有序的 AI 敏捷开发 (Vibecoding)",
+    stickerNoVibeSub: "严谨架构 · 严格 TypeScript · Prisma",
+    stickerNoVibeCat: "工程纪律与交付",
     stickerNoVibeProb:
-      "随意编码（Vibecoding）会产生外表光鲜但充斥着 'any' 类型、松散 HTTP 契约、隐蔽舍入误差并在并发下彻底崩溃的脆弱原型。",
+      "无序的 Vibecoding 容易产生缺乏规范、充斥 any 类型的脆弱代码并在生产中崩溃。",
     stickerNoVibeSol:
-      "对松散类型零容忍。采用 BigInt / Decimal(12,2) 进行整数美分精度的货币计算。前后端 Zod Schema 通过自动化测试套件严格验证。",
-    stickerNoVibeAction: "审计类型与 HTTP 契约",
+      "在 VOUT，我们以规范、守时、严谨的方式运用 Vibecoding：端到端强类型约束、Prisma 模式检验，保质保量如期交付。",
+    stickerNoVibeAction: "审计工程规范与接口契约",
     stickerNoVibeResult:
-      "PRISMA SCHEMA: 100% 严格 | TypeScript 'any' 数量: 0 | Zod 契约: 18 | 货币精度测试: 13 项全部通过 (0 分钱误差)。",
+      "交付标准：100% 严格执行 | TypeScript any: 0 | Zod 契约: 18 | 按时保质完整交付。",
 
     stickerZeroResellLabel: "零数据转售与商业隐私",
     stickerZeroResellSub: "商家数据 100% 自主掌控",
@@ -697,7 +697,7 @@ export const translations = {
     footerBadge: "与 AGUSTÍN MILESI 直接沟通",
     footerH2: "与我联系。",
     footerClaim: "«混乱进入。精准数据产出。»",
-    footerDesc: "您的商业实体是否正遭受库存与账实不符困扰？货运业务是否因滞箱费蒙受损失？或者需要无 vibecoding 的关键业务系统？欢迎直接来信。",
+    footerDesc: "您的商业实体是否正遭受库存与账实不符困扰？货运业务是否因滞箱费蒙受损失？或者需要一套按时保质、严谨可靠的关键业务系统？欢迎直接来信。",
     footerEmailTitle: "官方沟通邮箱:",
     footerCopyBtn: "复制地址",
     footerCopied: "✓ 已复制到剪贴板",

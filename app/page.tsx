@@ -3,7 +3,6 @@ import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { ArchStickerStage } from "@/components/ArchStickerStage";
 import { ProjectCarousel } from "@/components/ProjectCarousel";
-import { DitherSimulator } from "@/components/DitherSimulator";
 import { TrayectoriaTimeline } from "@/components/TrayectoriaTimeline";
 import { FooterContact } from "@/components/FooterContact";
 
@@ -26,14 +25,11 @@ export default function Home() {
         {/* 5. Deep Detail Multi-Project Carousel & Case Study Modals */}
         <ProjectCarousel />
 
-        {/* 6. Hardware Lab: 4px Dither Barcode & Blind Shift Cash Register */}
-        <DitherSimulator />
-
-        {/* 7. Operator's Journey: From Wholesale Cashier to VOUT Architect */}
+        {/* 6. Operator's Journey: From Wholesale Cashier to VOUT Architect */}
         <TrayectoriaTimeline />
       </main>
 
-      {/* 8. Monumental Footer & Direct Inbound Channel */}
+      {/* 7. Monumental Footer & Direct Inbound Channel */}
       <FooterContact />
     </div>
   );

@@ -20,7 +20,7 @@ const STICKER_CONFIGS: StickerConfig[] = [
     position: "top-8 -left-4 sm:top-10 sm:left-2 md:left-6",
   },
   {
-    id: "no-vibecoding",
+    id: "vibecoding",
     color: "bg-[#E9E7E0] text-[#0A0E14] border-[#1E293B]",
     rotation: "rotate-4 hover:rotate-1",
     position: "top-14 -right-2 sm:top-16 sm:right-4 md:right-8",
@@ -69,6 +69,7 @@ export function ArchStickerStage() {
           simAction: t.stickerOfflineAction,
           simResult: t.stickerOfflineResult,
         };
+      case "vibecoding":
       case "no-vibecoding":
         return {
           label: t.stickerNoVibeLabel,
