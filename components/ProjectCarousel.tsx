@@ -217,37 +217,13 @@ model Message {
 ];
 
 export function ProjectCarousel() {
-  const { t } = usePreferences();
+  const { t, sound, setSound, playBlip } = usePreferences();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [previewMode, setPreviewMode] = useState<"desktop" | "tablet" | "terminal">("desktop");
-  const [audioEnabled, setAudioEnabled] = useState(false);
   const [copiedSlug, setCopiedSlug] = useState(false);
-  const audioCtxRef = useRef<AudioContext | null>(null);
 
   const currentProject = ECOSYSTEM_PROJECTS[currentIndex];
-
-  const playBlip = useCallback((freq = 540) => {
-    if (!audioEnabled) return;
-    try {
-      if (!audioCtxRef.current) {
-        audioCtxRef.current = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
-      }
-      const ctx = audioCtxRef.current;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      gain.gain.setValueAtTime(0.04, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.08);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start();
-      osc.stop(ctx.currentTime + 0.08);
-    } catch {
-      // AudioContext unavailable
-    }
-  }, [audioEnabled]);
 
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % ECOSYSTEM_PROJECTS.length);
@@ -320,14 +296,14 @@ export function ProjectCarousel() {
           <div className="flex flex-wrap items-center gap-3">
             <button
               type="button"
-              onClick={() => setAudioEnabled(!audioEnabled)}
+              onClick={() => setSound(!sound)}
               className={`px-3 py-1.5 rounded-xl border text-xs font-mono transition flex items-center gap-2 cursor-pointer ${
-                audioEnabled
+                sound
                   ? "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] border-[var(--primary-accent,#C6F827)] font-bold"
                   : "bg-[#121824] text-slate-400 border-[#1E293B] hover:text-white"
               }`}
             >
-              <span>{audioEnabled ? "🔊 AUDIO ON" : "🔇 AUDIO OFF"}</span>
+              <span>{sound ? "🔊 AUDIO TÁCTIL (ON)" : "🔇 AUDIO TÁCTIL (OFF)"}</span>
             </button>
 
             {/* Carousel Arrow Controls */}

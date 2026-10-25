@@ -15,6 +15,9 @@ export const translations = {
     lightMode: "Light",
     accentColor: "Accent Color",
     language: "Language",
+    soundLabel: "Tactile Sound FX",
+    soundOn: "Enabled",
+    soundOff: "Muted",
 
     // Top Bar
     topArchitecture: "VOUT ARCHITECTURE // BUENOS AIRES NODE",
@@ -187,6 +190,9 @@ export const translations = {
     lightMode: "Claro",
     accentColor: "Color de Acento",
     language: "Idioma",
+    soundLabel: "Sonido Táctil",
+    soundOn: "Activado",
+    soundOff: "Silenciado",
 
     // Top Bar
     topArchitecture: "VOUT ARCHITECTURE // NODO BUENOS AIRES",
@@ -359,6 +365,9 @@ export const translations = {
     lightMode: "Claro",
     accentColor: "Cor de Destaque",
     language: "Idioma",
+    soundLabel: "Som Tátil",
+    soundOn: "Ativado",
+    soundOff: "Mudo",
 
     // Top Bar
     topArchitecture: "VOUT ARCHITECTURE // NÓ BUENOS AIRES",
@@ -531,6 +540,9 @@ export const translations = {
     lightMode: "浅色",
     accentColor: "主题强调色",
     language: "语言",
+    soundLabel: "触觉音效",
+    soundOn: "开启",
+    soundOff: "静音",
 
     // Top Bar
     topArchitecture: "VOUT 架构 // 布宜诺斯艾利斯节点",
