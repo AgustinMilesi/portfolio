@@ -23,9 +23,8 @@
 | Plataforma | Slug Oficial | Rol Operativo | Despliegue en Vivo |
 |---|---|---|---|
 | **VOUT Portfolio** | `vout/portfolio` | Vitrina de Arquitectura & Carrusel de Sistemas | **[agustinmilesi.github.io/portfolio](https://agustinmilesi.github.io/portfolio/)** |
-| **VOUT Connect** | `vout/connect` | Gateway Inbound Soberano & Telemetría en Vivo | **[agustinmilesi-contact.vercel.app](https://agustinmilesi-contact.vercel.app)** |
 | **VOUT Retail** | `vout/retail` | Cloud POS, Escáner USB HID & Arqueos Ciegos | **[milesi-erp.vercel.app](https://milesi-erp.vercel.app)** |
-| **VOUT Inbox** | `vout/inbox` | CRM Multi-Inquilino & Webhooks HMAC-SHA256 | **[saas-am.vercel.app](https://saas-am.vercel.app)** |
+| **VOUT Inbox** | `vout/inbox` | CRM Multi-Inquilino, Webhooks & Gateway de Contacto | **[saas-am.vercel.app](https://saas-am.vercel.app)** |
 | **VOUT Cargo** | `vout/cargo` | Logística Internacional, Demurrage & Aduana | **[cargo-am.vercel.app](https://cargo-am.vercel.app)** |
 | **VOUT Pocket** | `vout/pocket` | Finanzas Personales & Sincronización Móvil | **[vout-web.vercel.app](https://vout-web.vercel.app)** |
 

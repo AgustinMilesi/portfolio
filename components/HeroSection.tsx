@@ -72,8 +72,8 @@ export function HeroSection() {
         {/* Metrics Badge Ribbon */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2">
           <div className="p-4 rounded-2xl bg-[#121824] border border-[#1E293B] space-y-1">
-            <div className="text-2xl sm:text-3xl font-black text-[#C6F827] font-mono">05</div>
-            <div className="text-xs font-mono text-[#9A9E86] uppercase">Plataformas VOUT en Producción</div>
+            <div className="text-2xl sm:text-3xl font-black text-[#C6F827] font-mono">04</div>
+            <div className="text-xs font-mono text-[#9A9E86] uppercase">Plataformas Insignia en Producción</div>
           </div>
           <div className="p-4 rounded-2xl bg-[#121824] border border-[#1E293B] space-y-1">
             <div className="text-2xl sm:text-3xl font-black text-[#E9E7E0] font-mono">&lt;45ms</div>

@@ -6,7 +6,7 @@ import confetti from "canvas-confetti";
 export function FooterContact() {
   const [copied, setCopied] = useState(false);
 
-  const email = "inbound@vout.network";
+  const email = "agusmilesi2002@gmail.com";
 
   const handleCopyEmail = async () => {
     try {
@@ -86,19 +86,19 @@ export function FooterContact() {
             </button>
           </div>
 
-          {/* VOUT Connect Gateway Box (4 cols) */}
+          {/* VOUT Inbox Unified Gateway Box (4 cols) */}
           <a
-            href="https://agustinmilesi-contact.vercel.app"
+            href="https://saas-am.vercel.app/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="md:col-span-4 p-6 sm:p-8 rounded-3xl bg-[#161F30] border-2 border-[#1E293B] hover:border-[#C6F827] flex flex-col justify-between group transition-all"
           >
             <div className="space-y-1">
               <span className="text-[10px] font-mono text-[#C6F827] uppercase block">
-                GATEWAY WEB CON TELEMETRÍA
+                GATEWAY SOBERANO CON TELEMETRÍA
               </span>
               <h3 className="text-lg font-bold text-white group-hover:text-[#C6F827] transition-colors">
-                Abrir VOUT Connect →
+                Portal de Contacto Directo (/contact) →
               </h3>
             </div>
             <p className="text-xs text-[#9A9E86] mt-4">
@@ -108,7 +108,7 @@ export function FooterContact() {
         </div>
 
         {/* Directory of Ecosystem Platforms */}
-        <div className="pt-8 border-t border-[#1E293B] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+        <div className="pt-8 border-t border-[#1E293B] grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div className="space-y-2">
             <p className="text-[11px] font-mono uppercase text-[#C6F827]">vout/retail</p>
             <a
@@ -134,7 +134,7 @@ export function FooterContact() {
           </div>
 
           <div className="space-y-2">
-            <p className="text-[11px] font-mono uppercase text-[#C6F827]">vout/inbox</p>
+            <p className="text-[11px] font-mono uppercase text-[#C6F827]">vout/inbox (CRM &amp; Contact)</p>
             <a
               href="https://saas-am.vercel.app"
               target="_blank"
@@ -142,18 +142,6 @@ export function FooterContact() {
               className="text-xs font-mono text-[#9A9E86] hover:text-[#E9E7E0] block"
             >
               saas-am.vercel.app ↗
-            </a>
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-[11px] font-mono uppercase text-[#C6F827]">vout/connect</p>
-            <a
-              href="https://agustinmilesi-contact.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-mono text-[#9A9E86] hover:text-[#E9E7E0] block"
-            >
-              agustinmilesi-contact ↗
             </a>
           </div>
 

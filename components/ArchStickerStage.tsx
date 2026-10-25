@@ -68,7 +68,7 @@ export function ArchStickerStage() {
             Arquitectura nacida para el alto rendimiento
           </h2>
           <p className="text-sm text-[#9A9E86] max-w-xl mx-auto">
-            Interactúa con los principios de ingeniería que rigen cada una de las 5 plataformas de VOUT.
+            Interactúa con los principios de ingeniería que rigen cada una de las cuatro plataformas insignia de VOUT.
           </p>
         </div>
 

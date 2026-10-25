@@ -8,9 +8,8 @@ export function Navbar() {
 
   const subBrands = [
     { name: "vout/retail", label: "Retail POS", href: "#proyectos" },
+    { name: "vout/inbox", label: "CRM & Contacto", href: "#proyectos" },
     { name: "vout/cargo", label: "Logística Freight", href: "#proyectos" },
-    { name: "vout/inbox", label: "CRM Feedback", href: "#proyectos" },
-    { name: "vout/connect", label: "Gateway Inbound", href: "#proyectos" },
     { name: "vout/pocket", label: "Finanzas Web", href: "#proyectos" },
   ];
 
@@ -98,35 +97,45 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0A0E14] border-b border-[#1E293B] px-4 py-4 space-y-2">
-          <p className="text-[11px] font-mono uppercase text-[#9A9E86] px-2 mb-2">Plataformas del Ecosistema</p>
-          <div className="grid grid-cols-1 gap-1">
+        <div className="lg:hidden border-t border-[#1E293B] bg-[#0A0E14] px-4 py-6 space-y-4 font-mono text-sm">
+          <div className="space-y-1">
+            <span className="text-[10px] uppercase text-[#9A9E86] tracking-widest block px-2">
+              Plataformas Insignia
+            </span>
             {subBrands.map((brand) => (
               <a
                 key={brand.name}
                 href={brand.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3 py-2 rounded-xl bg-[#121824] border border-[#1E293B] text-xs font-mono text-[#E9E7E0] hover:text-[#C6F827]"
+                className="flex items-center justify-between p-2 rounded-lg hover:bg-[#121824] text-[#E9E7E0] hover:text-[#C6F827]"
               >
                 <span>{brand.name}</span>
-                <span className="text-[11px] text-[#9A9E86]">{brand.label}</span>
+                <span className="text-xs text-[#9A9E86]">{brand.label}</span>
               </a>
             ))}
           </div>
-          <div className="pt-2 flex flex-col gap-2">
+
+          <div className="pt-4 border-t border-[#1E293B] space-y-2">
             <a
               href="#manifiesto"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-xs font-mono text-[#9A9E86] hover:text-[#E9E7E0]"
+              className="block p-2 rounded-lg hover:bg-[#121824] text-[#9A9E86]"
             >
-              // MANIFIESTO OPERATIVO
+              // MANIFIESTO
             </a>
             <a
-              href="#trayectoria"
+              href="#simulador"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 text-xs font-mono text-[#9A9E86] hover:text-[#E9E7E0]"
+              className="block p-2 rounded-lg hover:bg-[#121824] text-[#9A9E86]"
             >
-              // TRAYECTORIA DEL FUNDADOR
+              // CAJA POS
+            </a>
+            <a
+              href="#contacto"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block p-3 rounded-xl bg-[#C6F827] text-[#0A0E14] font-black text-center uppercase"
+            >
+              Hablemos
             </a>
           </div>
         </div>
