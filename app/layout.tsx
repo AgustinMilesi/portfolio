@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { PreferencesProvider } from "@/components/PreferencesProvider";
 import "./globals.css";
 
 const isGithubPages = process.env.DEPLOY_TARGET === "gh-pages";
@@ -90,7 +91,9 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href={`${basePath}/apple-touch-icon.png`} />
       </head>
       <body className="min-h-screen flex flex-col bg-[#0A0E14] technical-grid text-[#E9E7E0] font-sans">
-        {children}
+        <PreferencesProvider>
+          {children}
+        </PreferencesProvider>
       </body>
     </html>
   );

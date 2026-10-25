@@ -2,15 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePreferences } from "@/components/PreferencesProvider";
+import { PreferencesControls } from "@/components/PreferencesControls";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = usePreferences();
 
   const subBrands = [
-    { name: "vout/retail", label: "Retail POS", href: "#proyectos" },
-    { name: "vout/inbox", label: "CRM & Contacto", href: "#proyectos" },
-    { name: "vout/cargo", label: "Logística Freight", href: "#proyectos" },
-    { name: "vout/pocket", label: "Finanzas Web", href: "#proyectos" },
+    { name: "vout/retail", label: t.navSubRetail, href: "#proyectos" },
+    { name: "vout/inbox", label: t.navSubInbox, href: "#proyectos" },
+    { name: "vout/cargo", label: t.navSubCargo, href: "#proyectos" },
+    { name: "vout/pocket", label: t.navSubPocket, href: "#proyectos" },
   ];
 
   return (
@@ -62,19 +65,20 @@ export function Navbar() {
             href="#manifiesto"
             className="hidden sm:inline-block text-xs font-mono text-[#9A9E86] hover:text-[#E9E7E0] transition-colors px-3 py-2"
           >
-            // MANIFIESTO
+            {t.navManifesto}
           </a>
           <a
             href="#simulador"
             className="hidden md:inline-block text-xs font-mono text-[#9A9E86] hover:text-[#E9E7E0] transition-colors px-3 py-2"
           >
-            // CAJA POS
+            {t.navPosSim}
           </a>
+          <PreferencesControls />
           <a
             href="#contacto"
-            className="px-4 py-2 rounded-xl bg-[#C6F827] text-[#0A0E14] font-black text-xs uppercase tracking-wider hover:bg-white transition-all transform active:scale-95 shadow-sm"
+            className="px-4 py-2 rounded-xl bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black text-xs uppercase tracking-wider hover:bg-white transition-all transform active:scale-95 shadow-sm"
           >
-            Hablemos.
+            {t.navContactBtn}
           </a>
 
           {/* Mobile hamburger */}

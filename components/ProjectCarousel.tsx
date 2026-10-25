@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { CaseStudyModal, ProjectData } from "./CaseStudyModal";
+import { usePreferences } from "@/components/PreferencesProvider";
 
 export const ECOSYSTEM_PROJECTS: ProjectData[] = [
   {
@@ -216,6 +217,7 @@ model Message {
 ];
 
 export function ProjectCarousel() {
+  const { t } = usePreferences();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [previewMode, setPreviewMode] = useState<"desktop" | "tablet" | "terminal">("desktop");
@@ -301,12 +303,12 @@ export function ProjectCarousel() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#1E293B]">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[#121824] text-[#C6F827] border border-[#1E293B]">
-              <span className="size-2 rounded-full bg-[#C6F827] animate-pulse" />
-              <span>CARRUSEL DE ARQUITECTURA EN PRODUCCIÓN</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[#121824] text-[var(--primary-accent,#C6F827)] border border-[#1E293B]">
+              <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] animate-pulse" />
+              <span>{t.carouselBadge}</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#E9E7E0]">
-              Cuatro Pilares. Cero Vibecoding.
+              {t.carouselTitle}
             </h2>
             <p className="text-sm text-[#9A9E86] max-w-2xl leading-relaxed">
               Explore cada plataforma interactuando con su simulación de hardware, esquemas de datos relacionales
@@ -321,11 +323,11 @@ export function ProjectCarousel() {
               onClick={() => setAudioEnabled(!audioEnabled)}
               className={`px-3 py-1.5 rounded-xl border text-xs font-mono transition flex items-center gap-2 cursor-pointer ${
                 audioEnabled
-                  ? "bg-[#C6F827] text-[#0A0E14] border-[#C6F827] font-bold"
+                  ? "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] border-[var(--primary-accent,#C6F827)] font-bold"
                   : "bg-[#121824] text-slate-400 border-[#1E293B] hover:text-white"
               }`}
             >
-              <span>{audioEnabled ? "🔊 AUDIO TÁCTIL ACTIVO" : "🔇 AUDIO TÁCTIL (DESACTIVADO)"}</span>
+              <span>{audioEnabled ? "🔊 AUDIO ON" : "🔇 AUDIO OFF"}</span>
             </button>
 
             {/* Carousel Arrow Controls */}
@@ -333,8 +335,8 @@ export function ProjectCarousel() {
               <button
                 type="button"
                 onClick={handlePrev}
-                className="size-11 rounded-2xl bg-[#121824] border border-[#1E293B] text-[#E9E7E0] hover:text-[#C6F827] hover:border-[#C6F827] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
-                aria-label="Proyecto anterior"
+                className="size-11 rounded-2xl bg-[#121824] border border-[#1E293B] text-[#E9E7E0] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
+                aria-label={t.carouselPrev}
               >
                 <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
@@ -343,8 +345,8 @@ export function ProjectCarousel() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="size-11 rounded-2xl bg-[#121824] border border-[#1E293B] text-[#E9E7E0] hover:text-[#C6F827] hover:border-[#C6F827] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
-                aria-label="Siguiente proyecto"
+                className="size-11 rounded-2xl bg-[#121824] border border-[#1E293B] text-[#E9E7E0] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
+                aria-label={t.carouselNext}
               >
                 <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
@@ -460,27 +462,27 @@ export function ProjectCarousel() {
               {/* Technical Specifications Grid */}
               <div className="grid grid-cols-2 gap-3 text-xs font-mono">
                 <div className="p-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-1">
-                  <span className="text-[10px] text-slate-500 uppercase block">Motor &amp; Framework</span>
+                  <span className="text-[10px] text-slate-500 uppercase block">{t.carouselEngine}</span>
                   <span className="text-white font-bold">{currentProject.specs.engine}</span>
                 </div>
                 <div className="p-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-1">
-                  <span className="text-[10px] text-slate-500 uppercase block">Base de Datos</span>
+                  <span className="text-[10px] text-slate-500 uppercase block">{t.carouselDatabase}</span>
                   <span className="text-white font-bold">{currentProject.specs.database}</span>
                 </div>
                 <div className="p-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-1">
-                  <span className="text-[10px] text-slate-500 uppercase block">Hardware / Cripto</span>
+                  <span className="text-[10px] text-slate-500 uppercase block">{t.carouselSecurity}</span>
                   <span className="text-white font-bold">{currentProject.specs.hardwareOrSecurity}</span>
                 </div>
                 <div className="p-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-1">
-                  <span className="text-[10px] text-slate-500 uppercase block">Métrica Crítica</span>
-                  <span className="text-[#C6F827] font-bold">{currentProject.specs.resilienceMetric}</span>
+                  <span className="text-[10px] text-slate-500 uppercase block">{t.carouselResilience}</span>
+                  <span className="text-[var(--primary-accent,#C6F827)] font-bold">{currentProject.specs.resilienceMetric}</span>
                 </div>
               </div>
 
               {/* Core Features Badges */}
               <div className="space-y-2">
                 <span className="text-[11px] font-mono uppercase text-slate-400 block tracking-wider">
-                  Capacidades del Sistema Operativo
+                  {t.carouselKeySpecs}
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {currentProject.features.map((feat) => (
@@ -488,7 +490,7 @@ export function ProjectCarousel() {
                       key={feat}
                       className="px-3 py-1.5 rounded-xl bg-[#0D121B] border border-[#1E293B] text-xs text-slate-300 flex items-center gap-1.5"
                     >
-                      <span className="size-1.5 rounded-full bg-[#C6F827]" />
+                      <span className="size-1.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
                       <span>{feat}</span>
                     </span>
                   ))}
@@ -501,18 +503,17 @@ export function ProjectCarousel() {
                   href={currentProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3.5 rounded-2xl bg-[#C6F827] text-[#0A0E14] font-black text-xs uppercase tracking-wider hover:bg-[#bcf020] active:scale-95 transition-all flex items-center gap-2 shadow-sm"
+                  className="px-6 py-3.5 rounded-2xl bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] font-black text-xs uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 shadow-sm"
                 >
-                  <span>🚀 Probar en Producción</span>
-                  <span className="text-sm">↗</span>
+                  <span>🚀 {t.carouselLiveDemo}</span>
                 </a>
 
                 <button
                   type="button"
                   onClick={() => setSelectedProject(currentProject)}
-                  className="px-5 py-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] text-white hover:border-[#C6F827] font-bold text-xs uppercase tracking-wider transition cursor-pointer"
+                  className="px-5 py-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] text-white hover:border-[var(--primary-accent,#C6F827)] font-bold text-xs uppercase tracking-wider transition cursor-pointer"
                 >
-                  📖 Reporte de Arquitectura
+                  📖 {t.carouselDeepAudit}
                 </button>
 
                 <button

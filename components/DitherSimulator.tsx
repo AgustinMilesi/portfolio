@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePreferences } from "@/components/PreferencesProvider";
 
 interface Item {
   sku: string;
@@ -10,6 +11,7 @@ interface Item {
 }
 
 export function DitherSimulator() {
+  const { t } = usePreferences();
   const [dateString, setDateString] = useState("25/10/2026");
   const [items, setItems] = useState<Item[]>([
     { sku: "779123456789", name: "CAFÉ TOSTADO NATURAL 500G", qty: 2, price: 4200 },
@@ -87,16 +89,15 @@ export function DitherSimulator() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Header */}
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#C6F827]">
-            <span className="size-2 rounded-full bg-[#C6F827]" />
-            <span>// HARDWARE LAB &amp; SIMULADOR DE CAJA</span>
+          <div className="flex items-center gap-2 text-xs font-mono text-[var(--primary-accent,#C6F827)]">
+            <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)]" />
+            <span>{t.simBadge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[#E9E7E0]">
-            Prueba la ingeniería de caja en vivo
+            {t.simTitle}
           </h2>
           <p className="text-sm text-[#9A9E86] max-w-2xl">
-            Simula un escaneo de código de barras a 50ms, la generación de un ticket térmico con textura
-            dither oficial de VOUT y un arqueo ciego de fin de turno.
+            {t.simDesc}
           </p>
         </div>
 

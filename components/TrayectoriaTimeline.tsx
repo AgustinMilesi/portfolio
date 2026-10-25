@@ -1,6 +1,10 @@
 "use client";
 
+import { usePreferences } from "@/components/PreferencesProvider";
+
 export function TrayectoriaTimeline() {
+  const { t } = usePreferences();
+
   const steps = [
     {
       period: "2021 — ESTUDIOS",
@@ -41,16 +45,15 @@ export function TrayectoriaTimeline() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#C6F827]">
-            <span className="size-2 rounded-full bg-[#C6F827]" />
-            <span>// DE LA CAJA AL CÓDIGO</span>
+          <div className="flex items-center gap-2 text-xs font-mono text-[var(--primary-accent,#C6F827)]">
+            <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)]" />
+            <span>{t.timelineBadge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[#E9E7E0]">
-            Trayectoria del Fundador
+            {t.timelineTitle}
           </h2>
           <p className="text-sm text-[#9A9E86] max-w-2xl">
-            La historia de cómo la experiencia real atendiendo clientes y auditando cajas registradoras se
-            transformó en una suite de software de alta exigencia.
+            {t.timelineDesc}
           </p>
         </div>
 
@@ -85,8 +88,8 @@ export function TrayectoriaTimeline() {
               </div>
 
               <div className="pt-4 border-t border-[#1E293B] flex items-center justify-between text-[10px] font-mono text-[#9A9E86]">
-                <span>ETAPA 0{idx + 1}</span>
-                <span className="text-[#C6F827]">✓ COMPLETADO</span>
+                <span>{t.timelineStage} 0{idx + 1}</span>
+                <span className="text-[var(--primary-accent,#C6F827)]">{t.timelineDone}</span>
               </div>
             </div>
           ))}

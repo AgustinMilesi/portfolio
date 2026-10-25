@@ -3,126 +3,127 @@
 import { useState, useCallback } from "react";
 import Image from "next/image";
 import portraitImg from "../public/agustin_milesi_cutout.png";
+import { usePreferences } from "@/components/PreferencesProvider";
 
-interface StickerData {
+interface StickerConfig {
   id: string;
-  label: string;
-  sub: string;
   color: string;
   rotation: string;
   position: string;
-  category: string;
-  problem: string;
-  solution: string;
-  simAction: string;
-  simResult: string;
 }
 
-const STICKERS: StickerData[] = [
+const STICKER_CONFIGS: StickerConfig[] = [
   {
     id: "offline",
-    label: "OFFLINE-FIRST · CACHE ATÓMICA",
-    sub: "IndexedDB + SQLite Local Cache",
-    color: "bg-[#C6F827] text-[#0A0E14] border-[#0A0E14]",
+    color: "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] border-[#0A0E14]",
     rotation: "-rotate-6 hover:-rotate-2",
     position: "top-8 -left-4 sm:top-10 sm:left-2 md:left-6",
-    category: "RESILIENCIA DE RED",
-    problem:
-      "En hora pico de un sábado por la tarde en un mayorista, se corta el enlace a internet. Si el sistema es una SPA tradicional conectada a la nube, la caja queda bloqueada, la fila se acumula y el comercio pierde dinero cada minuto.",
-    solution:
-      "VOUT Retail y VOUT Pocket almacenan el catálogo y el motor transaccional localmente en IndexedDB y SQLite. Los comprobantes se firman y descuentan stock en memoria de inmediato, reconciliando con PostgreSQL cuando regresa el enlace.",
-    simAction: "Simular Corte de Conexión en Caja",
-    simResult:
-      "STATUS: ENLACE DOWN | Modo Offline Activado | Cola Local: 3 ventas encoladas | Latencia de Cobro: 0.00ms | 0 Bloqueos.",
   },
   {
     id: "no-vibecoding",
-    label: "PRODUCCIÓN SIN VIBECODING",
-    sub: "Prisma Models · Strict TypeScript",
     color: "bg-[#E9E7E0] text-[#0A0E14] border-[#1E293B]",
     rotation: "rotate-4 hover:rotate-1",
     position: "top-14 -right-2 sm:top-16 sm:right-4 md:right-8",
-    category: "CALIDAD DE INGENIERÍA",
-    problem:
-      "El 'vibecoding' genera prototipos visualmente atractivos pero con tipos 'any', contratos HTTP laxos, bugs silenciosos en redondeo monetario y caída catastrófica bajo concurrencia.",
-    solution:
-      "Cero tolerancia a tipos sueltos. Matemática monetaria exacta en centavos enteros con BigInt / Decimal(12,2) en base de datos. Contratos de esquema Zod en cliente y servidor validados por suite de tests automáticos en TypeScript.",
-    simAction: "Auditar Tipado & Contratos HTTP",
-    simResult:
-      "PRISMA SCHEMA: 100% STRICT | Typescript 'any' count: 0 | Zod Schemas: 18 | Tests de Dinero: 13 PASADOS (0 centavos perdidos).",
   },
   {
     id: "zero-reselling",
-    label: "CERO REVENTA DE DATOS",
-    sub: "Soberanía 100% del Comercio",
-    color: "bg-[#121824] text-[#C6F827] border-[#C6F827]/40",
+    color: "bg-[#121824] text-[var(--primary-accent,#C6F827)] border-[var(--primary-accent,#C6F827)]/40",
     rotation: "-rotate-3 hover:rotate-0",
     position: "bottom-32 -left-3 sm:bottom-36 sm:left-4 md:left-10",
-    category: "ÉTICA & SEGURIDAD",
-    problem:
-      "La mayoría de las plataformas comerciales gratuitas o SaaS corporativas empaquetan la facturación, los proveedores y los márgenes de los comercios para revenderlos a consultoras de mercado o competidores.",
-    solution:
-      "Soberanía absoluta. VOUT no incluye píxeles de telemetría de terceros ni comercializa metadatos. Cada organización cuenta con aislamiento relacional estricto y claves API con hash criptográfico unidireccional SHA-256.",
-    simAction: "Verificar Aislamiento de Metadatos",
-    simResult:
-      "PRIVACY AUDIT: 0 trackers externos | 0 cookies de terceros | Multi-Tenant Data Isolation: ACTIVO | Hash de API: SHA-256.",
   },
   {
     id: "barcode",
-    label: "LECTOR HID DE CÓDIGOS DE BARRA",
-    sub: "Buffer de Teclado Raw < 50ms",
     color: "bg-[#E9E7E0] text-[#0A0E14] border-[#1E293B]",
     rotation: "rotate-5 hover:rotate-2",
     position: "bottom-20 -right-4 sm:bottom-24 sm:right-6 md:right-12",
-    category: "HARDWARE DE SALÓN",
-    problem:
-      "Los lectores láser de código de barras USB emiten como teclados rápidos. Si el operador está navegando un modal o el input pierde foco, el escaneo se pierde o rompe la interfaz.",
-    solution:
-      "Listener global de eventos raw keyboard en ventana con buffer temporal < 50ms y delimitador CR (Enter). El escaneo se captura y despacha al carrito POS sin importar en qué parte de la pantalla esté el cursor.",
-    simAction: "Disparar Ráfaga Láser USB (EAN-13)",
-    simResult:
-      "BUFFER RAW: '7791234567890' recibido en 41ms | SKU: VOUT-RETAIL-01 | Precio: $2,450.00 | Stock descontado en memoria.",
   },
   {
     id: "blind-cash",
-    label: "ARQUEO CIEGO DE CAJA",
-    sub: "Cierre de Turnos sin Descuadres",
-    color: "bg-[#C6F827] text-[#0A0E14] border-[#0A0E14]",
+    color: "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] border-[#0A0E14]",
     rotation: "-rotate-4 hover:rotate-0",
     position: "top-44 sm:top-48 left-1 sm:left-12 md:left-18",
-    category: "CONTROL FISCAL Y HUMANO",
-    problem:
-      "Cuando el cajero sabe cuánto dinero 'debería' haber en el cajón, surgen ajustes informales, préstamos de caja y faltantes encubiertos que la administración detecta semanas después.",
-    solution:
-      "El cajero cuenta su dinero e ingresa el monto total a ciegas sin ver el acumulado del sistema. El sistema compara en backend y emite el ticket de cierre con la diferencia exacta bloqueada para auditoría.",
-    simAction: "Simular Cierre Ciego de Turno",
-    simResult:
-      "SISTEMA: $128,450.00 | Declarado por Cajero: $128,450.00 | Diferencia: $0.00 (CIERRE PERFECTO) | Ticket Fiscal ESC/POS emitido.",
   },
   {
     id: "customs",
-    label: "AUDITORÍA DE DEMURRAGE ADUANERO",
-    sub: "Alertas Automáticas de Depósito Fiscal",
     color: "bg-[#161F30] text-[#E9E7E0] border-[#1E293B]",
     rotation: "rotate-3 hover:rotate-6",
     position: "top-40 sm:top-44 right-1 sm:right-12 md:right-22",
-    category: "OPERACIONES DE COMERCIO EXTERIOR",
-    problem:
-      "Las navieras cobran multas diarias (demurrage) de cientos de dólares si un contenedor pasa más días de los acordados en la terminal portuaria antes de ser nacionalizado.",
-    solution:
-      "VOUT Cargo rastrea los días libres restantes calculando feriados fiscales y alertas preventivas 72 horas antes del vencimiento, coordinando con el despachante de aduanas automáticamente.",
-    simAction: "Verificar Días Libres en Puerto",
-    simResult:
-      "BL: MSKU-902184 | Terminal: Exolgan | Días Libres: 7 | Transcurridos: 4 | Alerta Preventiva: 72h activada | Demurrage evitado.",
   },
 ];
 
 export function ArchStickerStage() {
+  const { t } = usePreferences();
   const [activeStickerId, setActiveStickerId] = useState<string>("offline");
   const [simRunning, setSimRunning] = useState<boolean>(false);
   const [simFeedback, setSimFeedback] = useState<string | null>(null);
 
-  const activeSticker = STICKERS.find((s) => s.id === activeStickerId) || STICKERS[0];
+  const getStickerContent = (id: string) => {
+    switch (id) {
+      case "offline":
+        return {
+          label: t.stickerOfflineLabel,
+          sub: t.stickerOfflineSub,
+          category: t.stickerOfflineCat,
+          problem: t.stickerOfflineProb,
+          solution: t.stickerOfflineSol,
+          simAction: t.stickerOfflineAction,
+          simResult: t.stickerOfflineResult,
+        };
+      case "no-vibecoding":
+        return {
+          label: t.stickerNoVibeLabel,
+          sub: t.stickerNoVibeSub,
+          category: t.stickerNoVibeCat,
+          problem: t.stickerNoVibeProb,
+          solution: t.stickerNoVibeSol,
+          simAction: t.stickerNoVibeAction,
+          simResult: t.stickerNoVibeResult,
+        };
+      case "zero-reselling":
+        return {
+          label: t.stickerZeroResellLabel,
+          sub: t.stickerZeroResellSub,
+          category: t.stickerZeroResellCat,
+          problem: t.stickerZeroResellProb,
+          solution: t.stickerZeroResellSol,
+          simAction: t.stickerZeroResellAction,
+          simResult: t.stickerZeroResellResult,
+        };
+      case "barcode":
+        return {
+          label: t.stickerBarcodeLabel,
+          sub: t.stickerBarcodeSub,
+          category: t.stickerBarcodeCat,
+          problem: t.stickerBarcodeProb,
+          solution: t.stickerBarcodeSol,
+          simAction: t.stickerBarcodeAction,
+          simResult: t.stickerBarcodeResult,
+        };
+      case "blind-cash":
+        return {
+          label: t.stickerBlindCashLabel,
+          sub: t.stickerBlindCashSub,
+          category: t.stickerBlindCashCat,
+          problem: t.stickerBlindCashProb,
+          solution: t.stickerBlindCashSol,
+          simAction: t.stickerBlindCashAction,
+          simResult: t.stickerBlindCashResult,
+        };
+      case "customs":
+      default:
+        return {
+          label: t.stickerCustomsLabel,
+          sub: t.stickerCustomsSub,
+          category: t.stickerCustomsCat,
+          problem: t.stickerCustomsProb,
+          solution: t.stickerCustomsSol,
+          simAction: t.stickerCustomsAction,
+          simResult: t.stickerCustomsResult,
+        };
+    }
+  };
+
+  const activeContent = getStickerContent(activeStickerId);
 
   const handleSelectSticker = useCallback((id: string) => {
     setActiveStickerId(id);
@@ -131,17 +132,12 @@ export function ArchStickerStage() {
 
   const handleRunSimulation = () => {
     setSimRunning(true);
-    setSimFeedback("Procesando telemetría de arquitectura en tiempo real...");
+    setSimFeedback(t.stageSimProcessing);
     setTimeout(() => {
       setSimRunning(false);
-      setSimFeedback(activeSticker.simResult);
+      setSimFeedback(activeContent.simResult);
     }, 450);
   };
-
-  // Determine base path for images (handles both local dev and GitHub Pages /portfolio)
-  const isGithubPages = typeof window !== "undefined" && window.location.pathname.startsWith("/portfolio");
-  const basePath = isGithubPages ? "/portfolio" : "";
-  const portraitSrc = `${basePath}/agustin_milesi_cutout.png`;
 
   return (
     <section id="escenario" className="py-16 sm:py-24 overflow-hidden border-b border-[#1E293B] bg-[#0A0E14] relative">
@@ -152,34 +148,34 @@ export function ArchStickerStage() {
         {/* Section Heading Tag */}
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#121824] border border-[#1E293B] text-xs font-mono text-[#9A9E86]">
-            <span className="size-2 rounded-full bg-[#C6F827] pulse-dot" />
-            <span>EL ESCENARIO CENTRAL INTERACTIVO</span>
+            <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] pulse-dot" />
+            <span>{t.stageBadge}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#E9E7E0]">
             Arquitectura Nacida para el Alto Rendimiento
           </h2>
           <p className="text-sm sm:text-base text-[#9A9E86] max-w-2xl mx-auto leading-relaxed">
-            Haga clic en cualquiera de los stickers técnicos alrededor del arquitecto para auditar cómo
-            resolvemos en el código los problemas más difíciles de la operación comercial y logística.
+            {t.stageSubtitle}
           </p>
         </div>
 
         {/* Mobile Horizontal Principle Selector (for touch devices) */}
         <div className="flex md:hidden overflow-x-auto gap-2 pb-2 scrollbar-none">
-          {STICKERS.map((stk) => {
-            const isSelected = stk.id === activeStickerId;
+          {STICKER_CONFIGS.map((cfg) => {
+            const isSelected = cfg.id === activeStickerId;
+            const content = getStickerContent(cfg.id);
             return (
               <button
-                key={stk.id}
+                key={cfg.id}
                 type="button"
-                onClick={() => handleSelectSticker(stk.id)}
+                onClick={() => handleSelectSticker(cfg.id)}
                 className={`px-3 py-2 rounded-xl text-xs font-mono whitespace-nowrap border transition cursor-pointer shrink-0 ${
                   isSelected
-                    ? "bg-[#C6F827] text-[#0A0E14] border-[#C6F827] font-bold shadow-sm"
+                    ? "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] border-[var(--primary-accent,#C6F827)] font-bold shadow-sm"
                     : "bg-[#121824] text-slate-300 border-[#1E293B]"
                 }`}
               >
-                {stk.label.split("·")[0].trim()}
+                {content.label.split("·")[0].trim()}
               </button>
             );
           })}
@@ -203,24 +199,22 @@ export function ArchStickerStage() {
             </div>
 
             {/* Neon Perimeter Rim Glow behind Agustín */}
-            <div className="absolute bottom-16 inset-x-12 h-64 bg-[#C6F827]/10 blur-3xl rounded-full pointer-events-none" />
+            <div className="absolute bottom-16 inset-x-12 h-64 bg-[var(--primary-accent,#C6F827)]/10 blur-3xl rounded-full pointer-events-none" />
 
-            {/* The Cutout Portrait of Agustín Milesi (Creative Focal Point) */}
+            {/* The Cutout Portrait of Agustín Milesi */}
             <div className="relative z-10 w-full flex flex-col items-center justify-end select-none">
               <div className="relative w-[300px] sm:w-[380px] h-[340px] sm:h-[420px] flex items-end justify-center">
-                {/* Image Cutout via Next.js static import for guaranteed basePath resolution */}
                 <Image
                   src={portraitImg}
-                  alt="Agustín Milesi · Creador de VOUT"
+                  alt="Agustín Milesi · VOUT Software Architecture"
                   priority
                   className="w-auto h-full max-h-[420px] object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] filter contrast-105"
                 />
 
-                {/* Ambient Subtle Accent Light Overlay on bust */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E14] via-transparent to-transparent opacity-60 pointer-events-none" />
               </div>
 
-              {/* Obsidian Architect Nameplate Badge */}
+              {/* Architect Nameplate Badge */}
               <div className="w-full bg-[#0D121B]/95 backdrop-blur-md border-t border-[#1E293B] py-3 px-4 flex items-center justify-between z-20">
                 <div className="flex items-center gap-2.5">
                   <div className="size-7 rounded-lg bg-[#121824] border border-[#1E293B] flex items-center justify-center p-1 shrink-0">
@@ -239,14 +233,14 @@ export function ArchStickerStage() {
                       Agustín Milesi
                     </h3>
                     <p className="text-[10px] font-mono text-[#9A9E86] leading-none mt-1">
-                      Creador &amp; Arquitecto de VOUT
+                      Founder &amp; Architect · VOUT
                     </p>
                   </div>
                 </div>
 
                 <div className="hidden sm:flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
                   <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>ONLINE · ART</span>
+                  <span>ONLINE · PRODUCTION</span>
                 </div>
               </div>
             </div>
@@ -256,33 +250,34 @@ export function ArchStickerStage() {
           </div>
 
           {/* Interactive Floating Tilted Sticker Badges (Desktop & Tablet) */}
-          {STICKERS.map((stk) => {
-            const isActive = stk.id === activeStickerId;
+          {STICKER_CONFIGS.map((cfg) => {
+            const isActive = cfg.id === activeStickerId;
+            const content = getStickerContent(cfg.id);
             return (
               <button
-                key={stk.id}
+                key={cfg.id}
                 type="button"
-                onClick={() => handleSelectSticker(stk.id)}
-                className={`hidden md:flex absolute ${stk.position} ${stk.rotation} transition-all duration-300 transform cursor-pointer select-none text-left ${
+                onClick={() => handleSelectSticker(cfg.id)}
+                className={`hidden md:flex absolute ${cfg.position} ${cfg.rotation} transition-all duration-300 transform cursor-pointer select-none text-left ${
                   isActive
-                    ? "scale-115 z-30 ring-2 ring-[#C6F827] shadow-[0_0_25px_rgba(198,248,39,0.4)]"
+                    ? "scale-115 z-30 ring-2 ring-[var(--primary-accent,#C6F827)] shadow-[0_0_25px_rgba(198,248,39,0.4)]"
                     : "hover:scale-105 hover:z-20 opacity-85 hover:opacity-100 shadow-xl"
                 }`}
-                aria-label={`Seleccionar principio: ${stk.label}`}
+                aria-label={`Select: ${content.label}`}
               >
                 <div
-                  className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl border-2 ${stk.color} font-mono flex flex-col justify-center`}
+                  className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl border-2 ${cfg.color} font-mono flex flex-col justify-center`}
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-[10px] sm:text-xs font-black tracking-tight leading-none uppercase">
-                      {stk.label}
+                      {content.label}
                     </span>
                     {isActive && (
-                      <span className="size-2 rounded-full bg-[#C6F827] inline-block animate-ping" />
+                      <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] inline-block animate-ping" />
                     )}
                   </div>
                   <span className="text-[9px] opacity-80 leading-none mt-1 font-sans font-medium">
-                    {stk.sub}
+                    {content.sub}
                   </span>
                 </div>
               </button>
@@ -290,25 +285,25 @@ export function ArchStickerStage() {
           })}
         </div>
 
-        {/* Dynamic Architectural Inspection Console: "Ahora el escenario anda de verdad" */}
-        <div className="max-w-3xl mx-auto rounded-3xl bg-[#121824] border-2 border-[#1E293B] p-6 sm:p-8 shadow-2xl space-y-6 animate-smooth-in">
-          {/* Header of the Active Principle Console */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#1E293B]">
-            <div className="flex items-center gap-2.5">
-              <span className="size-2.5 rounded-full bg-[#C6F827] animate-pulse" />
-              <span className="font-mono text-xs text-[#C6F827] uppercase tracking-wider font-bold">
-                PRINCIPIO ACTIVO: {activeSticker.category}
+        {/* Detailed Technical Principle Inspector Box */}
+        <div className="max-w-4xl mx-auto rounded-3xl bg-[#121824] border-2 border-[#1E293B] p-6 sm:p-8 space-y-6 shadow-2xl animate-smooth-in">
+          {/* Header of Inspector */}
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1E293B] pb-4">
+            <div className="flex items-center gap-2">
+              <span className="size-2.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--primary-accent,#C6F827)]">
+                {activeContent.category}
               </span>
             </div>
             <span className="text-xs font-mono text-[#9A9E86] bg-[#0A0E14] px-2.5 py-1 rounded-full border border-[#1E293B]">
-              {activeSticker.sub}
+              {activeContent.sub}
             </span>
           </div>
 
           {/* Principle Title */}
           <div>
             <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight">
-              {activeSticker.label}
+              {activeContent.label}
             </h3>
           </div>
 
@@ -317,20 +312,20 @@ export function ArchStickerStage() {
             <div className="p-4 rounded-2xl bg-[#0D121B] border border-red-500/20 space-y-2">
               <span className="font-mono text-[10px] text-red-400 uppercase tracking-wider font-bold block flex items-center gap-1.5">
                 <span className="size-1.5 rounded-full bg-red-400" />
-                El Desafío Operativo en Mostrador
+                {t.stageAuditProblem}
               </span>
               <p className="text-slate-300 leading-relaxed font-normal">
-                {activeSticker.problem}
+                {activeContent.problem}
               </p>
             </div>
 
             <div className="p-4 rounded-2xl bg-[#0D121B] border border-emerald-500/20 space-y-2">
-              <span className="font-mono text-[10px] text-[#C6F827] uppercase tracking-wider font-bold block flex items-center gap-1.5">
-                <span className="size-1.5 rounded-full bg-[#C6F827]" />
-                Solución de Ingeniería VOUT
+              <span className="font-mono text-[10px] text-[var(--primary-accent,#C6F827)] uppercase tracking-wider font-bold block flex items-center gap-1.5">
+                <span className="size-1.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
+                {t.stageAuditSolution}
               </span>
               <p className="text-slate-300 leading-relaxed font-normal">
-                {activeSticker.solution}
+                {activeContent.solution}
               </p>
             </div>
           </div>
@@ -339,13 +334,13 @@ export function ArchStickerStage() {
           <div className="p-4 rounded-2xl bg-[#0A0E14] border border-[#1E293B] space-y-3 font-mono text-xs">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <span className="text-slate-400 text-[11px]">
-                // SIMULADOR DE TELEMETRÍA DE PRODUCCIÓN
+                // TELEMETRY SIMULATION
               </span>
               <button
                 type="button"
                 onClick={handleRunSimulation}
                 disabled={simRunning}
-                className="px-4 py-2 rounded-xl bg-[#C6F827] text-[#0A0E14] font-black text-[11px] uppercase tracking-wider hover:bg-[#bcf020] active:scale-95 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                className="px-4 py-2 rounded-xl bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] font-black text-[11px] uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
               >
                 {simRunning ? (
                   <>
@@ -353,11 +348,11 @@ export function ArchStickerStage() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                     </svg>
-                    <span>Ejecutando...</span>
+                    <span>Executing...</span>
                   </>
                 ) : (
                   <>
-                    <span>⚡ {activeSticker.simAction}</span>
+                    <span>⚡ {activeContent.simAction}</span>
                     <span>→</span>
                   </>
                 )}
@@ -367,12 +362,12 @@ export function ArchStickerStage() {
             {/* Terminal Response Screen */}
             <div className="p-3 rounded-xl bg-[#0D121B] border border-[#1E293B] text-[11px] text-slate-300 min-h-[46px] flex items-center">
               {simFeedback ? (
-                <span className="text-[#C6F827] leading-relaxed">
+                <span className="text-[var(--primary-accent,#C6F827)] leading-relaxed">
                   &gt; {simFeedback}
                 </span>
               ) : (
                 <span className="text-slate-500">
-                  &gt; Presione el botón de arriba para probar la telemetría en tiempo real de este principio.
+                  &gt; Press the button above to execute live architecture telemetry.
                 </span>
               )}
             </div>

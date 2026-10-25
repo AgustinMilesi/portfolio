@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import confetti from "canvas-confetti";
+import { usePreferences } from "@/components/PreferencesProvider";
 
 export function FooterContact() {
+  const { t } = usePreferences();
   const [copied, setCopied] = useState(false);
 
   const email = "agusmilesi2002@gmail.com";
@@ -33,21 +35,20 @@ export function FooterContact() {
         {/* Massive Call to Action Header */}
         <div className="space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#121824] border border-[#1E293B] text-xs font-mono text-[#9A9E86]">
-            <span className="size-2 rounded-full bg-[#C6F827] pulse-dot" />
-            <span>CANAL DIRECTO CON AGUSTÍN MILESI</span>
+            <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] pulse-dot" />
+            <span>{t.footerBadge}</span>
           </div>
 
           <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-[-0.05em] leading-[0.88] text-[#E9E7E0]">
-            Hablemos<span className="text-[#C6F827]">.</span>
+            {t.footerH2.replace(/\.$/, "")}<span className="text-[var(--primary-accent,#C6F827)]">.</span>
           </h2>
 
           <p className="font-serif italic text-2xl sm:text-3xl text-[#9A9E86] max-w-2xl">
-            «Entra el caos. Sale el dato.»
+            {t.footerClaim}
           </p>
 
           <p className="text-sm sm:text-base text-[#E9E7E0]/90 max-w-2xl leading-relaxed">
-            ¿Tenés un comercio con problemas de caja y stock, una operación logística que pierde dinero en
-            demurrage, o necesitas un sistema crítico diseñado sin vibecoding? Escríbeme directamente.
+            {t.footerDesc}
           </p>
         </div>
 
@@ -57,7 +58,7 @@ export function FooterContact() {
           <div className="md:col-span-8 p-6 sm:p-8 rounded-3xl bg-[#121824] border-2 border-[#1E293B] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="space-y-1">
               <span className="text-[11px] font-mono text-[#9A9E86] uppercase block">
-                CORREO ELECTRÓNICO OFICIAL:
+                {t.footerEmailTitle}
               </span>
               <p className="text-xl sm:text-2xl font-mono font-bold text-[#E9E7E0] tracking-tight">
                 {email}
@@ -70,16 +71,16 @@ export function FooterContact() {
               className={`px-6 py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider transition-all transform active:scale-95 flex items-center gap-2 shrink-0 ${
                 copied
                   ? "bg-[#E9E7E0] text-[#0A0E14]"
-                  : "bg-[#C6F827] text-[#0A0E14] hover:bg-white"
+                  : "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] hover:bg-white"
               }`}
             >
               {copied ? (
                 <>
-                  <span>✓ COPIADO AL PORTAPAPELES</span>
+                  <span>{t.footerCopied}</span>
                 </>
               ) : (
                 <>
-                  <span>COPIAR DIRECCIÓN</span>
+                  <span>{t.footerCopyBtn}</span>
                   <span>📋</span>
                 </>
               )}
@@ -91,18 +92,18 @@ export function FooterContact() {
             href="https://saas-am.vercel.app/contact"
             target="_blank"
             rel="noopener noreferrer"
-            className="md:col-span-4 p-6 sm:p-8 rounded-3xl bg-[#161F30] border-2 border-[#1E293B] hover:border-[#C6F827] flex flex-col justify-between group transition-all"
+            className="md:col-span-4 p-6 sm:p-8 rounded-3xl bg-[#161F30] border-2 border-[#1E293B] hover:border-[var(--primary-accent,#C6F827)] flex flex-col justify-between group transition-all"
           >
             <div className="space-y-1">
-              <span className="text-[10px] font-mono text-[#C6F827] uppercase block">
-                GATEWAY SOBERANO CON TELEMETRÍA
+              <span className="text-[10px] font-mono text-[var(--primary-accent,#C6F827)] uppercase block">
+                {t.footerGatewayTitle}
               </span>
-              <h3 className="text-lg font-bold text-white group-hover:text-[#C6F827] transition-colors">
-                Portal de Contacto Directo (/contact) →
+              <h3 className="text-lg font-bold text-white group-hover:text-[var(--primary-accent,#C6F827)] transition-colors">
+                {t.footerGatewayH3} →
               </h3>
             </div>
             <p className="text-xs text-[#9A9E86] mt-4">
-              Envía una transmisión formal con selector de alcance y validación en tiempo real.
+              {t.footerGatewayDesc}
             </p>
           </a>
         </div>
