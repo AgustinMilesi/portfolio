@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useCallback, useId } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
+import portraitImg from "../public/agustin_milesi_cutout.png";
 
 interface StickerData {
   id: string;
@@ -207,12 +208,12 @@ export function ArchStickerStage() {
             {/* The Cutout Portrait of Agustín Milesi (Creative Focal Point) */}
             <div className="relative z-10 w-full flex flex-col items-center justify-end select-none">
               <div className="relative w-[300px] sm:w-[380px] h-[340px] sm:h-[420px] flex items-end justify-center">
-                {/* Image Cutout */}
-                <img
-                  src={portraitSrc}
+                {/* Image Cutout via Next.js static import for guaranteed basePath resolution */}
+                <Image
+                  src={portraitImg}
                   alt="Agustín Milesi · Creador de VOUT"
+                  priority
                   className="w-auto h-full max-h-[420px] object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.8)] filter contrast-105"
-                  loading="eager"
                 />
 
                 {/* Ambient Subtle Accent Light Overlay on bust */}
@@ -316,7 +317,7 @@ export function ArchStickerStage() {
             <div className="p-4 rounded-2xl bg-[#0D121B] border border-red-500/20 space-y-2">
               <span className="font-mono text-[10px] text-red-400 uppercase tracking-wider font-bold block flex items-center gap-1.5">
                 <span className="size-1.5 rounded-full bg-red-400" />
-                La Realidad de la Trinchera
+                El Desafío Operativo en Mostrador
               </span>
               <p className="text-slate-300 leading-relaxed font-normal">
                 {activeSticker.problem}

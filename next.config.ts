@@ -6,6 +6,9 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGithubPages ? "/portfol
 const nextConfig: NextConfig = {
   output: isGithubPages ? "export" : undefined,
   basePath: basePath || undefined,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     unoptimized: true,
   },

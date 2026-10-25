@@ -11,11 +11,11 @@ export function TrayectoriaTimeline() {
       tag: "ACADEMIA & RIGOR",
     },
     {
-      period: "2022 — 2023 · LA TRINCHERA",
-      title: "Comercio Mayorista de Alimentos & Bebidas",
-      role: "Cajero Principal & Auditor Administrativo de Salón",
+      period: "2022 — 2023 · OPERACIÓN COMERCIAL",
+      title: "Comercio Minorista & Mayorista de Alto Flujo",
+      role: "Cajero de Salón & Auditor Administrativo",
       description:
-        "Ocho horas diarias operando cajas registradoras reales, con filas continuas de clientes mayoristas, lectores de códigos de barra desgastados y cortes de enlace. Aquí se forjó el rechazo total al software frágil y nació el concepto de arqueo ciego y tolerancia offline.",
+        "Operación continua en líneas de caja registradora de alta exigencia diaria. Experiencia en el mostrador frente a los cuellos de botella reales: lectores láser con fallas de lectura, filas de clientes y caídas imprevistas de red. Esa práctica motivó la creación de VOUT con arqueos ciegos y tolerancia offline estricta.",
       tag: "OPERACIÓN REAL",
     },
     {

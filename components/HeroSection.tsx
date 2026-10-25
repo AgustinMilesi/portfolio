@@ -39,11 +39,11 @@ export function HeroSection() {
           <div className="space-y-4">
             <div className="text-xs font-mono text-[#C6F827] flex items-center gap-2">
               <span>// 01</span>
-              <span className="uppercase tracking-wider">LA REALIDAD DE LA TRINCHERA</span>
+              <span className="uppercase tracking-wider">EXPERIENCIA OPERATIVA EN MOSTRADOR</span>
             </div>
             <p className="text-base sm:text-lg text-[#E9E7E0]/90 leading-relaxed font-normal">
               La inmensa mayoría de las herramientas de retail y logística son diseñadas por ingenieros que jamás
-              estuvieron parados ocho horas seguidas frente a una caja registradora mayorista, con una fila de quince
+              estuvieron parados ocho horas seguidas frente a una caja registradora comercial, con una fila de quince
               clientes apurados y un corte imprevisto de internet.
             </p>
             <p className="text-sm text-[#9A9E86] leading-relaxed">

@@ -577,7 +577,7 @@ export function ProjectCarousel() {
                     {/* Simulated Content Dashboard */}
                     <div className="space-y-3">
                       <div className="p-3 rounded-xl bg-[#121824] border border-[#1E293B] space-y-1">
-                        <span className="text-[10px] font-mono text-slate-400 uppercase">Declaración de Trinchera</span>
+                        <span className="text-[10px] font-mono text-slate-400 uppercase">Propósito Operativo</span>
                         <p className="text-xs text-slate-200">{currentProject.tagline}</p>
                       </div>
 

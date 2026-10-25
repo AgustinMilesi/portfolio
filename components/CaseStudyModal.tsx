@@ -91,7 +91,7 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
             <div className="p-5 rounded-2xl bg-[#121824] border border-[#1E293B] space-y-2">
               <span className="text-xs font-mono text-[#FF5555] uppercase tracking-wider flex items-center gap-1.5">
                 <span className="size-2 rounded-full bg-[#FF5555]" />
-                El Problema de la Trinchera
+                El Desafío Operativo Real
               </span>
               <p className="text-sm text-[#E9E7E0]/90 leading-relaxed font-normal">
                 {project.problemStatement}

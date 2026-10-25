@@ -40,7 +40,7 @@
 
 3. **HeroSection (`components/HeroSection.tsx`):**
    - Tipografía monumental brutalista: *«SOFTWARE DE GESTIÓN QUE ENTIENDE LA OPERACIÓN.»*
-   - Manifiesto operativo en dos columnas: la trinchera del cajero de salón frente a la arquitectura sin vibecoding.
+   - Manifiesto operativo en dos columnas: la experiencia del cajero en mostrador frente a la arquitectura sin vibecoding.
 
 4. **ArchStickerStage (`components/ArchStickerStage.tsx`):**
    - Escenario central con arco monumental, textura dither de 4px y stickers técnicos flotantes con física hover inclinada (`OFFLINE-FIRST`, `CERO REVENTA DE DATOS`, `LECTOR DE CÓDIGOS DE BARRA`, etc.).

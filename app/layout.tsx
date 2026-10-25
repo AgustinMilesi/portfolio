@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const isGithubPages = process.env.DEPLOY_TARGET === "gh-pages";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGithubPages ? "/portfolio" : "");
+
 export const viewport: Viewport = {
   themeColor: "#0A0E14",
   width: "device-width",
@@ -9,7 +12,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vout.network"),
+  metadataBase: new URL("https://agustinmilesi.github.io/portfolio/"),
   title: "Agustín Milesi · VOUT Architecture — Software de Gestión que Entiende la Operación",
   description:
     "Ecosistema de software de gestión de alta disponibilidad: Punto de venta retail para cajeros reales, logística aduanera de carga internacional, CRM de ingesta multicanal y finanzas personales soberanas. Creado por Agustín Milesi.",
@@ -20,7 +23,6 @@ export const metadata: Metadata = {
     "VOUT Retail",
     "VOUT Cargo",
     "VOUT Inbox",
-    "VOUT Connect",
     "VOUT Pocket",
     "Point of Sale",
     "SaaS Architecture",
@@ -35,23 +37,28 @@ export const metadata: Metadata = {
   creator: "Agustín Milesi",
   publisher: "VOUT Ecosystem",
   alternates: {
-    canonical: "/",
+    canonical: basePath ? `${basePath}/` : "/",
   },
   icons: {
-    icon: "/icon.svg",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: `${basePath}/icon.svg`, type: "image/svg+xml" },
+      { url: `${basePath}/favicon.ico`, sizes: "any" },
+    ],
+    apple: [
+      { url: `${basePath}/apple-touch-icon.png` },
+    ],
   },
   openGraph: {
     title: "Agustín Milesi · VOUT Software Architecture",
     description:
       "Entra el caos. Sale el dato. Software de gestión que entiende la operación: Retail POS, Freight, CRM & Personal Cashflow.",
-    url: "https://vout.network",
+    url: "https://agustinmilesi.github.io/portfolio/",
     siteName: "VOUT Portfolio",
     locale: "es_AR",
     type: "website",
     images: [
       {
-        url: "/apple-touch-icon.png",
+        url: `${basePath}/apple-touch-icon.png`,
         width: 512,
         height: 512,
         alt: "VOUT Official Mark · Agustín Milesi Architecture",
@@ -62,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Agustín Milesi · VOUT Architecture",
     description: "Software de gestión que entiende la operación. Creado por Agustín Milesi.",
-    images: ["/apple-touch-icon.png"],
+    images: [`${basePath}/apple-touch-icon.png`],
   },
   robots: {
     index: true,
@@ -77,6 +84,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="dark bg-[#0A0E14] text-[#E9E7E0] antialiased selection:bg-[#C6F827] selection:text-[#0A0E14]">
+      <head>
+        <link rel="icon" href={`${basePath}/icon.svg`} type="image/svg+xml" />
+        <link rel="alternate icon" href={`${basePath}/favicon.ico`} sizes="any" />
+        <link rel="apple-touch-icon" href={`${basePath}/apple-touch-icon.png`} />
+      </head>
       <body className="min-h-screen flex flex-col bg-[#0A0E14] technical-grid text-[#E9E7E0] font-sans">
         {children}
       </body>
