@@ -29,9 +29,9 @@ export function TrayectoriaTimeline() {
     {
       period: "2025 — PRESENTE · VOUT",
       title: "Fundador & Arquitecto del Ecosistema VOUT",
-      role: "VOUT Retail · Cargo · Inbox · Connect · Pocket",
+      role: "VOUT Retail · Inbox (CRM & Contacto) · Cargo · Pocket",
       description:
-        "Consolidación de cinco plataformas en producción bajo una única filosofía técnica: TypeScript estricto, bases de datos PostgreSQL con réplica offline en IndexedDB/SQLite, diseño brutalista de alto contraste y cero venta de datos.",
+        "Consolidación de cuatro plataformas insignia en producción bajo una única filosofía técnica: TypeScript estricto, bases de datos PostgreSQL con réplica offline en IndexedDB/SQLite, diseño brutalista de alto contraste y cero venta de datos.",
       tag: "SISTEMAS SOBERANOS",
     },
   ];
