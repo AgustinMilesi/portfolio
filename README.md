@@ -40,10 +40,10 @@
 
 3. **HeroSection (`components/HeroSection.tsx`):**
    - Tipografía monumental brutalista: *«SOFTWARE DE GESTIÓN QUE ENTIENDE LA OPERACIÓN.»*
-   - Manifiesto operativo en dos columnas: la experiencia del cajero en mostrador frente a la arquitectura sin vibecoding.
+   - Manifiesto operativo en dos columnas: la experiencia real en mostrador y la ingeniería de software con vibecoding profesional en tiempo y forma.
 
 4. **ArchStickerStage (`components/ArchStickerStage.tsx`):**
-   - Escenario central con arco monumental, textura dither de 4px y stickers técnicos flotantes con física hover inclinada (`OFFLINE-FIRST`, `CERO REVENTA DE DATOS`, `LECTOR DE CÓDIGOS DE BARRA`, etc.).
+   - Escenario central con arco monumental, textura dither de 4px y stickers técnicos flotantes con física hover inclinada (`OFFLINE-FIRST`, `CERO REVENTA DE DATOS`, `LECTOR DE CÓDIGOS DE BARRA`, `VIBECODING EN TIEMPO Y FORMA`, etc.).
 
 5. **ProjectCarousel (`components/ProjectCarousel.tsx`):**
    - Carrusel de 5 plataformas con navegación táctil, teclas de cursor (`←` / `→`), pausa automática en hover y especificaciones de runtime (Engine, Database, Hardware/Seguridad, Métrica Crítica).
@@ -51,13 +51,10 @@
 6. **CaseStudyModal (`components/CaseStudyModal.tsx`):**
    - Modal de inspección arquitectónica profunda: desafío operativo, solución de ingeniería, flujo de datos transaccional y esquemas Prisma reales.
 
-7. **DitherSimulator (`components/DitherSimulator.tsx`):**
-   - Laboratorio de hardware interactivo: simulación de lectura láser USB de código de barras (< 50ms), desglose de IVA y subtotal, cálculo de ticket térmico ESC/POS con textura dither y arqueo ciego de fin de turno.
-
-8. **TrayectoriaTimeline (`components/TrayectoriaTimeline.tsx`):**
+7. **TrayectoriaTimeline (`components/TrayectoriaTimeline.tsx`):**
    - De la caja al código: Estudios en UNER → Cajero y administración mayorista → Consultoría de datos aduaneros → Concepción de VOUT.
 
-9. **FooterContact (`components/FooterContact.tsx`):**
+8. **FooterContact (`components/FooterContact.tsx`):**
    - Llamado a la acción monumental **«Hablemos.»**, botón interactivo con animación de confetti para copiar `inbound@vout.network`, coordenadas geográficas y colofón técnico.
 
 ---
@@ -80,6 +77,7 @@ npm run build
 
 Este código fuente, arquitectura, diseño y marcas asociadas son **software propietario y confidencial**.
 - Queda estrictamente prohibida la copia, clonación, redistribución, sublicenciamiento o uso comercial no autorizado de este código fuente.
+- **Contribuciones y Colaboración:** Este es un proyecto estrictamente cerrado y privado. No se aceptan colaboraciones de código abiertas, ayuda comunitaria ni Pull Requests no solicitados; cualquier participación técnica es únicamente por invitación expresa de Agustín Milesi.
 - El acceso público a la [demostración en vivo](https://agustinmilesi.github.io/portfolio/) se proporciona única y exclusivamente con fines de evaluación visual y muestra interactiva de la plataforma.
 - Para adquisición comercial, contratos de desarrollo o licenciamiento privado: [inbound@vout.network](https://saas-am.vercel.app/contact).
 
