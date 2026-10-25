@@ -14,7 +14,7 @@ export const ECOSYSTEM_PROJECTS: ProjectData[] = [
       "Punto de venta de alta velocidad, lector de código de barras nativo, arqueos ciegos de caja y facturación térmica.",
     description:
       "Diseñado para eliminar filas y descuadres en el mostrador minorista y mayorista. Arquitectura optimizada para lecturas HID de códigos de barra en menos de 50ms, transacciones de venta atómicas con bloqueo de concurrencia y tickets térmicos ESC/POS.",
-    liveUrl: "https://milesi-erp.vercel.app",
+    liveUrl: "https://milesi-erp.vercel.app/demo",
     repoFolder: "e:\\Proyectos\\erp",
     specs: {
       engine: "Next.js 16 + React 19 Turbopack",
@@ -72,7 +72,7 @@ model ShiftSession {
       "Plataforma unificada dos-en-uno: gestión de consultas de clientes con webhooks firmados HMAC y portal soberano de contacto directo.",
     description:
       "Arquitectura unificada que integra el SaaS multi-inquilino de retroalimentación de clientes y el canal institucional de contacto directo. Ofrece ingesta de prospectos con validación estricta Zod, protección anti-bot por honeypot, aislamiento organizacional por esquema y despacho en tiempo real a endpoints de clientes.",
-    liveUrl: "https://saas-am.vercel.app",
+    liveUrl: "https://saas-am.vercel.app/demo",
     repoFolder: "e:\\Proyectos\\saas",
     specs: {
       engine: "Next.js 16 + Server Actions + REST API v1",
@@ -130,7 +130,7 @@ model Message {
       "Suite autónoma de logística internacional, rastreo marítimo/aéreo, despacho aduanero y control de demurrage.",
     description:
       "Monitoreo en tiempo real de embarques internacionales marítimos (FCL/LCL) y aéreos. Cálculo dinámico de aranceles de importación, alertas preventivas de demurrage en terminales portuarias y portal de autoservicio para importadores.",
-    liveUrl: "https://cargo-am.vercel.app",
+    liveUrl: "https://cargo-am.vercel.app/demo",
     repoFolder: "e:\\Proyectos\\sap",
     specs: {
       engine: "Next.js + TypeScript + Tailwind CSS",
