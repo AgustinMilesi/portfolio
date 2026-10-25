@@ -62,23 +62,29 @@
 
 ---
 
-## 🛠️ Ejecución Local
+## ⚙️ Desarrollo Autorizado
 
 ```bash
-# Clonar el repositorio
-git clone https://github.com/AgustinMilesi/portfolio.git
-cd portfolio
-
-# Instalar dependencias
+# Instalación de dependencias (uso interno y desarrollo autorizado)
 npm install
 
-# Iniciar servidor de desarrollo
-npm run dev
-# Abrir http://localhost:3000
+# Compilación de producción
+npm run build
 ```
 
 ---
 
+## ⚖️ Licencia y Propiedad Intelectual
+
+**Copyright © 2026 Agustín Milesi. Todos los derechos reservados.**
+
+Este código fuente, arquitectura, diseño y marcas asociadas son **software propietario y confidencial**.
+- Queda estrictamente prohibida la copia, clonación, redistribución, sublicenciamiento o uso comercial no autorizado de este código fuente.
+- El acceso público a la [demostración en vivo](https://agustinmilesi.github.io/portfolio/) se proporciona única y exclusivamente con fines de evaluación visual y muestra interactiva de la plataforma.
+- Para adquisición comercial, contratos de desarrollo o licenciamiento privado: [inbound@vout.network](https://saas-am.vercel.app/contact).
+
+---
+
 <div align="center">
-  <p>© 2026 VOUT Software Ecosystem · Creado por Agustín Milesi · Buenos Aires, Argentina</p>
+  <p>© 2026 Agustín Milesi · VOUT Software Ecosystem · Buenos Aires, Argentina · All Rights Reserved</p>
 </div>
