@@ -1,13 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { usePreferences } from "@/components/PreferencesProvider";
 import { PreferencesControls } from "@/components/PreferencesControls";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
+}
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t } = usePreferences();
+  const headerRef = useRef<HTMLElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!progressBarRef.current) return;
+    gsap.to(progressBarRef.current, {
+      scaleX: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.2,
+      },
+    });
+  }, { scope: headerRef });
 
   const subBrands = [
     { name: "vout/retail", label: t.navSubRetail, href: "#proyectos" },
@@ -17,7 +40,12 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[var(--bg-page,#0A0E14)]/90 backdrop-blur-md border-b border-[var(--border-card,#1E293B)] transition-colors">
+    <header ref={headerRef} className="sticky top-0 z-40 w-full bg-[var(--bg-page,#0A0E14)]/90 backdrop-blur-md border-b border-[var(--border-card,#1E293B)] transition-colors relative">
+      {/* GSAP Scroll Progress Line */}
+      <div
+        ref={progressBarRef}
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--primary-accent,#C6F827)] origin-left scale-x-0 pointer-events-none z-50 shadow-[0_0_8px_rgba(198,248,39,0.7)]"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
         {/* Brand Lockup */}
         <Link href="/" className="flex items-center gap-3 group">

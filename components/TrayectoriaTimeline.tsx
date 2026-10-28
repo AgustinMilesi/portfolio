@@ -4,22 +4,68 @@ import { useRef } from "react";
 import { usePreferences } from "@/components/PreferencesProvider";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(useGSAP);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
+}
 
 export function TrayectoriaTimeline() {
   const { t } = usePreferences();
   const timelineRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
-    gsap.from(".timeline-card", {
+    // 1. Heading scroll reveal
+    gsap.from(".timeline-heading", {
       y: 25,
       opacity: 0,
-      stagger: 0.12,
       duration: 0.7,
       ease: "power2.out",
-      delay: 0.15,
+      scrollTrigger: {
+        trigger: timelineRef.current,
+        start: "top 82%",
+        toggleActions: "play none none none",
+      },
     });
+
+    // 2. Responsive scroll choreography (PC grid stagger vs Cellular item-by-item)
+    const mm = gsap.matchMedia();
+
+    // Desktop & Tablet (>= 768px): cascade cards together when section is in view
+    mm.add("(min-width: 768px)", () => {
+      gsap.from(".timeline-card", {
+        y: 35,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.75,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: timelineRef.current,
+          start: "top 78%",
+          toggleActions: "play none none none",
+        },
+      });
+    });
+
+    // Mobile (< 768px): each card reveals as the user slides down to it
+    mm.add("(max-width: 767px)", () => {
+      gsap.utils.toArray<HTMLElement>(".timeline-card").forEach((card) => {
+        gsap.from(card, {
+          y: 25,
+          opacity: 0,
+          scale: 0.96,
+          duration: 0.55,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 88%",
+            toggleActions: "play none none none",
+          },
+        });
+      });
+    });
+
+    return () => mm.revert();
   }, { scope: timelineRef });
 
   const steps = [
@@ -61,7 +107,7 @@ export function TrayectoriaTimeline() {
     <section ref={timelineRef} id="trayectoria" className="py-12 sm:py-16 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Header */}
-        <div className="space-y-2">
+        <div className="timeline-heading space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[var(--bg-card,#121824)] text-[var(--primary-accent,#C6F827)] border border-[var(--border-card,#1E293B)]">
             <span>{t.timelineBadge}</span>
           </div>

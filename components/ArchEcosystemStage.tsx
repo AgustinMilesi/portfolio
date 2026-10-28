@@ -7,8 +7,11 @@ import { CaseStudyModal, ProjectData } from "./CaseStudyModal";
 import { usePreferences } from "@/components/PreferencesProvider";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(useGSAP);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
+}
 
 export const ECOSYSTEM_PROJECTS: ProjectData[] = [
   {
@@ -289,30 +292,81 @@ export function ArchEcosystemStage() {
     setActiveAppId(id);
   }, []);
 
-  // GSAP 1. Initial Reveal & Organic Floating Physics
+  // GSAP 1. Scroll-Triggered Reveal & Organic Floating Physics
   useGSAP(() => {
-    // Reveal of Arch & Portrait
+    // 1. Heading scroll-in
+    gsap.from(".ecosystem-heading", {
+      y: 30,
+      opacity: 0,
+      duration: 0.75,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 82%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    // 2. Arch + Stickers Scroll-Triggered choreographed entrance
     if (archRef.current) {
-      gsap.from(archRef.current, {
+      const archTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: archRef.current,
+          start: "top 82%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      archTl
+        .from(archRef.current, {
+          y: 45,
+          scale: 0.94,
+          opacity: 0,
+          duration: 0.85,
+          ease: "power3.out",
+        })
+        .from(
+          ".app-sticker",
+          {
+            scale: 0.55,
+            opacity: 0,
+            y: 18,
+            stagger: 0.08,
+            duration: 0.65,
+            ease: "back.out(1.6)",
+          },
+          "-=0.35"
+        );
+    }
+
+    // 3. Subtle glow parallax on scroll
+    gsap.to(".arch-glow", {
+      y: -25,
+      ease: "none",
+      scrollTrigger: {
+        trigger: archRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1.2,
+      },
+    });
+
+    // 4. Showcase card scroll reveal
+    if (showcaseRef.current) {
+      gsap.from(showcaseRef.current, {
         y: 40,
         opacity: 0,
-        duration: 0.9,
-        ease: "power3.out",
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: showcaseRef.current,
+          start: "top 88%",
+          toggleActions: "play none none none",
+        },
       });
     }
 
-    // Pop-in of stickers (desktop & mobile)
-    gsap.from(".app-sticker", {
-      scale: 0.7,
-      opacity: 0,
-      y: 15,
-      stagger: 0.08,
-      duration: 0.65,
-      ease: "back.out(1.5)",
-      delay: 0.2,
-    });
-
-    // Organic floating badges physics
+    // 5. Organic floating badges physics (continuous gentle breathing)
     gsap.to(".sticker-retail", {
       y: -7,
       rotation: "-=1.5",
@@ -367,7 +421,7 @@ export function ArchEcosystemStage() {
     <section ref={containerRef} id="proyectos" className="py-12 sm:py-20 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors w-full max-w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 w-full max-w-full">
         {/* Section Heading */}
-        <div className="text-center space-y-2.5 max-w-3xl mx-auto">
+        <div className="ecosystem-heading text-center space-y-2.5 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-xs font-mono text-[var(--primary-accent,#C6F827)] shadow-xs">
             <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] animate-pulse" />
             <span className="font-semibold uppercase tracking-wider">ECOSISTEMA EN PRODUCCIÓN · VOUT</span>
@@ -385,7 +439,7 @@ export function ArchEcosystemStage() {
           {/* The Arch Frame */}
           <div ref={archRef} className="w-full max-w-[270px] sm:max-w-[380px] md:max-w-[450px] h-[400px] sm:h-[480px] md:h-[500px] rounded-t-full bg-gradient-to-b from-[#161F30] via-[#121824] to-[#0A0E14] border-t-2 border-x-2 border-[#1E293B] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
             {/* Subtle glow behind Agustín */}
-            <div className="absolute bottom-12 inset-x-8 h-48 bg-[var(--primary-accent,#C6F827)]/15 blur-3xl rounded-full pointer-events-none" />
+            <div className="arch-glow absolute bottom-12 inset-x-8 h-48 bg-[var(--primary-accent,#C6F827)]/15 blur-3xl rounded-full pointer-events-none" />
 
             {/* Agustín Milesi Cutout Portrait */}
             <div className="relative z-10 w-full flex flex-col items-center justify-end select-none">

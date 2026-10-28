@@ -1,11 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { usePreferences } from "@/components/PreferencesProvider";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
+}
 
 export function FooterContact() {
   const { t } = usePreferences();
   const [copied, setCopied] = useState(false);
+  const footerRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    gsap.from(".footer-card", {
+      y: 30,
+      opacity: 0,
+      stagger: 0.12,
+      duration: 0.75,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: footerRef.current,
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+    });
+  }, { scope: footerRef });
 
   const email = "agusmilesi2002@gmail.com";
 
@@ -20,10 +43,10 @@ export function FooterContact() {
   };
 
   return (
-    <footer id="contacto" className="bg-[var(--bg-page,#0A0E14)] border-t border-[var(--border-card,#1E293B)] pt-12 sm:pt-16 pb-10 relative transition-colors">
+    <footer ref={footerRef} id="contacto" className="bg-[var(--bg-page,#0A0E14)] border-t border-[var(--border-card,#1E293B)] pt-12 sm:pt-16 pb-10 relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
         {/* Contact Header */}
-        <div className="space-y-3">
+        <div className="footer-card space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-xs font-mono text-[var(--text-muted,#9A9E86)]">
             <span>{t.footerBadge}</span>
           </div>
@@ -44,7 +67,7 @@ export function FooterContact() {
         {/* Email Copy Card & Direct Gateway */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-stretch">
           {/* Main Email Box (8 cols) */}
-          <div className="md:col-span-8 p-5 sm:p-6 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+          <div className="footer-card md:col-span-8 p-5 sm:p-6 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
             <div className="space-y-1">
               <span className="text-xs font-mono text-[var(--text-muted,#9A9E86)] uppercase block font-medium">
                 {t.footerEmailTitle}
@@ -79,7 +102,7 @@ export function FooterContact() {
             href="https://saas-am.vercel.app/contact"
             target="_blank"
             rel="noopener noreferrer"
-            className="md:col-span-4 p-5 sm:p-6 rounded-2xl bg-[var(--bg-card-subtle,#161F30)] border border-[var(--border-card,#1E293B)] hover:border-[var(--primary-accent,#C6F827)] flex flex-col justify-between group transition-all shadow-sm"
+            className="footer-card md:col-span-4 p-5 sm:p-6 rounded-2xl bg-[var(--bg-card-subtle,#161F30)] border border-[var(--border-card,#1E293B)] hover:border-[var(--primary-accent,#C6F827)] flex flex-col justify-between group transition-all shadow-sm"
           >
             <div className="space-y-1">
               <span className="text-xs font-mono text-[var(--primary-accent,#C6F827)] uppercase block font-semibold">

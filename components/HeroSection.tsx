@@ -4,8 +4,11 @@ import { useRef } from "react";
 import { usePreferences } from "@/components/PreferencesProvider";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(useGSAP);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
+}
 
 export function HeroSection() {
   const { t } = usePreferences();
@@ -35,6 +38,19 @@ export function HeroSection() {
         stagger: 0.15,
         duration: 0.7,
       }, "-=0.4");
+
+    // Subtle scroll-exit depth as user scrolls away
+    gsap.to(".hero-title, .hero-claim, .manifesto-card", {
+      y: -25,
+      opacity: 0.6,
+      stagger: 0.05,
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom 30%",
+        scrub: 0.8,
+      },
+    });
   }, { scope: heroRef });
 
   return (
