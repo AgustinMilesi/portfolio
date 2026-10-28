@@ -46,11 +46,11 @@ export function Navbar() {
         ref={progressBarRef}
         className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--primary-accent,#C6F827)] origin-left scale-x-0 pointer-events-none z-50 shadow-[0_0_8px_rgba(198,248,39,0.7)]"
       />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-2">
         {/* Brand Lockup */}
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
           {/* Official 7-Square Isotipo */}
-          <div className="size-10 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] flex items-center justify-center p-2 shadow-sm transition-transform group-hover:scale-105 shrink-0">
+          <div className="size-8 sm:size-10 rounded-xl sm:rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] flex items-center justify-center p-1.5 sm:p-2 shadow-sm transition-transform group-hover:scale-105 shrink-0">
             <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
               <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
               <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
@@ -64,12 +64,12 @@ export function Navbar() {
 
           {/* Wordmark lowercase vout */}
           <div className="flex flex-col">
-            <div className="flex items-baseline font-black text-2xl tracking-[-0.05em] leading-none select-none">
+            <div className="flex items-baseline font-black text-xl sm:text-2xl tracking-[-0.05em] leading-none select-none">
               <span className="text-[var(--text-main,#E9E7E0)]">v</span>
               <span className="text-[var(--primary-accent,#C6F827)]">out</span>
             </div>
-            <span className="text-xs font-mono tracking-wider text-[var(--text-muted,#9A9E86)] leading-none mt-1">
-              PORTFOLIO / AGUSTÍN MILESI
+            <span className="text-[10px] sm:text-xs font-mono tracking-wider text-[var(--text-muted,#9A9E86)] leading-none mt-1 whitespace-nowrap">
+              <span className="hidden sm:inline">PORTFOLIO / </span>AGUSTÍN MILESI
             </span>
           </div>
         </Link>
@@ -88,23 +88,23 @@ export function Navbar() {
         </nav>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <a
             href="#proyectos"
-            className="hidden sm:inline-block text-xs font-mono text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] transition-colors px-3 py-2"
+            className="hidden md:inline-block text-xs font-mono text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] transition-colors px-3 py-2"
           >
             Proyectos
           </a>
           <a
             href="#trayectoria"
-            className="hidden md:inline-block text-xs font-mono text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] transition-colors px-3 py-2"
+            className="hidden lg:inline-block text-xs font-mono text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] transition-colors px-3 py-2"
           >
             Trayectoria
           </a>
           <PreferencesControls />
           <a
             href="#contacto"
-            className="px-4 py-2.5 rounded-xl bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black text-xs uppercase tracking-wider hover:opacity-90 transition-all transform active:scale-95 shadow-sm min-h-[42px] flex items-center justify-center cursor-pointer"
+            className="hidden sm:inline-flex px-4 py-2.5 rounded-xl bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black text-xs uppercase tracking-wider hover:opacity-90 transition-all transform active:scale-95 shadow-sm min-h-[42px] items-center justify-center cursor-pointer shrink-0"
           >
             {t.navContactBtn}
           </a>
@@ -113,7 +113,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:text-[var(--primary-accent,#C6F827)] min-h-[42px] min-w-[42px] flex items-center justify-center cursor-pointer"
+            className="lg:hidden p-2 rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:text-[var(--primary-accent,#C6F827)] min-h-[38px] min-w-[38px] sm:min-h-[42px] sm:min-w-[42px] flex items-center justify-center cursor-pointer shrink-0"
             aria-label="Toggle menu"
           >
             <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
