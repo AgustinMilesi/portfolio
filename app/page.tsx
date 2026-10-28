@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
-import { ProjectCarousel } from "@/components/ProjectCarousel";
+import { ArchEcosystemStage } from "@/components/ArchEcosystemStage";
 import { TrayectoriaTimeline } from "@/components/TrayectoriaTimeline";
 import { FooterContact } from "@/components/FooterContact";
 
@@ -11,11 +11,11 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-1 flex flex-col w-full max-w-full overflow-x-hidden">
-        {/* 2. Hero: Presentation & Core Architectural Philosophy */}
+        {/* 2. Hero: Presentation & Clean Operational Manifesto */}
         <HeroSection />
 
-        {/* 3. Deep Detail Multi-Project Showcase & Case Study Modals */}
-        <ProjectCarousel />
+        {/* 3. The Arch Stage: Agustín Milesi + 4 Production Apps & Architecture Solutions */}
+        <ArchEcosystemStage />
 
         {/* 4. Operator's Journey: From Wholesale Cashier to VOUT Architect */}
         <TrayectoriaTimeline />

@@ -36,11 +36,8 @@ export function HeroSection() {
             <div className="text-xs font-mono text-[var(--primary-accent,#C6F827)] font-bold uppercase tracking-wider">
               {t.heroPillar1Title}
             </div>
-            <p className="text-sm sm:text-base text-[var(--text-main,#E9E7E0)]/90 leading-relaxed">
+            <p className="text-sm sm:text-base text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-medium">
               {t.heroPillar1Desc1}
-            </p>
-            <p className="text-xs sm:text-sm text-[var(--text-muted,#9A9E86)] leading-relaxed">
-              {t.heroPillar1Desc2}
             </p>
           </div>
 
@@ -48,32 +45,9 @@ export function HeroSection() {
             <div className="text-xs font-mono text-[var(--primary-accent,#C6F827)] font-bold uppercase tracking-wider">
               {t.heroPillar2Title}
             </div>
-            <p className="text-sm sm:text-base text-[var(--text-main,#E9E7E0)]/90 leading-relaxed">
+            <p className="text-sm sm:text-base text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-medium">
               {t.heroPillar2Desc1}
             </p>
-            <p className="text-xs sm:text-sm text-[var(--text-muted,#9A9E86)] leading-relaxed">
-              {t.heroPillar2Desc2}
-            </p>
-          </div>
-        </div>
-
-        {/* Metrics Ribbon */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="p-3.5 sm:p-4 rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] space-y-0.5">
-            <div className="text-xl sm:text-2xl font-black text-[var(--primary-accent,#C6F827)] font-mono">{t.heroMetric1Num}</div>
-            <div className="text-[11px] font-mono text-[var(--text-muted,#9A9E86)] uppercase font-semibold">{t.heroMetric1Label}</div>
-          </div>
-          <div className="p-3.5 sm:p-4 rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] space-y-0.5">
-            <div className="text-xl sm:text-2xl font-black text-[var(--text-main,#E9E7E0)] font-mono">{t.heroMetric2Num}</div>
-            <div className="text-[11px] font-mono text-[var(--text-muted,#9A9E86)] uppercase font-semibold">{t.heroMetric2Label}</div>
-          </div>
-          <div className="p-3.5 sm:p-4 rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] space-y-0.5">
-            <div className="text-xl sm:text-2xl font-black text-[var(--primary-accent,#C6F827)] font-mono">{t.heroMetric3Num}</div>
-            <div className="text-[11px] font-mono text-[var(--text-muted,#9A9E86)] uppercase font-semibold">{t.heroMetric3Label}</div>
-          </div>
-          <div className="p-3.5 sm:p-4 rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] space-y-0.5">
-            <div className="text-xl sm:text-2xl font-black text-[var(--text-main,#E9E7E0)] font-mono">{t.heroMetric4Num}</div>
-            <div className="text-[11px] font-mono text-[var(--text-muted,#9A9E86)] uppercase font-semibold">{t.heroMetric4Label}</div>
           </div>
         </div>
       </div>
