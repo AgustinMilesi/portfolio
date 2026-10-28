@@ -232,45 +232,45 @@ interface AppSticker {
   solutionSummary: string;
   colorClass: string;
   rotationDesktop: string;
-  positionDesktop: string;
+  positionResponsive: string;
 }
 
 const APP_STICKERS: AppSticker[] = [
   {
     id: "retail",
-    name: "01 · VOUT Retail",
-    role: "CLOUD POS & STOCK",
+    name: "01 · Retail",
+    role: "CLOUD POS",
     solutionSummary: "Arqueos ciegos y lector < 50ms sin colas",
     colorClass: "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] border-[#0A0E14]",
     rotationDesktop: "-rotate-3 hover:-rotate-1",
-    positionDesktop: "top-8 -left-4 md:-left-8 lg:-left-12",
+    positionResponsive: "top-2 -left-1 sm:top-8 sm:-left-6 md:-left-10 lg:-left-12",
   },
   {
     id: "inbox",
-    name: "02 · VOUT Inbox",
+    name: "02 · Inbox",
     role: "CRM & CONTACTO",
     solutionSummary: "Ingesta segura y webhooks firmados HMAC",
     colorClass: "bg-[#121824] text-[var(--primary-accent,#C6F827)] border-[var(--primary-accent,#C6F827)]/50",
     rotationDesktop: "rotate-3 hover:rotate-1",
-    positionDesktop: "top-12 -right-4 md:-right-8 lg:-right-12",
+    positionResponsive: "top-6 -right-1 sm:top-12 sm:-right-6 md:-right-10 lg:-right-12",
   },
   {
     id: "cargo",
-    name: "03 · VOUT Cargo",
-    role: "LOGÍSTICA & ADUANA",
-    solutionSummary: "Control de contenedores y alerta de demurrage",
+    name: "03 · Cargo",
+    role: "LOGÍSTICA",
+    solutionSummary: "Control contenedores y alerta demurrage",
     colorClass: "bg-[#E9E7E0] text-[#0A0E14] border-[#1E293B]",
     rotationDesktop: "-rotate-2 hover:rotate-0",
-    positionDesktop: "bottom-32 -left-4 md:-left-8 lg:-left-10",
+    positionResponsive: "bottom-24 -left-1 sm:bottom-28 sm:-left-6 md:-left-8 lg:-left-10",
   },
   {
     id: "pocket",
-    name: "04 · VOUT Pocket",
-    role: "FINANZAS OFFLINE",
-    solutionSummary: "Registro de gastos en 2s con SQLite local",
+    name: "04 · Pocket",
+    role: "FINANZAS",
+    solutionSummary: "Registro gastos en 2s con SQLite local",
     colorClass: "bg-[#161F30] text-[#E9E7E0] border-[#1E293B]",
-    rotationDesktop: "rotate-3 hover:rotate-1",
-    positionDesktop: "bottom-28 -right-4 md:-right-8 lg:-right-10",
+    rotationDesktop: "rotate-2 hover:rotate-0",
+    positionResponsive: "bottom-20 -right-1 sm:bottom-24 sm:-right-6 md:-right-8 lg:-right-10",
   },
 ];
 
@@ -301,12 +301,12 @@ export function ArchEcosystemStage() {
       });
     }
 
-    // Pop-in of desktop stickers
-    gsap.from(".desktop-sticker", {
+    // Pop-in of stickers (desktop & mobile)
+    gsap.from(".app-sticker", {
       scale: 0.7,
       opacity: 0,
       y: 15,
-      stagger: 0.1,
+      stagger: 0.08,
       duration: 0.65,
       ease: "back.out(1.5)",
       delay: 0.2,
@@ -380,44 +380,16 @@ export function ArchEcosystemStage() {
           </p>
         </div>
 
-        {/* Mobile App Selector Grid (Visible on small screens) */}
-        <div className="grid grid-cols-2 gap-2 md:hidden">
-          {APP_STICKERS.map((stk) => {
-            const isSelected = stk.id === activeAppId;
-            return (
-              <button
-                key={stk.id}
-                type="button"
-                onClick={() => handleSelectApp(stk.id)}
-                className={`p-3 rounded-xl border text-left transition-all cursor-pointer min-h-[44px] ${
-                  isSelected
-                    ? "bg-[var(--bg-card,#121824)] border-[var(--primary-accent,#C6F827)] shadow-md"
-                    : "bg-[var(--bg-card-subtle,#0D121B)] border-[var(--border-card,#1E293B)] opacity-75"
-                }`}
-              >
-                <span className={`text-[10px] font-mono font-bold block ${
-                  isSelected ? "text-[var(--primary-accent,#C6F827)]" : "text-[var(--text-muted,#9A9E86)]"
-                }`}>
-                  {stk.name}
-                </span>
-                <span className="text-xs font-bold text-[var(--text-main,#E9E7E0)] block truncate mt-0.5">
-                  {stk.role}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Monumental Central Arch Stage Container */}
-        <div className="relative mx-auto max-w-4xl min-h-[440px] sm:min-h-[520px] flex items-center justify-center w-full">
+        {/* Monumental Central Arch Stage Container with Floating Stickers */}
+        <div className="relative mx-auto max-w-4xl min-h-[440px] sm:min-h-[520px] flex items-center justify-center w-full px-2 sm:px-4">
           {/* The Arch Frame */}
-          <div ref={archRef} className="w-full max-w-[290px] sm:max-w-[400px] md:max-w-[460px] h-[420px] sm:h-[500px] rounded-t-full bg-gradient-to-b from-[#161F30] via-[#121824] to-[#0A0E14] border-t-2 border-x-2 border-[#1E293B] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
+          <div ref={archRef} className="w-full max-w-[270px] sm:max-w-[380px] md:max-w-[450px] h-[400px] sm:h-[480px] md:h-[500px] rounded-t-full bg-gradient-to-b from-[#161F30] via-[#121824] to-[#0A0E14] border-t-2 border-x-2 border-[#1E293B] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
             {/* Subtle glow behind Agustín */}
             <div className="absolute bottom-12 inset-x-8 h-48 bg-[var(--primary-accent,#C6F827)]/15 blur-3xl rounded-full pointer-events-none" />
 
             {/* Agustín Milesi Cutout Portrait */}
             <div className="relative z-10 w-full flex flex-col items-center justify-end select-none">
-              <div className="relative w-full max-w-[270px] sm:max-w-[360px] h-[310px] sm:h-[390px] flex items-end justify-center">
+              <div className="relative w-full max-w-[250px] sm:max-w-[340px] md:max-w-[380px] h-[300px] sm:h-[370px] md:h-[390px] flex items-end justify-center">
                 <Image
                   src={portraitImg}
                   alt="Agustín Milesi · VOUT Software Architecture"
@@ -428,9 +400,9 @@ export function ArchEcosystemStage() {
               </div>
 
               {/* Architect Nameplate */}
-              <div className="w-full bg-[#0D121B]/95 backdrop-blur-md border-t border-[#1E293B] py-2.5 px-3.5 flex items-center justify-between z-20">
+              <div className="w-full bg-[#0D121B]/95 backdrop-blur-md border-t border-[#1E293B] py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between z-20">
                 <div className="flex items-center gap-2">
-                  <div className="size-6 rounded-lg bg-[#121824] border border-[#1E293B] flex items-center justify-center p-1 shrink-0">
+                  <div className="size-5 sm:size-6 rounded-lg bg-[#121824] border border-[#1E293B] flex items-center justify-center p-1 shrink-0">
                     <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
                       <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
                       <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
@@ -442,12 +414,12 @@ export function ArchEcosystemStage() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xs font-black text-white leading-none">Agustín Milesi</h3>
-                    <p className="text-[10px] font-mono text-[#9A9E86] leading-none mt-0.5">Founder &amp; Architect · VOUT</p>
+                    <h3 className="text-[11px] sm:text-xs font-black text-white leading-none">Agustín Milesi</h3>
+                    <p className="text-[9px] sm:text-[10px] font-mono text-[#9A9E86] leading-none mt-0.5">Founder &amp; Architect · VOUT</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
                   <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   <span>ONLINE</span>
                 </div>
@@ -457,7 +429,7 @@ export function ArchEcosystemStage() {
             <div className="w-full h-1.5 bg-[#1E293B]" />
           </div>
 
-          {/* Desktop Floating App Stickers around Agustín */}
+          {/* Floating App Stickers around Agustín (Mobile & Desktop) */}
           {APP_STICKERS.map((stk) => {
             const isSelected = stk.id === activeAppId;
             return (
@@ -465,26 +437,26 @@ export function ArchEcosystemStage() {
                 key={stk.id}
                 type="button"
                 onClick={() => handleSelectApp(stk.id)}
-                className={`desktop-sticker sticker-${stk.id} hidden md:flex flex-col absolute ${stk.positionDesktop} ${stk.rotationDesktop} transition-shadow duration-300 transform cursor-pointer select-none text-left z-20 ${
+                className={`app-sticker sticker-${stk.id} flex flex-col absolute ${stk.positionResponsive} ${stk.rotationDesktop} transition-shadow duration-300 transform cursor-pointer select-none text-left z-20 ${
                   isSelected
-                    ? "scale-110 z-30 ring-2 ring-[var(--primary-accent,#C6F827)] shadow-[0_0_25px_rgba(198,248,39,0.4)]"
-                    : "hover:scale-105 opacity-85 hover:opacity-100 shadow-xl"
+                    ? "scale-105 sm:scale-110 z-30 ring-2 ring-[var(--primary-accent,#C6F827)] shadow-[0_0_20px_rgba(198,248,39,0.45)]"
+                    : "hover:scale-105 opacity-90 hover:opacity-100 shadow-md"
                 }`}
                 aria-label={`Seleccionar aplicación: ${stk.name}`}
               >
-                <div className={`px-4 py-2.5 rounded-2xl border-2 ${stk.colorClass} font-mono max-w-[210px] shadow-lg`}>
-                  <div className="flex items-center justify-between gap-1.5">
-                    <span className="text-xs font-black uppercase tracking-tight leading-none">
+                <div className={`p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl border-2 ${stk.colorClass} font-mono max-w-[130px] sm:max-w-[170px] md:max-w-[210px] shadow-lg`}>
+                  <div className="flex items-center justify-between gap-1">
+                    <span className="text-[10px] sm:text-xs font-black uppercase tracking-tight leading-none">
                       {stk.name}
                     </span>
                     {isSelected && (
-                      <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] animate-ping shrink-0" />
+                      <span className="size-1.5 sm:size-2 rounded-full bg-[var(--primary-accent,#C6F827)] animate-ping shrink-0" />
                     )}
                   </div>
-                  <span className="text-[10px] font-bold block mt-1 uppercase tracking-wide opacity-90 leading-tight">
+                  <span className="text-[9px] sm:text-[10px] font-bold block mt-0.5 sm:mt-1 uppercase tracking-wide opacity-90 leading-tight">
                     {stk.role}
                   </span>
-                  <span className="text-[10px] block mt-1 opacity-80 leading-snug font-sans">
+                  <span className="text-[8px] sm:text-[9.5px] block mt-0.5 sm:mt-1 opacity-80 leading-snug font-sans line-clamp-2">
                     {stk.solutionSummary}
                   </span>
                 </div>
