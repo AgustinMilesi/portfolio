@@ -105,47 +105,50 @@ export function TrayectoriaTimeline() {
   ];
 
   return (
-    <section ref={timelineRef} id="trayectoria" className="py-12 sm:py-16 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <section ref={timelineRef} id="trayectoria" className="py-14 sm:py-24 border-b border-[#252525] bg-[#060606] relative transition-colors">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Header */}
-        <div className="timeline-heading space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[var(--bg-card,#121824)] text-[var(--primary-accent,#C6F827)] border border-[var(--border-card,#1E293B)]">
-            <span>{t.timelineBadge}</span>
+        <div className="timeline-heading space-y-3">
+          <div className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
+            [ OPERATOR TO ARCHITECT · 2021 — 2026 ]
           </div>
-          <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)]">
-            {t.timelineTitle}
+          <h2 className="font-serif font-light text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-[0.95] text-[#ffffff]">
+            De cajero de mostrador a arquitecto de{" "}
+            <span className="italic font-serif text-[#c5ff4a] font-normal">
+              sistemas.
+            </span>
           </h2>
-          <p className="text-sm text-[var(--text-muted,#9A9E86)] max-w-2xl">
+          <p className="font-sans text-xs sm:text-sm text-[#7a7a7a] max-w-2xl leading-relaxed">
             {t.timelineDesc}
           </p>
         </div>
 
-        {/* Timeline Grid */}
+        {/* Timeline Grid: Sharp Content Cards, radius 0px, border #252525 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {steps.map((st, idx) => (
             <div
               key={idx}
-              className="timeline-card p-5 sm:p-6 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] flex flex-col justify-between space-y-4 hover:border-[var(--primary-accent,#C6F827)]/60 transition-colors group shadow-sm"
+              className="timeline-card p-6 sm:p-7 rounded-none bg-[#1f1f1f] border border-[#252525] flex flex-col justify-between space-y-5 hover:border-[#313131] transition-colors group shadow-none"
             >
-              <div className="space-y-2.5">
+              <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono text-[var(--primary-accent,#C6F827)] font-bold">
+                  <span className="text-xs font-mono text-[#c5ff4a] font-bold">
                     {st.period}
                   </span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] text-[var(--text-muted,#9A9E86)]">
+                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] px-2 py-0.5 rounded-[2px] bg-[#161616] border border-[#252525] text-[#7a7a7a]">
                     {st.tag}
                   </span>
                 </div>
 
-                <h3 className="text-base font-bold uppercase tracking-tight text-[var(--text-main,#E9E7E0)] group-hover:text-[var(--primary-accent,#C6F827)] transition-colors leading-snug">
+                <h3 className="font-serif font-light text-lg sm:text-xl tracking-tight text-[#ffffff] group-hover:text-[#c5ff4a] transition-colors leading-snug">
                   {st.title}
                 </h3>
 
-                <p className="text-xs font-mono text-[var(--text-muted,#9A9E86)]">
+                <p className="text-xs font-sans text-[#7a7a7a] uppercase tracking-wider">
                   {st.role}
                 </p>
 
-                <p className="text-xs text-[var(--text-main,#E9E7E0)]/85 leading-relaxed pt-1">
+                <p className="text-xs sm:text-sm text-[#e5e5e5] leading-[1.55] pt-1 font-sans">
                   {st.description}
                 </p>
               </div>

@@ -6,7 +6,7 @@ const isGithubPages = process.env.DEPLOY_TARGET === "gh-pages";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isGithubPages ? "/portfolio" : "");
 
 export const viewport: Viewport = {
-  themeColor: "#0A0E14",
+  themeColor: "#060606",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -84,13 +84,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className="dark bg-[#0A0E14] text-[#E9E7E0] antialiased selection:bg-[#C6F827] selection:text-[#0A0E14]">
+    <html lang="es" className="dark bg-[#060606] text-[#ffffff] antialiased selection:bg-[#c5ff4a] selection:text-[#000000]">
       <head>
         <link rel="icon" href={`${basePath}/icon.svg`} type="image/svg+xml" />
         <link rel="alternate icon" href={`${basePath}/favicon.ico`} sizes="any" />
         <link rel="apple-touch-icon" href={`${basePath}/apple-touch-icon.png`} />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#0A0E14] technical-grid text-[#E9E7E0] font-sans">
+      <body className="min-h-screen flex flex-col bg-[#060606] text-[#e5e5e5] font-sans">
         <PreferencesProvider>
           {children}
         </PreferencesProvider>

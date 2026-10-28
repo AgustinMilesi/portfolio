@@ -22,7 +22,7 @@ export function PreferencesControls() {
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 sm:gap-2 text-xs uppercase tracking-wider text-[var(--text-muted,#94A3B8)] hover:text-[var(--primary-accent,#c6f827)] transition-all py-1.5 px-2.5 sm:py-2 sm:px-3.5 min-h-[38px] sm:min-h-[42px] rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] shadow-xs hover:shadow-sm select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary-accent,#c6f827)]"
+        className="flex items-center gap-1.5 sm:gap-2 text-[11px] font-sans font-medium uppercase tracking-[0.18em] text-[#7a7a7a] hover:text-[#c5ff4a] transition-all py-1.5 px-2.5 sm:py-2 sm:px-3 min-h-[38px] sm:min-h-[40px] rounded-[4px] bg-[#1f1f1f] border border-[#252525] shadow-xs select-none cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#c5ff4a]"
         title="Customization & Preferences"
         aria-label="Open preferences menu"
         aria-expanded={open}
@@ -30,7 +30,7 @@ export function PreferencesControls() {
       >
         {/* Mode icon: Sun / Moon */}
         {mode === "dark" ? (
-          <svg className="size-3.5 text-[var(--text-muted,#94A3B8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="size-3.5 text-[#7a7a7a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -39,7 +39,7 @@ export function PreferencesControls() {
             />
           </svg>
         ) : (
-          <svg className="size-3.5 text-[var(--text-muted,#94A3B8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="size-3.5 text-[#7a7a7a]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -56,11 +56,11 @@ export function PreferencesControls() {
         />
 
         {/* Language code label */}
-        <span className="font-mono font-bold text-[11px] text-[var(--text-main,#FFFFFF)]">{locale.toUpperCase()}</span>
+        <span className="font-mono font-bold text-[11px] text-[#ffffff]">{locale.toUpperCase()}</span>
 
         {/* Chevron down */}
         <svg
-          className={`size-3 text-[var(--text-muted,#94A3B8)] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`size-3 text-[#7a7a7a] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -75,7 +75,7 @@ export function PreferencesControls() {
           <div
             role="dialog"
             aria-label="Preferences panel"
-            className="absolute right-0 top-full mt-2 w-64 p-4 rounded-3xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] shadow-2xl z-50 space-y-4 text-left"
+            className="absolute right-0 top-full mt-2 w-64 p-4 rounded-[4px] bg-[#1f1f1f] border border-[#252525] shadow-2xl z-50 space-y-4 text-left"
           >
             {/* Mode: Light / Dark */}
             <div>

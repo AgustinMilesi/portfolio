@@ -49,61 +49,82 @@ export function HeroSection() {
   }, { scope: heroRef });
 
   return (
-    <section ref={heroRef} className="relative pt-6 pb-10 sm:pt-12 sm:pb-16 md:pt-16 md:pb-20 border-b border-[var(--border-card,#1E293B)] transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8 md:space-y-12">
-        {/* Top Badge */}
-        <div className="flex items-center">
-          <div className="hero-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[10px] sm:text-xs font-mono text-[var(--text-muted,#9A9E86)] max-w-full shadow-xs">
-            <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] shrink-0 animate-pulse" />
-            <span className="font-semibold truncate sm:whitespace-normal">{t.heroBadge}</span>
-          </div>
+    <>
+      <section ref={heroRef} className="relative pt-10 pb-16 sm:pt-16 sm:pb-24 bg-[#060606] transition-colors overflow-hidden">
+        {/* Pointillist Dotted Backdrop Visual (zkPass pointillism: 1.5px white dots floating on #060606 canvas) */}
+        <div className="absolute inset-0 pointer-events-none opacity-30 select-none overflow-hidden">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="zkpass-dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1" fill="#ffffff" opacity="0.6" />
+                <circle cx="16" cy="16" r="0.75" fill="#ffffff" opacity="0.4" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#zkpass-dots)" />
+          </svg>
         </div>
 
-        {/* Display Title with Editorial Mask Reveal */}
-        <div className="space-y-1 sm:space-y-2">
-          <div className="overflow-hidden">
-            <h1 className="hero-title-line-1 text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tight uppercase leading-[1.05] sm:leading-[0.95] text-[var(--text-main,#E9E7E0)]">
-              {t.heroH1A}
-            </h1>
-          </div>
-          <div className="overflow-hidden">
-            <div className="hero-title-line-2 text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tight uppercase leading-[1.05] sm:leading-[0.95]">
-              <span className="text-[var(--primary-accent,#C6F827)] underline decoration-[var(--primary-accent,#C6F827)]/40 underline-offset-4 sm:underline-offset-8">
-                {t.heroH1B}
-              </span>
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12 relative z-10">
+          {/* Eyebrow Bracket Label: Inter Tight 11px weight 500, 0.22em tracking, color #7a7a7a */}
+          <div className="flex items-center">
+            <div className="hero-badge font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
+              [ ARQUITECTURA DE SOFTWARE CRÍTICO · FUNDADOR DE VOUT ]
             </div>
           </div>
 
-          <div className="overflow-hidden pt-1 sm:pt-2">
-            <p className="hero-claim font-mono text-base sm:text-xl md:text-2xl text-[var(--text-muted,#9A9E86)] tracking-tight font-medium">
-              {t.heroClaim}
-            </p>
+          {/* Display Headline: PT Serif weight 300, -0.03em tracking, tight line-height, with single italic lime accent */}
+          <div className="space-y-3 sm:space-y-4 max-w-5xl">
+            <div className="overflow-hidden">
+              <h1 className="hero-title-line-1 font-serif font-light text-3xl sm:text-5xl md:text-6xl lg:text-[76px] tracking-[-0.03em] leading-[0.92] text-[#ffffff]">
+                Software de gestión que entiende la
+              </h1>
+            </div>
+            <div className="overflow-hidden">
+              <div className="hero-title-line-2 font-serif font-light text-3xl sm:text-5xl md:text-6xl lg:text-[76px] tracking-[-0.03em] leading-[0.92]">
+                <span className="italic font-serif text-[#c5ff4a] font-normal">
+                  operación.
+                </span>
+              </div>
+            </div>
+
+            <div className="overflow-hidden pt-2 sm:pt-3">
+              <p className="hero-claim font-sans text-sm sm:text-base text-[#e5e5e5] max-w-xl leading-[1.55] font-normal">
+                «Entra el caos. Sale el dato.» Herramientas de retail y logística diseñadas desde el mostrador para operaciones sin tolerancia a fallas.
+              </p>
+            </div>
+          </div>
+
+          {/* Sharp Content Cards: Background #1f1f1f, 1px border #252525, padding 32-40px, radius 0px */}
+          <div id="manifiesto" className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-4 border-t border-[#252525]">
+            <div className="manifesto-card p-6 sm:p-8 bg-[#1f1f1f] border border-[#252525] rounded-none space-y-3 hover:border-[#313131] transition-colors">
+              <div className="flex items-center justify-between">
+                <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
+                  [ EXPERIENCIA OPERATIVA EN MOSTRADOR ]
+                </span>
+                <span className="font-mono text-[10px] text-[#7a7a7a]">B 01</span>
+              </div>
+              <p className="font-sans text-sm text-[#e5e5e5] leading-[1.55] font-normal">
+                {t.heroPillar1Desc1}
+              </p>
+            </div>
+
+            <div className="manifesto-card p-6 sm:p-8 bg-[#1f1f1f] border border-[#252525] rounded-none space-y-3 hover:border-[#313131] transition-colors">
+              <div className="flex items-center justify-between">
+                <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
+                  [ EL PRINCIPIO DE INGENIERÍA VOUT ]
+                </span>
+                <span className="font-mono text-[10px] text-[#7a7a7a]">B 02</span>
+              </div>
+              <p className="font-sans text-sm text-[#e5e5e5] leading-[1.55] font-normal">
+                {t.heroPillar2Desc1}
+              </p>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Two-Column Manifesto */}
-        <div id="manifiesto" className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 pt-2 border-t border-[var(--border-card,#1E293B)]/80">
-          <div className="manifesto-card space-y-2 p-4 sm:p-5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)]/60 hover:border-[var(--primary-accent,#C6F827)]/40 transition-colors">
-            <div className="text-xs font-mono text-[var(--primary-accent,#C6F827)] font-bold uppercase tracking-wider flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
-              {t.heroPillar1Title}
-            </div>
-            <p className="text-xs sm:text-sm text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-normal">
-              {t.heroPillar1Desc1}
-            </p>
-          </div>
-
-          <div className="manifesto-card space-y-2 p-4 sm:p-5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)]/60 hover:border-[var(--primary-accent,#C6F827)]/40 transition-colors">
-            <div className="text-xs font-mono text-[var(--primary-accent,#C6F827)] font-bold uppercase tracking-wider flex items-center gap-2">
-              <span className="size-1.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
-              {t.heroPillar2Title}
-            </div>
-            <p className="text-xs sm:text-sm text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-normal">
-              {t.heroPillar2Desc1}
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+      {/* Neon Section Divider: Full-width 6px solid #c5ff4a bar separating major page sections */}
+      <div className="w-full h-1.5 bg-[#c5ff4a] shadow-[0_0_12px_rgba(197,255,74,0.6)]" />
+    </>
   );
 }

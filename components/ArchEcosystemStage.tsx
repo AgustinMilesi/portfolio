@@ -244,8 +244,8 @@ const APP_STICKERS: AppSticker[] = [
     name: "01 · Retail",
     role: "CLOUD POS",
     solutionSummary: "Arqueos ciegos y lector < 50ms sin colas",
-    colorClass: "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] border-[#0A0E14]",
-    rotationDesktop: "-rotate-3 hover:-rotate-1",
+    colorClass: "bg-[#1f1f1f] text-[#ffffff] border-[#252525]",
+    rotationDesktop: "-rotate-2 hover:rotate-0",
     positionResponsive: "top-2 -left-1 sm:top-8 sm:-left-6 md:-left-10 lg:-left-12",
   },
   {
@@ -253,8 +253,8 @@ const APP_STICKERS: AppSticker[] = [
     name: "02 · Inbox",
     role: "CRM & CONTACTO",
     solutionSummary: "Ingesta segura y webhooks firmados HMAC",
-    colorClass: "bg-[#121824] text-[var(--primary-accent,#C6F827)] border-[var(--primary-accent,#C6F827)]/50",
-    rotationDesktop: "rotate-3 hover:rotate-1",
+    colorClass: "bg-[#1f1f1f] text-[#ffffff] border-[#252525]",
+    rotationDesktop: "rotate-2 hover:rotate-0",
     positionResponsive: "top-6 -right-1 sm:top-12 sm:-right-6 md:-right-10 lg:-right-12",
   },
   {
@@ -262,8 +262,8 @@ const APP_STICKERS: AppSticker[] = [
     name: "03 · Cargo",
     role: "LOGÍSTICA",
     solutionSummary: "Control contenedores y alerta demurrage",
-    colorClass: "bg-[#E9E7E0] text-[#0A0E14] border-[#1E293B]",
-    rotationDesktop: "-rotate-2 hover:rotate-0",
+    colorClass: "bg-[#1f1f1f] text-[#ffffff] border-[#252525]",
+    rotationDesktop: "-rotate-1 hover:rotate-0",
     positionResponsive: "bottom-24 -left-1 sm:bottom-28 sm:-left-6 md:-left-8 lg:-left-10",
   },
   {
@@ -271,8 +271,8 @@ const APP_STICKERS: AppSticker[] = [
     name: "04 · Pocket",
     role: "FINANZAS",
     solutionSummary: "Registro gastos en 2s con SQLite local",
-    colorClass: "bg-[#161F30] text-[#E9E7E0] border-[#1E293B]",
-    rotationDesktop: "rotate-2 hover:rotate-0",
+    colorClass: "bg-[#1f1f1f] text-[#ffffff] border-[#252525]",
+    rotationDesktop: "rotate-1 hover:rotate-0",
     positionResponsive: "bottom-20 -right-1 sm:bottom-24 sm:-right-6 md:-right-8 lg:-right-10",
   },
 ];
@@ -458,18 +458,19 @@ export function ArchEcosystemStage() {
   }, { dependencies: [activeAppId], scope: containerRef });
 
   return (
-    <section ref={containerRef} id="proyectos" className="py-12 sm:py-20 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors w-full max-w-full overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 w-full max-w-full">
+    <section ref={containerRef} id="proyectos" className="py-14 sm:py-24 border-b border-[#252525] bg-[#060606] relative transition-colors w-full max-w-full overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-14 w-full max-w-full">
         {/* Section Heading */}
-        <div className="ecosystem-heading text-center space-y-2.5 max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-xs font-mono text-[var(--primary-accent,#C6F827)] shadow-xs">
-            <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] animate-pulse" />
-            <span className="font-semibold uppercase tracking-wider">ECOSISTEMA EN PRODUCCIÓN · VOUT</span>
+        <div className="ecosystem-heading text-center space-y-3 max-w-3xl mx-auto">
+          <div className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
+            [ ECOSISTEMA EN PRODUCCIÓN · VOUT ]
           </div>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)]">
-            Sistemas que Resuelven la Operación Real
+          <h2 className="font-serif font-light text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-[0.95] text-[#ffffff]">
+            Sistemas que resuelven la operación{" "}
+            <span className="italic font-serif text-[#c5ff4a] font-normal">
+              real.</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[var(--text-muted,#9A9E86)] leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm text-[#7a7a7a] leading-relaxed">
             Hacé clic en cada aplicación para explorar qué desafío operativo resuelve, su esquema de base de datos y probar la demo en vivo.
           </p>
         </div>
@@ -477,9 +478,9 @@ export function ArchEcosystemStage() {
         {/* Monumental Central Arch Stage Container with Floating Stickers */}
         <div className="relative mx-auto max-w-4xl min-h-[440px] sm:min-h-[520px] flex items-center justify-center w-full px-2 sm:px-4">
           {/* The Arch Frame */}
-          <div ref={archRef} className="w-full max-w-[270px] sm:max-w-[380px] md:max-w-[450px] h-[400px] sm:h-[480px] md:h-[500px] rounded-t-full bg-gradient-to-b from-[#161F30] via-[#121824] to-[#0A0E14] border-t-2 border-x-2 border-[#1E293B] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
+          <div ref={archRef} className="w-full max-w-[270px] sm:max-w-[380px] md:max-w-[450px] h-[400px] sm:h-[480px] md:h-[500px] rounded-t-full bg-gradient-to-b from-[#1f1f1f] via-[#161616] to-[#060606] border-t-2 border-x-2 border-[#252525] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
             {/* Subtle glow behind Agustín */}
-            <div className="arch-glow absolute bottom-12 inset-x-8 h-48 bg-[var(--primary-accent,#C6F827)]/15 blur-3xl rounded-full pointer-events-none" />
+            <div className="arch-glow absolute bottom-12 inset-x-8 h-48 bg-[#c5ff4a]/15 blur-3xl rounded-full pointer-events-none" />
 
             {/* Agustín Milesi Cutout Portrait */}
             <div className="relative z-10 w-full flex flex-col items-center justify-end select-none">
@@ -490,37 +491,37 @@ export function ArchEcosystemStage() {
                   priority
                   className="w-auto h-full max-h-[390px] object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.85)] filter contrast-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E14] via-transparent to-transparent opacity-50 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-transparent opacity-60 pointer-events-none" />
               </div>
 
               {/* Architect Nameplate */}
-              <div className="w-full bg-[#0D121B]/95 backdrop-blur-md border-t border-[#1E293B] py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between z-20">
+              <div className="w-full bg-[#000000]/95 backdrop-blur-md border-t border-[#252525] py-2 px-3 sm:py-2.5 sm:px-3.5 flex items-center justify-between z-20">
                 <div className="flex items-center gap-2">
-                  <div className="size-5 sm:size-6 rounded-lg bg-[#121824] border border-[#1E293B] flex items-center justify-center p-1 shrink-0">
+                  <div className="size-5 sm:size-6 rounded-[2px] bg-[#1f1f1f] border border-[#252525] flex items-center justify-center p-1 shrink-0">
                     <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
-                      <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
-                      <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-                      <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
-                      <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-                      <rect x="324" y="228" width="60" height="60" rx="6" fill="#C6F827" />
-                      <rect x="390" y="166" width="46" height="46" rx="5" fill="#C6F827" />
-                      <rect x="452" y="106" width="32" height="32" rx="4" fill="#C6F827" />
+                      <rect x="68" y="228" width="60" height="60" rx="2" fill="#e5e5e5" />
+                      <rect x="132" y="292" width="60" height="60" rx="2" fill="#e5e5e5" />
+                      <rect x="196" y="356" width="60" height="60" rx="2" fill="#e5e5e5" />
+                      <rect x="260" y="292" width="60" height="60" rx="2" fill="#e5e5e5" />
+                      <rect x="324" y="228" width="60" height="60" rx="2" fill="#c5ff4a" />
+                      <rect x="390" y="166" width="46" height="46" rx="2" fill="#c5ff4a" />
+                      <rect x="452" y="106" width="32" height="32" rx="2" fill="#c5ff4a" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-[11px] sm:text-xs font-black text-white leading-none">Agustín Milesi</h3>
-                    <p className="text-[9px] sm:text-[10px] font-mono text-[#9A9E86] leading-none mt-0.5">Founder &amp; Architect · VOUT</p>
+                    <h3 className="text-[11px] sm:text-xs font-serif font-light text-white leading-none">Agustín Milesi</h3>
+                    <p className="text-[9px] sm:text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] leading-none mt-0.5">Founder &amp; Architect · VOUT</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                  <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="flex items-center gap-1.5 text-[9px] sm:text-[10px] font-sans uppercase tracking-[0.06em] text-[#c5ff4a] px-2.5 py-0.5 rounded-full border border-[#c5ff4a]">
+                  <span className="size-1.5 rounded-full bg-[#c5ff4a] animate-pulse" />
                   <span>ONLINE</span>
                 </div>
               </div>
             </div>
 
-            <div className="w-full h-1.5 bg-[#1E293B]" />
+            <div className="w-full h-1 bg-[#252525]" />
           </div>
 
           {/* Floating App Stickers around Agustín (Mobile & Desktop) */}
@@ -531,26 +532,32 @@ export function ArchEcosystemStage() {
                 key={stk.id}
                 type="button"
                 onClick={() => handleSelectApp(stk.id)}
-                className={`app-sticker sticker-${stk.id} flex flex-col absolute ${stk.positionResponsive} ${stk.rotationDesktop} transition-shadow duration-300 transform cursor-pointer select-none text-left z-20 ${
+                className={`app-sticker sticker-${stk.id} flex flex-col absolute ${stk.positionResponsive} ${stk.rotationDesktop} transition-all duration-300 transform cursor-pointer select-none text-left z-20 ${
                   isSelected
-                    ? "scale-105 sm:scale-110 z-30 ring-2 ring-[var(--primary-accent,#C6F827)] shadow-[0_0_20px_rgba(198,248,39,0.45)]"
-                    : "hover:scale-105 opacity-90 hover:opacity-100 shadow-md"
+                    ? "scale-105 sm:scale-110 z-30"
+                    : "hover:scale-105 opacity-90 hover:opacity-100"
                 }`}
                 aria-label={`Seleccionar aplicación: ${stk.name}`}
               >
-                <div className={`p-2 sm:p-2.5 md:p-3 rounded-xl sm:rounded-2xl border-2 ${stk.colorClass} font-mono max-w-[130px] sm:max-w-[170px] md:max-w-[210px] shadow-lg`}>
+                <div className={`p-2.5 sm:p-3 rounded-[4px] border ${
+                  isSelected
+                    ? "bg-[#1f1f1f] text-[#c5ff4a] border-[#c5ff4a] shadow-[0_0_8px_rgba(197,255,74,0.45)]"
+                    : "bg-[#1f1f1f] text-[#ffffff] border-[#252525]"
+                } font-mono max-w-[130px] sm:max-w-[170px] md:max-w-[210px]`}>
                   <div className="flex items-center justify-between gap-1">
-                    <span className="text-[10px] sm:text-xs font-black uppercase tracking-tight leading-none">
+                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-tight leading-none">
                       {stk.name}
                     </span>
                     {isSelected && (
-                      <span className="size-1.5 sm:size-2 rounded-full bg-[var(--primary-accent,#C6F827)] animate-ping shrink-0" />
+                      <span className="size-1.5 sm:size-2 rounded-full bg-[#c5ff4a] animate-ping shrink-0" />
                     )}
                   </div>
-                  <span className="text-[9px] sm:text-[10px] font-bold block mt-0.5 sm:mt-1 uppercase tracking-wide opacity-90 leading-tight">
+                  <span className={`text-[9px] sm:text-[10px] font-sans font-medium block mt-1 uppercase tracking-[0.18em] leading-tight ${
+                    isSelected ? "text-[#c5ff4a]" : "text-[#7a7a7a]"
+                  }`}>
                     {stk.role}
                   </span>
-                  <span className="text-[8px] sm:text-[9.5px] block mt-0.5 sm:mt-1 opacity-80 leading-snug font-sans line-clamp-2">
+                  <span className="text-[8px] sm:text-[9.5px] block mt-1 text-[#e5e5e5]/80 leading-snug font-sans line-clamp-2">
                     {stk.solutionSummary}
                   </span>
                 </div>
@@ -560,14 +567,14 @@ export function ArchEcosystemStage() {
         </div>
 
         {/* Selected App Detail & Architectural Solution Showcase */}
-        <div ref={showcaseRef} className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[var(--bg-card,#121824)] border-2 border-[var(--border-card,#1E293B)] shadow-2xl space-y-6 sm:space-y-8 w-full max-w-full">
+        <div ref={showcaseRef} className="p-6 sm:p-10 rounded-none bg-[#1f1f1f] border border-[#252525] space-y-6 sm:space-y-8 w-full max-w-full">
           {/* Header of Active App */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--border-card,#1E293B)]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#252525]">
             <div className="space-y-1">
-              <span className="font-mono text-xs font-bold text-[var(--primary-accent,#C6F827)] uppercase tracking-wider block">
+              <span className="font-mono text-xs text-[#7a7a7a] uppercase tracking-[0.18em] block">
                 {currentProject.slug} · {currentProject.category}
               </span>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-[var(--text-main,#E9E7E0)] leading-tight">
+              <h3 className="font-serif font-light text-xl sm:text-3xl md:text-4xl text-[#ffffff] leading-tight">
                 {currentProject.name}
               </h3>
             </div>
@@ -576,7 +583,7 @@ export function ArchEcosystemStage() {
               href={currentProject.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-xl bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black text-xs uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm min-h-[42px] shrink-0"
+              className="px-5 py-2.5 rounded-[4px] bg-[#c5ff4a] text-[#000000] font-sans font-medium text-xs uppercase tracking-[0.04em] hover:opacity-95 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-[0_0_8px_rgba(197,255,74,0.45)] min-h-[42px] shrink-0 cursor-pointer"
             >
               <span>🚀 {t.carouselLiveDemo}</span>
             </a>
@@ -584,22 +591,22 @@ export function ArchEcosystemStage() {
 
           {/* Problem Reality vs Engineering Solution Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            <div className="p-4 sm:p-5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-red-500/25 space-y-2">
-              <span className="font-mono text-xs text-red-400 uppercase tracking-wider font-bold flex items-center gap-1.5">
+            <div className="p-5 sm:p-6 rounded-none bg-[#161616] border border-[#252525] space-y-2">
+              <span className="font-sans text-[11px] font-medium text-red-400 uppercase tracking-[0.22em] flex items-center gap-1.5">
                 <span className="size-1.5 rounded-full bg-red-400" />
-                Desafío Operativo que Resuelve
+                [ DESAFÍO OPERATIVO QUE RESUELVE ]
               </span>
-              <p className="text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-normal text-xs sm:text-sm">
+              <p className="font-sans text-xs sm:text-sm text-[#e5e5e5] leading-[1.55] font-normal">
                 {currentProject.problemStatement}
               </p>
             </div>
 
-            <div className="p-4 sm:p-5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--primary-accent,#C6F827)]/25 space-y-2">
-              <span className="font-mono text-xs text-[var(--primary-accent,#C6F827)] uppercase tracking-wider font-bold flex items-center gap-1.5">
-                <span className="size-1.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
-                Solución de Arquitectura VOUT
+            <div className="p-5 sm:p-6 rounded-none bg-[#161616] border border-[#252525] space-y-2">
+              <span className="font-sans text-[11px] font-medium text-[#c5ff4a] uppercase tracking-[0.22em] flex items-center gap-1.5">
+                <span className="size-1.5 rounded-full bg-[#c5ff4a]" />
+                [ SOLUCIÓN DE ARQUITECTURA VOUT ]
               </span>
-              <p className="text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-normal text-xs sm:text-sm">
+              <p className="font-sans text-xs sm:text-sm text-[#e5e5e5] leading-[1.55] font-normal">
                 {currentProject.architecturalSolution}
               </p>
             </div>
@@ -609,22 +616,22 @@ export function ArchEcosystemStage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start w-full">
             {/* Left 6 Columns: Specs & Features */}
             <div className="lg:col-span-6 space-y-4 w-full min-w-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-mono">
-                <div className="p-3 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
-                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)] uppercase block">{t.carouselEngine}</span>
-                  <span className="text-[var(--text-main,#E9E7E0)] font-bold break-words block">{currentProject.specs.engine}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
+                <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
+                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselEngine}</span>
+                  <span className="text-[#ffffff] font-medium break-words block">{currentProject.specs.engine}</span>
                 </div>
-                <div className="p-3 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
-                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)] uppercase block">{t.carouselDatabase}</span>
-                  <span className="text-[var(--text-main,#E9E7E0)] font-bold break-words block">{currentProject.specs.database}</span>
+                <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
+                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselDatabase}</span>
+                  <span className="text-[#ffffff] font-medium break-words block">{currentProject.specs.database}</span>
                 </div>
-                <div className="p-3 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
-                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)] uppercase block">{t.carouselSecurity}</span>
-                  <span className="text-[var(--text-main,#E9E7E0)] font-bold break-words block">{currentProject.specs.hardwareOrSecurity}</span>
+                <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
+                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselSecurity}</span>
+                  <span className="text-[#ffffff] font-medium break-words block">{currentProject.specs.hardwareOrSecurity}</span>
                 </div>
-                <div className="p-3 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
-                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)] uppercase block">{t.carouselResilience}</span>
-                  <span className="text-[var(--primary-accent,#C6F827)] font-bold break-words block">{currentProject.specs.resilienceMetric}</span>
+                <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
+                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselResilience}</span>
+                  <span className="text-[#c5ff4a] font-medium break-words block">{currentProject.specs.resilienceMetric}</span>
                 </div>
               </div>
 
@@ -633,7 +640,7 @@ export function ArchEcosystemStage() {
                 <button
                   type="button"
                   onClick={() => setSelectedProject(currentProject)}
-                  className="px-4 py-2.5 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:border-[var(--primary-accent,#C6F827)] font-bold text-xs uppercase tracking-wider transition cursor-pointer min-h-[42px] flex items-center justify-center text-center"
+                  className="px-4 py-2.5 rounded-[4px] bg-[#1f1f1f] border border-[#252525] hover:border-[#c5ff4a] text-[#ffffff] font-sans font-medium text-xs uppercase tracking-[0.08em] transition cursor-pointer min-h-[42px] flex items-center justify-center text-center"
                 >
                   📖 {t.carouselDeepAudit}
                 </button>
@@ -642,29 +649,34 @@ export function ArchEcosystemStage() {
                   href={`https://github.com/AgustinMilesi/${currentProject.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] font-mono text-xs transition min-h-[42px] flex items-center justify-center text-center gap-1"
+                  className="px-4 py-2.5 rounded-[4px] bg-[#1f1f1f] border border-[#252525] hover:border-[#313131] text-[#7a7a7a] hover:text-[#ffffff] font-sans font-medium text-xs uppercase tracking-[0.08em] transition min-h-[42px] flex items-center justify-center text-center gap-1"
                 >
-                  <span>💻 Código en GitHub ↗</span>
+                  <span>💻 CÓDIGO EN GITHUB ↗</span>
                 </a>
               </div>
             </div>
 
-            {/* Right 6 Columns: Real Database Schema Code Block */}
+            {/* Right 6 Columns: Code Block Panel (zkPass style: Background #252525, padding 24px, radius 4px, border #313131, JetBrains Mono) */}
             <div className="lg:col-span-6 w-full min-w-0">
-              <div className="rounded-2xl p-4 sm:p-5 bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] space-y-2.5 font-mono">
-                <div className="flex items-center justify-between pb-2 border-b border-[var(--border-card,#1E293B)] text-xs">
-                  <span className="text-[var(--primary-accent,#C6F827)] font-bold">// MODELO DE DATOS PRISMA</span>
-                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)]">{currentProject.slug}</span>
+              <div className="rounded-[4px] p-4 sm:p-5 bg-[#252525] border border-[#313131] space-y-3 font-mono">
+                <div className="flex items-center justify-between pb-2 border-b border-[#313131] text-xs">
+                  <span className="text-[#c5ff4a] font-mono text-xs uppercase tracking-[0.06em] flex items-center gap-1.5">
+                    <span className="size-1.5 rounded-full bg-[#c5ff4a]" />
+                    // MODELO DE DATOS PRISMA
+                  </span>
+                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] px-2 py-0.5 rounded-[2px] bg-[#1f1f1f] border border-[#313131]">
+                    {currentProject.slug}
+                  </span>
                 </div>
-                <pre className="overflow-x-auto text-[11px] text-slate-300 leading-relaxed font-mono p-3 bg-[#06090E] rounded-xl max-h-[220px] border border-[#161F30]">
+                <pre className="overflow-x-auto text-[11px] text-[#e5e5e5] leading-relaxed font-mono p-3.5 bg-[#000000] rounded-[4px] max-h-[220px] border border-[#313131]">
                   <code>{currentProject.schemaSnippet}</code>
                 </pre>
-                <div className="pt-1 flex items-center justify-between text-[11px] text-[var(--text-muted,#9A9E86)]">
+                <div className="pt-1 flex items-center justify-between text-[11px] text-[#7a7a7a] font-mono">
                   <span>Stack: {currentProject.specs.engine}</span>
                   <button
                     type="button"
                     onClick={() => setSelectedProject(currentProject)}
-                    className="text-[var(--primary-accent,#C6F827)] hover:underline cursor-pointer"
+                    className="text-[#c5ff4a] hover:underline cursor-pointer font-sans uppercase text-[11px] tracking-[0.06em]"
                   >
                     Ver análisis completo →
                   </button>
