@@ -439,7 +439,7 @@ export function ArchEcosystemStage() {
                   </div>
                   <div>
                     <h3 className="text-[11px] sm:text-xs font-serif font-light text-white leading-none">Agustín Milesi</h3>
-                    <p className="text-[9px] sm:text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] leading-none mt-0.5">Founder &amp; Architect · VOUT</p>
+                    <p className="text-[9px] sm:text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] leading-none mt-0.5">Software Developer &amp; Admin · VOUT</p>
                   </div>
                 </div>
 
