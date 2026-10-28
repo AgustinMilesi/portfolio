@@ -23,6 +23,7 @@ export const ECOSYSTEM_PROJECTS: ProjectData[] = [
     description: "Diseñado para eliminar filas y descuadres en el mostrador minorista y mayorista. Arquitectura optimizada para lecturas HID de códigos de barra en < 50ms, transacciones atómicas con bloqueo de concurrencia y tickets térmicos ESC/POS.",
     liveUrl: "https://milesi-erp.vercel.app/demo",
     repoFolder: "e:\\Proyectos\\erp",
+    githubUrl: "https://github.com/AgustinMilesi/retail",
     specs: {
       engine: "Next.js 16 + React 19 Turbopack",
       database: "PostgreSQL + Prisma Client + IndexedDB Cache",
@@ -79,6 +80,7 @@ model ShiftSession {
     description: "Arquitectura unificada que integra el SaaS multi-inquilino de retroalimentación de clientes y el canal institucional de contacto directo. Ofrece ingesta de prospectos con validación estricta Zod, protección anti-bot y despacho en tiempo real.",
     liveUrl: "https://saas-am.vercel.app/demo",
     repoFolder: "e:\\Proyectos\\saas",
+    githubUrl: "https://github.com/AgustinMilesi/inbox",
     specs: {
       engine: "Next.js 16 + Server Actions + REST API v1",
       database: "PostgreSQL con Aislamiento Estricto por Organización",
@@ -132,6 +134,7 @@ model FeedbackMessage {
     description: "Diseñado para importadores y operadores logísticos que enfrentan multas millonarias por retrasos en la devolución de contenedores a terminales portuarias. Centraliza guías de embarque (BL), estados de arribo y auditorías de costos de almacenamiento.",
     liveUrl: "https://cargo-am.vercel.app/demo",
     repoFolder: "e:\\Proyectos\\sap",
+    githubUrl: "https://github.com/AgustinMilesi/cargo",
     specs: {
       engine: "Next.js 16 + React Server Components",
       database: "PostgreSQL Cloud + Motor de Cálculo Temporal",
@@ -183,6 +186,8 @@ model Container {
     description: "Diseñado para el control financiero individual estricto. Registra compras al instante en la calle sin esperar conectividad, categoriza microgastos, audita suscripciones y sincroniza de forma segura sin compartir datos financieros con terceros.",
     liveUrl: "https://vout-web.vercel.app",
     repoFolder: "e:\\Proyectos\\expenses-web",
+    githubUrl: "https://github.com/AgustinMilesi/expenses-web",
+    githubMobileUrl: "https://github.com/AgustinMilesi/expenses",
     specs: {
       engine: "Next.js Web Hub + React Native Android APK",
       database: "PostgreSQL Cloud + SQLite Local Offline en Móvil",
@@ -595,13 +600,25 @@ export function ArchEcosystemStage() {
               </a>
 
               <a
-                href={`https://github.com/AgustinMilesi/${currentProject.id}`}
+                href={currentProject.githubUrl || `https://github.com/AgustinMilesi/${currentProject.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#ffffff] font-sans font-medium text-xs uppercase tracking-[0.08em] transition min-h-[42px] flex items-center justify-center text-center gap-1.5"
+                className="px-4 py-2.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#ffffff] font-sans font-medium text-xs uppercase tracking-[0.08em] transition min-h-[42px] flex items-center justify-center text-center gap-1.5 cursor-pointer"
               >
                 <span>💻 CÓDIGO EN GITHUB ↗</span>
               </a>
+
+              {currentProject.githubMobileUrl && (
+                <a
+                  href={currentProject.githubMobileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-[4px] bg-[#1a1a1a] border border-[#313131] hover:border-[#c5ff4a] text-[#a3a3a3] hover:text-white font-sans font-medium text-xs uppercase tracking-[0.08em] transition min-h-[42px] flex items-center justify-center text-center gap-1.5 cursor-pointer"
+                  title="Repositorio de la App Móvil Android (React Native + Expo)"
+                >
+                  <span>📱 APP ANDROID (EXPO) ↗</span>
+                </a>
+              )}
             </div>
           </div>
         </div>

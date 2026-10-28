@@ -11,6 +11,8 @@ export interface ProjectData {
   description: string;
   liveUrl: string;
   repoFolder: string;
+  githubUrl?: string;
+  githubMobileUrl?: string;
   specs: {
     engine: string;
     database: string;
@@ -170,6 +172,24 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
             >
               Cerrar
             </button>
+            <a
+              href={project.githubUrl || `https://github.com/AgustinMilesi/${project.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2.5 rounded-[4px] bg-[#1f1f1f] border border-[#313131] hover:border-[#c5ff4a] text-xs font-sans uppercase tracking-[0.08em] text-[#ffffff] transition-colors flex items-center gap-1.5 cursor-pointer min-h-[40px]"
+            >
+              <span>GitHub ↗</span>
+            </a>
+            {project.githubMobileUrl && (
+              <a
+                href={project.githubMobileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 rounded-[4px] bg-[#1a1a1a] border border-[#313131] hover:border-[#c5ff4a] text-xs font-sans uppercase tracking-[0.08em] text-[#a3a3a3] hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer min-h-[40px]"
+              >
+                <span>App Móvil ↗</span>
+              </a>
+            )}
             <a
               href={project.liveUrl}
               target="_blank"
