@@ -31,14 +31,15 @@ export function TrayectoriaTimeline() {
     // 2. Responsive scroll choreography (PC grid stagger vs Cellular item-by-item)
     const mm = gsap.matchMedia();
 
-    // Desktop & Tablet (>= 768px): cascade cards together when section is in view
+    // Desktop & Tablet (>= 768px): cascade cards with physical spring snap
     mm.add("(min-width: 768px)", () => {
       gsap.from(".timeline-card", {
-        y: 35,
+        y: 40,
+        scale: 0.92,
         opacity: 0,
-        stagger: 0.12,
-        duration: 0.75,
-        ease: "power2.out",
+        stagger: 0.14,
+        duration: 0.85,
+        ease: "back.out(1.5)",
         scrollTrigger: {
           trigger: timelineRef.current,
           start: "top 78%",
@@ -47,15 +48,15 @@ export function TrayectoriaTimeline() {
       });
     });
 
-    // Mobile (< 768px): each card reveals as the user slides down to it
+    // Mobile (< 768px): slide in with lateral direction and tactile spring
     mm.add("(max-width: 767px)", () => {
       gsap.utils.toArray<HTMLElement>(".timeline-card").forEach((card) => {
         gsap.from(card, {
-          y: 25,
+          x: -25,
           opacity: 0,
-          scale: 0.96,
-          duration: 0.55,
-          ease: "power2.out",
+          scale: 0.95,
+          duration: 0.65,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: card,
             start: "top 88%",

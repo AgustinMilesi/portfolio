@@ -307,7 +307,7 @@ export function ArchEcosystemStage() {
       },
     });
 
-    // 2. Arch + Stickers Scroll-Triggered choreographed entrance
+    // 2. Arch + Stickers Kinetic Orbital Spring Entrance
     if (archRef.current) {
       const archTl = gsap.timeline({
         scrollTrigger: {
@@ -319,23 +319,63 @@ export function ArchEcosystemStage() {
 
       archTl
         .from(archRef.current, {
-          y: 45,
-          scale: 0.94,
+          y: 60,
+          scale: 0.92,
           opacity: 0,
-          duration: 0.85,
+          duration: 0.9,
           ease: "power3.out",
         })
         .from(
-          ".app-sticker",
+          ".sticker-retail",
           {
-            scale: 0.55,
+            x: -55,
+            y: 25,
+            rotation: -18,
+            scale: 0.35,
             opacity: 0,
-            y: 18,
-            stagger: 0.08,
-            duration: 0.65,
-            ease: "back.out(1.6)",
+            duration: 0.75,
+            ease: "back.out(2)",
           },
-          "-=0.35"
+          "-=0.45"
+        )
+        .from(
+          ".sticker-inbox",
+          {
+            x: 55,
+            y: 25,
+            rotation: 18,
+            scale: 0.35,
+            opacity: 0,
+            duration: 0.75,
+            ease: "back.out(2)",
+          },
+          "-=0.6"
+        )
+        .from(
+          ".sticker-cargo",
+          {
+            x: -55,
+            y: 25,
+            rotation: -14,
+            scale: 0.35,
+            opacity: 0,
+            duration: 0.75,
+            ease: "back.out(2)",
+          },
+          "-=0.6"
+        )
+        .from(
+          ".sticker-pocket",
+          {
+            x: 55,
+            y: 25,
+            rotation: 14,
+            scale: 0.35,
+            opacity: 0,
+            duration: 0.75,
+            ease: "back.out(2)",
+          },
+          "-=0.6"
         );
     }
 
@@ -407,13 +447,13 @@ export function ArchEcosystemStage() {
     });
   }, { scope: containerRef });
 
-  // GSAP 2. Smooth Transition when switching between Apps
+  // GSAP 2. Tactile Transition when switching between Apps
   useGSAP(() => {
     if (!showcaseRef.current) return;
     gsap.fromTo(
       showcaseRef.current,
-      { opacity: 0.6, y: 12 },
-      { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+      { opacity: 0.7, y: 15, scale: 0.985 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.5)" }
     );
   }, { dependencies: [activeAppId], scope: containerRef });
 
