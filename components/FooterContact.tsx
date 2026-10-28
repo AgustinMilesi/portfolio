@@ -32,8 +32,6 @@ export function FooterContact() {
   }, { scope: footerRef });
 
   const email = "agusmilesi2002@gmail.com";
-  const phone = "+54 9 11 4167-3396";
-  const phoneDisplay = "11 4167-3396";
 
   const handleCopyEmail = async () => {
     try {
@@ -51,7 +49,7 @@ export function FooterContact() {
         {/* Contact Header */}
         <div className="footer-card space-y-3">
           <div className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
-            [ CONTACTO DIRECTO · FLORIDA, VICENTE LÓPEZ, BUENOS AIRES ]
+            [ CANAL DIRECTO DE COMUNICACIÓN ]
           </div>
 
           <h2 className="font-serif font-light text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-tight text-[#ffffff]">
@@ -66,10 +64,10 @@ export function FooterContact() {
           </p>
         </div>
 
-        {/* Contact Cards Grid: Email, Phone/WhatsApp & Sovereign Gateway */}
+        {/* Contact Cards Grid: Email & Professional Profiles */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-stretch">
-          {/* Main Email Box (6 cols) */}
-          <div className="footer-card md:col-span-6 p-6 sm:p-7 rounded-none bg-[#1f1f1f] border border-[#252525] flex flex-col justify-between gap-4 shadow-none">
+          {/* Main Email Box (7 cols) */}
+          <div className="footer-card md:col-span-7 p-6 sm:p-7 rounded-none bg-[#1f1f1f] border border-[#252525] flex flex-col justify-between gap-4 shadow-none">
             <div className="space-y-1">
               <span className="text-[11px] font-sans font-medium text-[#7a7a7a] uppercase tracking-[0.22em] block">
                 [ CORREO ELECTRÓNICO ]
@@ -99,44 +97,23 @@ export function FooterContact() {
             </button>
           </div>
 
-          {/* WhatsApp & Teléfono Box (3 cols) */}
-          <div className="footer-card md:col-span-3 p-6 sm:p-7 rounded-[4px] bg-[#1f1f1f] border border-[#252525] flex flex-col justify-between gap-4">
-            <div className="space-y-1">
-              <span className="text-[11px] font-sans font-medium text-[#c5ff4a] uppercase tracking-[0.22em] block">
-                [ TELÉFONO / WHATSAPP ]
-              </span>
-              <p className="text-base sm:text-lg font-mono font-bold text-[#ffffff] tracking-tight">
-                {phoneDisplay}
-              </p>
-            </div>
-
-            <a
-              href="https://wa.me/5491141673396"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#c5ff4a] font-sans font-medium text-xs uppercase tracking-[0.06em] transition flex items-center justify-center gap-2 min-h-[40px]"
-            >
-              <span>Enviar WhatsApp ↗</span>
-            </a>
-          </div>
-
-          {/* LinkedIn & GitHub Direct (3 cols) */}
-          <div className="footer-card md:col-span-3 p-6 sm:p-7 rounded-[4px] bg-[#1f1f1f] border border-[#252525] flex flex-col justify-between gap-4">
+          {/* LinkedIn & GitHub Direct (5 cols) */}
+          <div className="footer-card md:col-span-5 p-6 sm:p-7 rounded-[4px] bg-[#1f1f1f] border border-[#252525] flex flex-col justify-between gap-4">
             <div className="space-y-1">
               <span className="text-[11px] font-sans font-medium text-[#7a7a7a] uppercase tracking-[0.22em] block">
                 [ PERFILES PROFESIONALES ]
               </span>
               <p className="text-xs font-sans text-[#7a7a7a]">
-                Florida, Vicente López
+                Contacto profesional y repositorios de código
               </p>
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <a
                 href="https://linkedin.com/in/agustinmilesi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#ffffff] hover:text-[#c5ff4a] font-mono text-xs transition flex items-center justify-between"
+                className="px-4 py-2.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#ffffff] hover:text-[#c5ff4a] font-mono text-xs transition flex items-center justify-between"
               >
                 <span>LinkedIn</span>
                 <span>↗</span>
@@ -145,7 +122,7 @@ export function FooterContact() {
                 href="https://github.com/AgustinMilesi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#ffffff] hover:text-[#c5ff4a] font-mono text-xs transition flex items-center justify-between"
+                className="px-4 py-2.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#ffffff] hover:text-[#c5ff4a] font-mono text-xs transition flex items-center justify-between"
               >
                 <span>GitHub</span>
                 <span>↗</span>
@@ -209,10 +186,6 @@ export function FooterContact() {
         <div className="pt-6 border-t border-[#252525] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#7a7a7a]">
           <div>
             <span>© 2026 Agustín Milesi · Técnico Superior en Desarrollo de Software</span>
-          </div>
-
-          <div>
-            <span>FLORIDA, VICENTE LÓPEZ · BS AS</span>
           </div>
 
           <div className="flex items-center gap-4">

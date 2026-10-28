@@ -67,7 +67,7 @@ export function HeroSection() {
           {/* Eyebrow Bracket Label: Inter Tight 11px weight 500, 0.22em tracking, color #7a7a7a */}
           <div className="flex items-center">
             <div className="hero-badge font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
-              [ TÉCNICO EN DESARROLLO DE SOFTWARE (UNER) · AUXILIAR ADMINISTRATIVO · VICENTE LÓPEZ ]
+              [ TÉCNICO EN DESARROLLO DE SOFTWARE (UNER) · AUXILIAR ADMINISTRATIVO ]
             </div>
           </div>
 

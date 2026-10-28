@@ -84,7 +84,7 @@ export function TrayectoriaTimeline() {
     {
       period: "2024 — PRESENTE",
       title: "Auxiliar Administrativo y Cajero",
-      role: "Distribuidora Mayorista de Alimentos · Vicente López",
+      role: "Distribuidora Mayorista de Alimentos",
       description:
         "Cobranzas y pagos mediante efectivo, Posnet y Mercado Pago; conciliación de caja y cierre diario. Emisión y control de facturas y remitos; recepción de mercadería contra pedidos de proveedores y carga de precios y productos en el sistema.",
       tag: "OPERACIÓN & CAJA",
@@ -113,7 +113,7 @@ export function TrayectoriaTimeline() {
         {/* Header */}
         <div className="timeline-heading space-y-3">
           <div className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
-            [ TRAYECTORIA PROFESIONAL · VICENTE LÓPEZ, BUENOS AIRES ]
+            [ TRAYECTORIA PROFESIONAL ]
           </div>
           <h2 className="font-serif font-light text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-[0.95] text-[#ffffff]">
             De la caja y la administración al{" "}
