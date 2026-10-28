@@ -153,15 +153,7 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
             </div>
           </div>
 
-          {/* 4. Prisma Schema Snippet */}
-          <div className="space-y-2.5">
-            <h4 className="text-[11px] font-sans font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
-              [ MODELO DE DATOS PRISMA · FRAGMENTO REAL ]
-            </h4>
-            <pre className="p-4 rounded-[4px] bg-[#000000] border border-[#252525] text-[11px] font-mono text-[#c5ff4a] overflow-x-auto leading-relaxed select-text">
-              <code>{project.schemaSnippet}</code>
-            </pre>
-          </div>
+
         </div>
 
         {/* Modal Actions Footer */}
