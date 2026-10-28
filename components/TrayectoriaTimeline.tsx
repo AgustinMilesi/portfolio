@@ -1,9 +1,26 @@
 "use client";
 
+import { useRef } from "react";
 import { usePreferences } from "@/components/PreferencesProvider";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 export function TrayectoriaTimeline() {
   const { t } = usePreferences();
+  const timelineRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    gsap.from(".timeline-card", {
+      y: 25,
+      opacity: 0,
+      stagger: 0.12,
+      duration: 0.7,
+      ease: "power2.out",
+      delay: 0.15,
+    });
+  }, { scope: timelineRef });
 
   const steps = [
     {
@@ -41,7 +58,7 @@ export function TrayectoriaTimeline() {
   ];
 
   return (
-    <section id="trayectoria" className="py-12 sm:py-16 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors">
+    <section ref={timelineRef} id="trayectoria" className="py-12 sm:py-16 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Header */}
         <div className="space-y-2">
@@ -61,7 +78,7 @@ export function TrayectoriaTimeline() {
           {steps.map((st, idx) => (
             <div
               key={idx}
-              className="p-5 sm:p-6 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] flex flex-col justify-between space-y-4 hover:border-[var(--primary-accent,#C6F827)]/60 transition-colors group shadow-sm"
+              className="timeline-card p-5 sm:p-6 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] flex flex-col justify-between space-y-4 hover:border-[var(--primary-accent,#C6F827)]/60 transition-colors group shadow-sm"
             >
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between">

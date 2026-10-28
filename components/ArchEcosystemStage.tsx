@@ -1,10 +1,14 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import portraitImg from "../public/agustin_milesi_cutout.png";
 import { CaseStudyModal, ProjectData } from "./CaseStudyModal";
 import { usePreferences } from "@/components/PreferencesProvider";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 
 export const ECOSYSTEM_PROJECTS: ProjectData[] = [
   {
@@ -275,14 +279,92 @@ export function ArchEcosystemStage() {
   const [activeAppId, setActiveAppId] = useState<string>("retail");
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  const archRef = useRef<HTMLDivElement>(null);
+  const showcaseRef = useRef<HTMLDivElement>(null);
+
   const currentProject = ECOSYSTEM_PROJECTS.find((p) => p.id === activeAppId) || ECOSYSTEM_PROJECTS[0];
 
   const handleSelectApp = useCallback((id: string) => {
     setActiveAppId(id);
   }, []);
 
+  // GSAP 1. Initial Reveal & Organic Floating Physics
+  useGSAP(() => {
+    // Reveal of Arch & Portrait
+    if (archRef.current) {
+      gsap.from(archRef.current, {
+        y: 40,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+      });
+    }
+
+    // Pop-in of desktop stickers
+    gsap.from(".desktop-sticker", {
+      scale: 0.7,
+      opacity: 0,
+      y: 15,
+      stagger: 0.1,
+      duration: 0.65,
+      ease: "back.out(1.5)",
+      delay: 0.2,
+    });
+
+    // Organic floating badges physics
+    gsap.to(".sticker-retail", {
+      y: -7,
+      rotation: "-=1.5",
+      duration: 2.8,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+
+    gsap.to(".sticker-inbox", {
+      y: 6,
+      rotation: "+=1.2",
+      duration: 3.2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 0.4,
+    });
+
+    gsap.to(".sticker-cargo", {
+      y: -6,
+      rotation: "+=1.3",
+      duration: 2.6,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 0.8,
+    });
+
+    gsap.to(".sticker-pocket", {
+      y: 7,
+      rotation: "-=1.4",
+      duration: 3.0,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      delay: 0.3,
+    });
+  }, { scope: containerRef });
+
+  // GSAP 2. Smooth Transition when switching between Apps
+  useGSAP(() => {
+    if (!showcaseRef.current) return;
+    gsap.fromTo(
+      showcaseRef.current,
+      { opacity: 0.6, y: 12 },
+      { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }
+    );
+  }, { dependencies: [activeAppId], scope: containerRef });
+
   return (
-    <section id="proyectos" className="py-12 sm:py-20 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors w-full max-w-full overflow-hidden">
+    <section ref={containerRef} id="proyectos" className="py-12 sm:py-20 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors w-full max-w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 w-full max-w-full">
         {/* Section Heading */}
         <div className="text-center space-y-2.5 max-w-3xl mx-auto">
@@ -329,7 +411,7 @@ export function ArchEcosystemStage() {
         {/* Monumental Central Arch Stage Container */}
         <div className="relative mx-auto max-w-4xl min-h-[440px] sm:min-h-[520px] flex items-center justify-center w-full">
           {/* The Arch Frame */}
-          <div className="w-full max-w-[290px] sm:max-w-[400px] md:max-w-[460px] h-[420px] sm:h-[500px] rounded-t-full bg-gradient-to-b from-[#161F30] via-[#121824] to-[#0A0E14] border-t-2 border-x-2 border-[#1E293B] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
+          <div ref={archRef} className="w-full max-w-[290px] sm:max-w-[400px] md:max-w-[460px] h-[420px] sm:h-[500px] rounded-t-full bg-gradient-to-b from-[#161F30] via-[#121824] to-[#0A0E14] border-t-2 border-x-2 border-[#1E293B] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
             {/* Subtle glow behind Agustín */}
             <div className="absolute bottom-12 inset-x-8 h-48 bg-[var(--primary-accent,#C6F827)]/15 blur-3xl rounded-full pointer-events-none" />
 
@@ -383,7 +465,7 @@ export function ArchEcosystemStage() {
                 key={stk.id}
                 type="button"
                 onClick={() => handleSelectApp(stk.id)}
-                className={`hidden md:flex flex-col absolute ${stk.positionDesktop} ${stk.rotationDesktop} transition-all duration-300 transform cursor-pointer select-none text-left z-20 ${
+                className={`desktop-sticker sticker-${stk.id} hidden md:flex flex-col absolute ${stk.positionDesktop} ${stk.rotationDesktop} transition-shadow duration-300 transform cursor-pointer select-none text-left z-20 ${
                   isSelected
                     ? "scale-110 z-30 ring-2 ring-[var(--primary-accent,#C6F827)] shadow-[0_0_25px_rgba(198,248,39,0.4)]"
                     : "hover:scale-105 opacity-85 hover:opacity-100 shadow-xl"
@@ -412,7 +494,7 @@ export function ArchEcosystemStage() {
         </div>
 
         {/* Selected App Detail & Architectural Solution Showcase */}
-        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[var(--bg-card,#121824)] border-2 border-[var(--border-card,#1E293B)] shadow-2xl space-y-6 sm:space-y-8 animate-smooth-in w-full max-w-full">
+        <div ref={showcaseRef} className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[var(--bg-card,#121824)] border-2 border-[var(--border-card,#1E293B)] shadow-2xl space-y-6 sm:space-y-8 w-full max-w-full">
           {/* Header of Active App */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[var(--border-card,#1E293B)]">
             <div className="space-y-1">
