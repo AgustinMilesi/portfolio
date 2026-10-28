@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useCallback } from "react";
 import { CaseStudyModal, ProjectData } from "./CaseStudyModal";
 import { usePreferences } from "@/components/PreferencesProvider";
 
@@ -98,85 +98,88 @@ model ShiftSession {
   slug          String   @unique
   notifyEmail   String?
   webhookUrl    String?
-  webhookSecret String?
-  messages      Message[]
-  contacts      Contact[]
+  webhookSecret String?  // Clave HMAC-SHA256
+  createdAt     DateTime @default(now())
+  messages      FeedbackMessage[]
 }
 
-model Message {
-  id             String        @id @default(cuid())
-  organizationId String
-  contactId      String?
-  name           String
-  email          String
-  subject        String
-  body           String
-  status         MessageStatus @default(NEW)
-  createdAt      DateTime      @default(now())
+model FeedbackMessage {
+  id          String   @id @default(cuid())
+  orgId       String
+  senderEmail String
+  content     String
+  status      String   @default("UNREAD")
+  createdAt   DateTime @default(now())
 }`,
     dataFlow: [
-      "Visitante envía requerimiento vía /contact o formulario web incrustado.",
-      "Validación bidireccional Zod y verificación de trampa honeypot en Edge Handler.",
-      "Creación o actualización automática del contacto y registro del mensaje con estado NEW.",
-      "Despacho asíncrono redundante: alerta por email y webhook HMAC-SHA256 a sistemas integrados.",
+      "Prospecto completa formulario en sitio cliente o portal de contacto soberano.",
+      "Backend valida esquema Zod y ejecuta control anti-bot honeypot.",
+      "Registro se almacena en PostgreSQL con aislamiento multi-tenant por ID de organización.",
+      "Servicio emite payload firmado criptográficamente con HMAC-SHA256 hacia el webhook del cliente.",
     ],
   },
   {
     id: "cargo",
     slug: "vout/cargo",
-    name: "VOUT Cargo · Global Freight & Import Operations System",
-    category: "LOGÍSTICA INTERNACIONAL · DESPACHO ADUANERO · DEMURRAGE",
+    name: "VOUT Cargo · Freight Forwarding, Demurrage & Customs Auditing",
+    category: "LOGÍSTICA INTERNACIONAL · DEMURRAGE MARÍTIMO · TRAZABILIDAD ADUANERA",
     tagline:
-      "Suite autónoma de logística internacional, rastreo marítimo/aéreo, despacho aduanero y control de demurrage.",
+      "Gestión de contenedores marítimos, cronómetros de demurrage fiscal y auditoría de documentos aduaneros.",
     description:
-      "Monitoreo en tiempo real de embarques internacionales marítimos (FCL/LCL) y aéreos. Cálculo dinámico de aranceles de importación, alertas preventivas de demurrage en terminales portuarias y portal de autoservicio para importadores.",
+      "Diseñado para importadores y operadores de transporte de carga que enfrentan multas millonarias por retrasos en la devolución de contenedores a terminales portuarias. Centraliza guías de embarque (BL), estados de arribo y auditorías de costos de almacenamiento.",
     liveUrl: "https://cargo-am.vercel.app/demo",
     repoFolder: "e:\\Proyectos\\sap",
     specs: {
-      engine: "Next.js + TypeScript + Tailwind CSS",
-      database: "PostgreSQL Enterprise + AIS Satellite Tracking",
-      hardwareOrSecurity: "Cifrado de Documentación Aduanera AES-256",
-      resilienceMetric: "Alertas de Demurrage en Tiempo Real (< 2h SLA)",
+      engine: "Next.js 16 + React Server Components",
+      database: "PostgreSQL Cloud + Motor de Cálculo Temporal",
+      hardwareOrSecurity: "Validación ISO 6346 de Contenedores + Auditoría Inmutable",
+      resilienceMetric: "Cálculo Predictivo de Multas en Segundos con Alertas Tempranas",
     },
     features: [
-      "Rastreo Marítimo Satelital",
-      "Cotizador Multidivisa USD/ARS",
-      "Alertas de Demurrage Portuario",
-      "Gestión de Depósito Fiscal",
-      "Despacho Aduanero Digital",
-      "Portal de Autoservicio Clientes",
+      "Detección de Días Libres de Demurrage",
+      "Control de Contenedores ISO 6346",
+      "Asociación de Guías de Embarque (BL)",
+      "Historial de Movimientos de Depósito",
+      "Proyección de Costos de Estadía",
+      "Consola de Auditoría Operativa",
     ],
     problemStatement:
-      "Las demoras en despachar contenedores de puerto generan sobrecostos (demurrage) que escalan en cientos de dólares por día. Las planillas de cálculo dispersas causan olvidos y multas aduaneras astronómicas.",
+      "Las navieras cobran penalizaciones por cada día que un contenedor permanece fuera de plazo en el puerto. El seguimiento manual en hojas de cálculo desactualizadas provoca demoras en aduana y gastos no previstos que destruyen el margen de importación.",
     architecturalSolution:
-      "VOUT Cargo centraliza los días libres de estadía por naviera y terminal, activando alertas automáticas 72 horas antes del vencimiento. Integra cálculo arancelario con cotización del Banco Central en tiempo real.",
-    schemaSnippet: `model ContainerShipment {
-  id                  String         @id @default(cuid())
-  containerNumber     String         @unique
-  blNumber            String         @unique // Bill of Lading
-  originPort          String
-  destinationPort     String
-  freeDaysAllowed     Int            @default(7)
-  demurrageRatePerDay Decimal        @db.Decimal(10, 2)
-  status              ShipmentStatus @default(IN_TRANSIT)
-  customsBrokerId     String
+      "VOUT Cargo implementa un motor de cálculo temporal que computa la ventana de días libres según la naviera y la fecha de descarga en muelle, generando alertas proactivas antes de que comience el devengamiento de penalizaciones.",
+    schemaSnippet: `model Shipment {
+  id              String      @id @default(cuid())
+  blNumber        String      @unique // Bill of Lading
+  carrierName     String
+  arrivalPort     String
+  dischargeDate   DateTime?
+  freeDaysAllowed Int         @default(7)
+  containers      Container[]
+}
+
+model Container {
+  id              String      @id @default(cuid())
+  shipmentId      String
+  containerNumber String      // Validado ISO 6346
+  demurrageDaily  Decimal     @db.Decimal(10, 2)
+  returnedAt      DateTime?
 }`,
     dataFlow: [
-      "Ingesta del Bill of Lading (BL) con parsing de fecha estimada de arribo (ETA).",
-      "Cómputo diario de días libres restantes en terminal portuaria fiscal.",
-      "Disparo de notificación prioritaria al despachante de aduana ante riesgo de estadía.",
-      "Generación de liquidación proforma con discriminación de flete, seguro y derechos.",
+      "Operador ingresa número de BL y contenedores con validación de dígito verificador ISO 6346.",
+      "Sistema registra fecha de descarga efectiva emitida por la terminal portuaria.",
+      "Algoritmo calcula fecha de expiración de días libres y alerta ante riesgo de mora.",
+      "Al registrarse la devolución del contenedor vacío, se cierra la auditoría de costos.",
     ],
   },
   {
     id: "pocket",
     slug: "vout/pocket",
-    name: "VOUT Pocket & Web · Personal Cashflow & Bi-Directional Hub",
-    category: "FINANZAS PERSONALES · CACHE SQLITE · SINCRONIZACIÓN NUBE",
+    name: "VOUT Pocket · Sovereign Personal Finance & Cross-Device Hub",
+    category: "FINANZAS PERSONALES · OFFLINE-FIRST NATIVO · SINCRONIZACIÓN PRIVADA",
     tagline:
-      "Control de flujo de caja personal, auditoría de suscripciones y sincronización bidireccional nube-móvil.",
+      "Control de gastos con registro offline inmediato, cálculo de margen disponible y sincronización privada.",
     description:
-      "Suite financiera que cambia la perspectiva del dinero: en lugar de simples gráficos pasivos de gastos, calcula el Ingreso Disponible Real diario. Funciona offline en móvil con SQLite nativo y se sincroniza con el hub web en PostgreSQL.",
+      "Diseñado para el control financiero individual estricto. Registra compras al instante en la calle sin esperar conectividad, categoriza microgastos, audita suscripciones y sincroniza de forma segura sin compartir datos financieros con terceros.",
     liveUrl: "https://vout-web.vercel.app",
     repoFolder: "e:\\Proyectos\\expenses-web",
     specs: {
@@ -198,142 +201,95 @@ model Message {
     architecturalSolution:
       "VOUT Pocket corre con SQLite local embebido en el teléfono. Cada compra se anota en menos de 2 segundos sin internet. Al reconectarse, un motor de sincronización diferencial actualiza el Hub Web en la nube sin duplicados.",
     schemaSnippet: `model ExpenseRecord {
-  id           String    @id @default(cuid())
+  id           String   @id @default(cuid())
   userId       String
-  amount       Decimal   @db.Decimal(12, 2)
-  currency     Currency  @default(ARS)
+  amount       Decimal  @db.Decimal(12, 2)
+  currency     String   @default("ARS")
   category     String
-  clientTxId   String    @unique // Idempotencia offline
-  syncedAt     DateTime?
-  createdAt    DateTime  @default(now())
+  merchant     String?
+  timestamp    DateTime @default(now())
+  synced       Boolean  @default(false)
+}
+
+model SubscriptionAudit {
+  id           String   @id @default(cuid())
+  serviceName  String
+  costMonthly  Decimal  @db.Decimal(10, 2)
+  renewalDay   Int
+  isActive     Boolean  @default(true)
 }`,
     dataFlow: [
-      "Ingreso inmediato del microgasto en la app móvil con teclado numérico acelerado.",
-      "Inserción local en SQLite y cómputo instantáneo del 'Safe-to-Spend' del día.",
-      "Detección de conexión WiFi/4G y despacho de paquete de cambios pendientes.",
-      "Hub Web valida idempotencia por clientTxId y consolida el balance en PostgreSQL.",
+      "Operador anota microgasto en su celular en segundos con almacenamiento en SQLite local.",
+      "Motor local recalcula el saldo restante del mes de forma instantánea sin conexión.",
+      "Cuando hay conectividad, el cliente envía diffs pendientes al Hub Web en PostgreSQL.",
+      "Consola web sincronizada refleja métricas de liquidez consolidadas en tiempo real.",
     ],
   },
 ];
 
 export function ProjectCarousel() {
-  const { t, sound, setSound, playBlip } = usePreferences();
+  const { t } = usePreferences();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
-  const [previewMode, setPreviewMode] = useState<"desktop" | "tablet" | "terminal">("desktop");
-  const [copiedSlug, setCopiedSlug] = useState(false);
 
   const currentProject = ECOSYSTEM_PROJECTS[currentIndex];
 
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % ECOSYSTEM_PROJECTS.length);
-    playBlip(640);
-  }, [playBlip]);
+  }, []);
 
   const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev - 1 + ECOSYSTEM_PROJECTS.length) % ECOSYSTEM_PROJECTS.length);
-    playBlip(480);
-  }, [playBlip]);
+  }, []);
 
   const handleJump = (index: number) => {
     setCurrentIndex(index);
-    playBlip(560 + index * 40);
   };
-
-  const handleCopyCommand = async (cmd: string) => {
-    try {
-      await navigator.clipboard.writeText(cmd);
-      setCopiedSlug(true);
-      playBlip(800);
-      setTimeout(() => setCopiedSlug(false), 2000);
-    } catch {
-      // ignore
-    }
-  };
-
-  // Keyboard navigation: Left/Right arrows, 1-4 for direct jumps, Space for modal
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (selectedProject) return;
-      if (e.key === "ArrowRight") handleNext();
-      if (e.key === "ArrowLeft") handlePrev();
-      if (e.key === "1") handleJump(0);
-      if (e.key === "2") handleJump(1);
-      if (e.key === "3") handleJump(2);
-      if (e.key === "4") handleJump(3);
-      if (e.key === " ") {
-        e.preventDefault();
-        setSelectedProject(currentProject);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedProject, handleNext, handlePrev, currentProject]);
 
   return (
-    <section id="proyectos" className="py-12 sm:py-20 md:py-28 bg-[var(--bg-page,#0A0E14)] border-b border-[var(--border-card,#1E293B)] relative overflow-hidden transition-colors w-full max-w-full">
-      {/* Background Matrix */}
-      <div className="absolute inset-0 dither-canvas opacity-30 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10 space-y-8 sm:space-y-12 w-full max-w-full">
+    <section id="proyectos" className="py-12 sm:py-20 bg-[var(--bg-page,#0A0E14)] border-b border-[var(--border-card,#1E293B)] relative transition-colors w-full max-w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 w-full max-w-full">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[var(--border-card,#1E293B)]">
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[var(--bg-card,#121824)] text-[var(--primary-accent,#C6F827)] border border-[var(--border-card,#1E293B)] shadow-xs">
-              <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] animate-pulse" />
-              <span className="font-semibold">{t.carouselBadge}</span>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-[var(--border-card,#1E293B)]">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[var(--bg-card,#121824)] text-[var(--primary-accent,#C6F827)] border border-[var(--border-card,#1E293B)]">
+              <span>{t.carouselBadge}</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)]">
+            <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)]">
               {t.carouselTitle}
             </h2>
-            <p className="text-sm text-[var(--text-muted,#9A9E86)] max-w-2xl leading-relaxed">
-              Explore cada plataforma interactuando con su simulación de hardware, esquemas de datos relacionales
-              y contratos de comunicación en tiempo real.
+            <p className="text-sm text-[var(--text-muted,#9A9E86)] max-w-2xl">
+              Cuatro sistemas en producción. Hacé clic en cada plataforma para ver especificaciones, modelo de datos y probar la demo en vivo.
             </p>
           </div>
 
-          {/* Interactive Mode & Audio Controls */}
-          <div className="flex flex-wrap items-center gap-3">
+          {/* Carousel Arrow Controls */}
+          <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => setSound(!sound)}
-              className={`px-3.5 py-2 rounded-xl border text-xs font-mono transition flex items-center gap-2 cursor-pointer min-h-[42px] ${
-                sound
-                  ? "bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] border-[var(--primary-accent,#C6F827)] font-bold shadow-xs"
-                  : "bg-[var(--bg-card,#121824)] text-[var(--text-muted,#9A9E86)] border-[var(--border-card,#1E293B)] hover:text-[var(--text-main,#E9E7E0)]"
-              }`}
+              onClick={handlePrev}
+              className="size-10 rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95"
+              aria-label={t.carouselPrev}
             >
-              <span>{sound ? "🔊 AUDIO TÁCTIL (ON)" : "🔇 AUDIO TÁCTIL (OFF)"}</span>
+              <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+              </svg>
             </button>
-
-            {/* Carousel Arrow Controls */}
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={handlePrev}
-                className="size-11 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
-                aria-label={t.carouselPrev}
-              >
-                <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                className="size-11 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
-                aria-label={t.carouselNext}
-              >
-                <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleNext}
+              className="size-10 rounded-xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95"
+              aria-label={t.carouselNext}
+            >
+              <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
 
-        {/* Platform Direct Selection Tabs */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {/* Platform Selection Tabs */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
           {ECOSYSTEM_PROJECTS.map((project, idx) => {
             const isSelected = idx === currentIndex;
             return (
@@ -341,27 +297,26 @@ export function ProjectCarousel() {
                 key={project.id}
                 type="button"
                 onClick={() => handleJump(idx)}
-                className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative overflow-hidden group min-h-[44px] ${
+                className={`p-3 sm:p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative ${
                   isSelected
-                    ? "bg-[var(--bg-card,#121824)] border-[var(--primary-accent,#C6F827)] shadow-lg -translate-y-0.5"
-                    : "bg-[var(--bg-card-subtle,#0D121B)] border-[var(--border-card,#1E293B)] hover:border-[var(--primary-accent,#C6F827)]/40 opacity-75 hover:opacity-100"
+                    ? "bg-[var(--bg-card,#121824)] border-[var(--primary-accent,#C6F827)] shadow-md -translate-y-0.5"
+                    : "bg-[var(--bg-card-subtle,#0D121B)] border-[var(--border-card,#1E293B)] hover:border-[var(--primary-accent,#C6F827)]/50 opacity-80 hover:opacity-100"
                 }`}
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className={`text-xs font-mono px-2.5 py-0.5 rounded-full font-bold ${
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className={`text-[11px] font-mono px-2 py-0.5 rounded-full font-bold ${
                     isSelected ? "bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)]" : "bg-[var(--bg-card,#121824)] text-[var(--text-muted,#9A9E86)]"
                   }`}>
                     0{idx + 1}
                   </span>
-                  <span className="text-xs font-mono text-emerald-500 dark:text-emerald-400 flex items-center gap-1 font-semibold">
-                    <span className="size-1.5 rounded-full bg-emerald-400" />
-                    ONLINE
+                  <span className="text-[10px] font-mono text-emerald-400 font-semibold">
+                    PRODUCCIÓN
                   </span>
                 </div>
-                <p className="font-mono text-xs font-bold text-white group-hover:text-[#C6F827] transition-colors truncate">
+                <p className="font-mono text-xs font-bold text-[var(--text-main,#E9E7E0)] truncate">
                   {project.slug}
                 </p>
-                <p className="text-[11px] text-slate-400 truncate mt-0.5">
+                <p className="text-[11px] text-[var(--text-muted,#9A9E86)] truncate mt-0.5">
                   {project.category.split("·")[0].trim()}
                 </p>
               </button>
@@ -369,88 +324,54 @@ export function ProjectCarousel() {
           })}
         </div>
 
-        {/* Monumental Active Project Showcase Card */}
-        <div className="p-4 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-[var(--bg-card,#121824)] border-2 border-[var(--border-card,#1E293B)] shadow-2xl relative overflow-hidden space-y-6 sm:space-y-8 animate-smooth-in w-full max-w-full">
-          {/* Top Stage Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-6 border-b border-[var(--border-card,#1E293B)] w-full">
-            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
-              <div className="size-9 sm:size-10 rounded-xl bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] flex items-center justify-center p-2 shadow-xs shrink-0">
-                <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
-                  <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
-                  <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-                  <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
-                  <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-                  <rect x="324" y="228" width="60" height="60" rx="6" fill="var(--primary-accent, #C6F827)" />
-                  <rect x="390" y="166" width="46" height="46" rx="5" fill="var(--primary-accent, #C6F827)" />
-                  <rect x="452" y="106" width="32" height="32" rx="4" fill="var(--primary-accent, #C6F827)" />
-                </svg>
-              </div>
-              <div className="min-w-0 flex-1">
-                <span className="font-mono text-xs font-bold text-[var(--primary-accent,#C6F827)] uppercase tracking-wider block">
-                  {currentProject.slug}
-                </span>
-                <h3 className="text-base sm:text-2xl font-black text-[var(--text-main,#E9E7E0)] break-words leading-tight">
-                  {currentProject.name}
-                </h3>
-              </div>
+        {/* Active Project Showcase Card */}
+        <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] shadow-xl space-y-6 sm:space-y-8 w-full max-w-full">
+          {/* Project Title Bar */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[var(--border-card,#1E293B)]">
+            <div className="space-y-1">
+              <span className="font-mono text-xs font-bold text-[var(--primary-accent,#C6F827)] uppercase tracking-wider block">
+                {currentProject.slug} · {currentProject.category}
+              </span>
+              <h3 className="text-xl sm:text-3xl font-black text-[var(--text-main,#E9E7E0)] leading-tight">
+                {currentProject.name}
+              </h3>
             </div>
 
-            {/* Viewport Simulation Mode Selector - Responsive grid on mobile, flex on desktop */}
-            <div className="w-full sm:w-auto grid grid-cols-3 sm:flex items-center p-1 rounded-xl bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] gap-1 text-xs font-mono shrink-0">
-              <button
-                type="button"
-                onClick={() => setPreviewMode("desktop")}
-                className={`px-1.5 sm:px-3 py-1.5 rounded-lg transition cursor-pointer min-h-[38px] flex items-center justify-center text-center text-[11px] sm:text-xs truncate ${
-                  previewMode === "desktop" ? "bg-[var(--bg-hover,#1E293B)] text-[var(--text-main,#E9E7E0)] font-bold shadow-xs" : "text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)]"
-                }`}
-              >
-                💻 Escritorio
-              </button>
-              <button
-                type="button"
-                onClick={() => setPreviewMode("tablet")}
-                className={`px-1.5 sm:px-3 py-1.5 rounded-lg transition cursor-pointer min-h-[38px] flex items-center justify-center text-center text-[11px] sm:text-xs truncate ${
-                  previewMode === "tablet" ? "bg-[var(--bg-hover,#1E293B)] text-[var(--text-main,#E9E7E0)] font-bold shadow-xs" : "text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)]"
-                }`}
-              >
-                📱 Tablet
-              </button>
-              <button
-                type="button"
-                onClick={() => setPreviewMode("terminal")}
-                className={`px-1.5 sm:px-3 py-1.5 rounded-lg transition cursor-pointer min-h-[38px] flex items-center justify-center text-center text-[11px] sm:text-xs truncate ${
-                  previewMode === "terminal" ? "bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black shadow-xs" : "text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)]"
-                }`}
-              >
-                ⚡ Terminal
-              </button>
-            </div>
+            {/* Direct Action Link */}
+            <a
+              href={currentProject.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-xl bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black text-xs uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm min-h-[42px] shrink-0"
+            >
+              <span>🚀 {t.carouselLiveDemo}</span>
+            </a>
           </div>
 
-          {/* Card Middle: Two Columns (Specs & Visual Mockup) */}
-          <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 items-start w-full">
-            {/* Left 6 Columns: Architectural Overview & Tech Specs */}
-            <div className="lg:col-span-6 space-y-5 sm:space-y-6 w-full min-w-0">
-              <p className="text-sm sm:text-base text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-normal">
+          {/* Card Body: Specs (Left) & Real Database Schema (Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start w-full">
+            {/* Left 6 Columns: Description, Tech Specs, Features */}
+            <div className="lg:col-span-6 space-y-5 w-full min-w-0">
+              <p className="text-sm sm:text-base text-[var(--text-main,#E9E7E0)]/90 leading-relaxed">
                 {currentProject.description}
               </p>
 
               {/* Technical Specifications Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs font-mono">
-                <div className="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1 overflow-hidden">
-                  <span className="text-[11px] sm:text-xs text-[var(--text-muted,#9A9E86)] uppercase block font-medium">{t.carouselEngine}</span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs font-mono">
+                <div className="p-3 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
+                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)] uppercase block">{t.carouselEngine}</span>
                   <span className="text-[var(--text-main,#E9E7E0)] font-bold break-words block">{currentProject.specs.engine}</span>
                 </div>
-                <div className="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1 overflow-hidden">
-                  <span className="text-[11px] sm:text-xs text-[var(--text-muted,#9A9E86)] uppercase block font-medium">{t.carouselDatabase}</span>
+                <div className="p-3 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
+                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)] uppercase block">{t.carouselDatabase}</span>
                   <span className="text-[var(--text-main,#E9E7E0)] font-bold break-words block">{currentProject.specs.database}</span>
                 </div>
-                <div className="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1 overflow-hidden">
-                  <span className="text-[11px] sm:text-xs text-[var(--text-muted,#9A9E86)] uppercase block font-medium">{t.carouselSecurity}</span>
+                <div className="p-3 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
+                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)] uppercase block">{t.carouselSecurity}</span>
                   <span className="text-[var(--text-main,#E9E7E0)] font-bold break-words block">{currentProject.specs.hardwareOrSecurity}</span>
                 </div>
-                <div className="p-3 sm:p-3.5 rounded-xl sm:rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1 overflow-hidden">
-                  <span className="text-[11px] sm:text-xs text-[var(--text-muted,#9A9E86)] uppercase block font-medium">{t.carouselResilience}</span>
+                <div className="p-3 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
+                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)] uppercase block">{t.carouselResilience}</span>
                   <span className="text-[var(--primary-accent,#C6F827)] font-bold break-words block">{currentProject.specs.resilienceMetric}</span>
                 </div>
               </div>
@@ -464,7 +385,7 @@ export function ProjectCarousel() {
                   {currentProject.features.map((feat) => (
                     <span
                       key={feat}
-                      className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-xs text-[var(--text-main,#E9E7E0)]/90 flex items-center gap-1.5"
+                      className="px-2.5 py-1 rounded-lg bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-xs text-[var(--text-main,#E9E7E0)]/90 flex items-center gap-1.5"
                     >
                       <span className="size-1.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
                       <span>{feat}</span>
@@ -473,118 +394,49 @@ export function ProjectCarousel() {
                 </div>
               </div>
 
-              {/* Action Buttons Row */}
-              <div className="pt-2 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3 w-full">
-                <a
-                  href={currentProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-3 rounded-xl sm:rounded-2xl bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black text-xs uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-sm min-h-[44px]"
-                >
-                  <span>🚀 {t.carouselLiveDemo}</span>
-                </a>
-
+              {/* Action Buttons */}
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
                 <button
                   type="button"
                   onClick={() => setSelectedProject(currentProject)}
-                  className="px-4 py-3 rounded-xl sm:rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:border-[var(--primary-accent,#C6F827)] font-bold text-xs uppercase tracking-wider transition cursor-pointer min-h-[44px] flex items-center justify-center text-center"
+                  className="px-4 py-2.5 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:border-[var(--primary-accent,#C6F827)] font-bold text-xs uppercase tracking-wider transition cursor-pointer min-h-[42px] flex items-center justify-center text-center"
                 >
                   📖 {t.carouselDeepAudit}
                 </button>
 
-                <button
-                  type="button"
-                  onClick={() => handleCopyCommand(`curl -I ${currentProject.liveUrl}`)}
-                  className="px-3.5 py-3 rounded-xl sm:rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] font-mono text-xs transition cursor-pointer min-h-[44px] flex items-center justify-center text-center"
+                <a
+                  href={`https://github.com/AgustinMilesi/${currentProject.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] font-mono text-xs transition min-h-[42px] flex items-center justify-center text-center gap-1"
                 >
-                  {copiedSlug ? "✓ CURL Copiado" : "curl -I"}
-                </button>
+                  <span>💻 Código en GitHub ↗</span>
+                </a>
               </div>
             </div>
 
-            {/* Right 6 Columns: Interactive Stage Frame */}
-            <div className="lg:col-span-6 w-full min-w-0 overflow-hidden">
-              <div className="rounded-2xl p-3 sm:p-4 bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] shadow-inner space-y-4 w-full max-w-full overflow-hidden">
-                {/* Frame Title Bar */}
-                <div className="flex items-center justify-between text-xs font-mono text-slate-400 pb-2 border-b border-[var(--border-card,#1E293B)] w-full overflow-hidden">
-                  <div className="flex items-center gap-2 min-w-0 flex-1">
-                    <span className="size-2.5 rounded-full bg-red-500/70 shrink-0" />
-                    <span className="size-2.5 rounded-full bg-yellow-500/70 shrink-0" />
-                    <span className="size-2.5 rounded-full bg-green-500/70 shrink-0" />
-                    <span className="text-[var(--text-main,#E9E7E0)] ml-2 truncate text-xs block">{currentProject.liveUrl}</span>
-                  </div>
-                  <span className="text-emerald-500 dark:text-emerald-400 shrink-0 ml-2 font-semibold">HTTP 200 OK</span>
+            {/* Right 6 Columns: Real Database Schema Code Block */}
+            <div className="lg:col-span-6 w-full min-w-0">
+              <div className="rounded-2xl p-4 sm:p-5 bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] space-y-3 font-mono">
+                <div className="flex items-center justify-between pb-2 border-b border-[var(--border-card,#1E293B)] text-xs">
+                  <span className="text-[var(--primary-accent,#C6F827)] font-bold">// MODELO DE DATOS PRISMA</span>
+                  <span className="text-[11px] text-[var(--text-muted,#9A9E86)]">{currentProject.slug}</span>
                 </div>
-
-                {/* Display based on previewMode */}
-                {previewMode === "terminal" ? (
-                  <div className="p-4 rounded-xl bg-[#0A0E14] font-mono text-xs text-slate-300 space-y-2 overflow-x-auto min-h-[260px] max-w-full">
-                    <div className="text-slate-500">// Terminal Telemetry &amp; REST Schema Query</div>
-                    <div className="text-[var(--primary-accent,#C6F827)] break-all">$ curl -X GET &quot;{currentProject.liveUrl}/api/health&quot;</div>
-                    <div className="text-slate-400 font-mono text-[11px] leading-relaxed break-all">
-                      {`{
-  "status": "operational",
-  "node": "LATAM-01",
-  "platform": "${currentProject.slug}",
-  "engine": "${currentProject.specs.engine}",
-  "uptime": "99.99%",
-  "latency": "38ms"
-}`}
-                    </div>
-                    <div className="text-[var(--primary-accent,#C6F827)] pt-2 break-all">$ git remote get-url origin</div>
-                    <div className="text-slate-400 break-all">https://github.com/AgustinMilesi/{currentProject.id}</div>
-                  </div>
-                ) : (
-                  <div className={`mx-auto rounded-xl bg-[#0A0E14] border border-[#1E293B] p-4 sm:p-5 space-y-4 transition-all w-full max-w-full overflow-hidden ${
-                    previewMode === "tablet" ? "max-w-sm" : "w-full"
-                  }`}>
-                    {/* Simulated App Header */}
-                    <div className="flex items-center justify-between pb-3 border-b border-[#1E293B]">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <div className="size-6 rounded-lg bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] flex items-center justify-center font-black text-[10px] shrink-0">
-                          V
-                        </div>
-                        <span className="font-bold text-xs text-white truncate">{currentProject.slug}</span>
-                      </div>
-                      <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full shrink-0">
-                        Live Session
-                      </span>
-                    </div>
-
-                    {/* Simulated Content Dashboard */}
-                    <div className="space-y-3">
-                      <div className="p-3 rounded-xl bg-[#121824] border border-[#1E293B] space-y-1">
-                        <span className="text-[10px] font-mono text-slate-400 uppercase">Propósito Operativo</span>
-                        <p className="text-xs text-slate-200">{currentProject.tagline}</p>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-2 text-[10px] font-mono">
-                        <div className="p-2.5 rounded-lg bg-[#121824] border border-[#1E293B]">
-                          <span className="text-slate-500 block">DB LATENCY</span>
-                          <span className="text-white font-bold">&lt; 15ms</span>
-                        </div>
-                        <div className="p-2.5 rounded-lg bg-[#121824] border border-[#1E293B]">
-                          <span className="text-slate-500 block">RESILIENCE</span>
-                          <span className="text-[var(--primary-accent,#C6F827)] font-bold">100% Offline</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <pre className="overflow-x-auto text-[11px] text-slate-300 leading-relaxed font-mono p-3 bg-[#06090E] rounded-xl max-h-[260px] border border-[#161F30]">
+                  <code>{currentProject.schemaSnippet}</code>
+                </pre>
+                <div className="pt-1 flex items-center justify-between text-[11px] text-[var(--text-muted,#9A9E86)]">
+                  <span>Arquitectura: {currentProject.specs.database}</span>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(currentProject)}
+                    className="text-[var(--primary-accent,#C6F827)] hover:underline cursor-pointer"
+                  >
+                    Ver análisis completo →
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Carousel Bottom Keyboard Navigation Hint (Desktop only) */}
-        <div className="hidden sm:flex flex-wrap items-center justify-between text-xs font-mono text-[var(--text-muted,#9A9E86)] pt-2 border-t border-[var(--border-card,#1E293B)]">
-          <div className="flex items-center gap-4">
-            <span>Navegación: <kbd className="px-1.5 py-0.5 rounded bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)]">←</kbd> <kbd className="px-1.5 py-0.5 rounded bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)]">→</kbd></span>
-            <span>Salto directo: <kbd className="px-1.5 py-0.5 rounded bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)]">1-4</kbd></span>
-            <span>Inspección: <kbd className="px-1.5 py-0.5 rounded bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)]">Espacio</kbd></span>
-          </div>
-          <div>
-            <span>Plataforma {currentIndex + 1} de {ECOSYSTEM_PROJECTS.length}</span>
           </div>
         </div>
       </div>

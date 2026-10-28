@@ -62,16 +62,16 @@ export function Navbar() {
         {/* Action Controls */}
         <div className="flex items-center gap-3">
           <a
-            href="#manifiesto"
+            href="#proyectos"
             className="hidden sm:inline-block text-xs font-mono text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] transition-colors px-3 py-2"
           >
-            {t.navManifesto}
+            Proyectos
           </a>
           <a
-            href="#simulador"
+            href="#trayectoria"
             className="hidden md:inline-block text-xs font-mono text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] transition-colors px-3 py-2"
           >
-            {t.navPosSim}
+            Trayectoria
           </a>
           <PreferencesControls />
           <a
@@ -104,7 +104,7 @@ export function Navbar() {
         <div className="lg:hidden border-t border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] px-4 py-6 space-y-4 font-mono text-sm">
           <div className="space-y-1">
             <span className="text-xs uppercase text-[var(--text-muted,#9A9E86)] tracking-widest block px-2">
-              Plataformas Insignia
+              Plataformas
             </span>
             {subBrands.map((brand) => (
               <a
@@ -121,18 +121,18 @@ export function Navbar() {
 
           <div className="pt-4 border-t border-[var(--border-card,#1E293B)] space-y-2">
             <a
-              href="#manifiesto"
+              href="#proyectos"
               onClick={() => setMobileMenuOpen(false)}
               className="block p-3 rounded-lg hover:bg-[var(--bg-card,#121824)] text-[var(--text-muted,#9A9E86)] min-h-[44px] flex items-center"
             >
-              // MANIFIESTO
+              Proyectos
             </a>
             <a
-              href="#simulador"
+              href="#trayectoria"
               onClick={() => setMobileMenuOpen(false)}
               className="block p-3 rounded-lg hover:bg-[var(--bg-card,#121824)] text-[var(--text-muted,#9A9E86)] min-h-[44px] flex items-center"
             >
-              // CAJA POS
+              Trayectoria
             </a>
             <a
               href="#contacto"

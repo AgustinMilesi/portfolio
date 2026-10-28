@@ -41,15 +41,14 @@ export function TrayectoriaTimeline() {
   ];
 
   return (
-    <section id="trayectoria" className="py-16 sm:py-24 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="trayectoria" className="py-12 sm:py-16 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Header */}
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-xs font-mono text-[var(--primary-accent,#C6F827)] font-semibold">
-            <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[var(--bg-card,#121824)] text-[var(--primary-accent,#C6F827)] border border-[var(--border-card,#1E293B)]">
             <span>{t.timelineBadge}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)]">
+          <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)]">
             {t.timelineTitle}
           </h2>
           <p className="text-sm text-[var(--text-muted,#9A9E86)] max-w-2xl">
@@ -58,23 +57,23 @@ export function TrayectoriaTimeline() {
         </div>
 
         {/* Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {steps.map((st, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-3xl bg-[var(--bg-card,#121824)] border-2 border-[var(--border-card,#1E293B)] flex flex-col justify-between space-y-4 hover:border-[var(--primary-accent,#C6F827)]/60 transition-colors group shadow-sm"
+              className="p-5 sm:p-6 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] flex flex-col justify-between space-y-4 hover:border-[var(--primary-accent,#C6F827)]/60 transition-colors group shadow-sm"
             >
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono text-[var(--primary-accent,#C6F827)] font-bold">
                     {st.period}
                   </span>
-                  <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] text-[var(--text-muted,#9A9E86)]">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] text-[var(--text-muted,#9A9E86)]">
                     {st.tag}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)] group-hover:text-[var(--primary-accent,#C6F827)] transition-colors leading-tight">
+                <h3 className="text-base font-bold uppercase tracking-tight text-[var(--text-main,#E9E7E0)] group-hover:text-[var(--primary-accent,#C6F827)] transition-colors leading-snug">
                   {st.title}
                 </h3>
 
@@ -82,14 +81,9 @@ export function TrayectoriaTimeline() {
                   {st.role}
                 </p>
 
-                <p className="text-xs text-[var(--text-main,#E9E7E0)]/85 leading-relaxed font-normal pt-1">
+                <p className="text-xs text-[var(--text-main,#E9E7E0)]/85 leading-relaxed pt-1">
                   {st.description}
                 </p>
-              </div>
-
-              <div className="pt-4 border-t border-[var(--border-card,#1E293B)] flex items-center justify-between text-xs font-mono text-[var(--text-muted,#9A9E86)]">
-                <span>{t.timelineStage} 0{idx + 1}</span>
-                <span className="text-[var(--primary-accent,#C6F827)] font-bold">{t.timelineDone}</span>
               </div>
             </div>
           ))}
