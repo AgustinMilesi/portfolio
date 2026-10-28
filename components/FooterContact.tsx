@@ -17,15 +17,16 @@ export function FooterContact() {
 
   useGSAP(() => {
     gsap.from(".footer-card", {
-      y: 30,
+      y: 25,
       opacity: 0,
-      stagger: 0.12,
-      duration: 0.75,
+      stagger: 0.1,
+      duration: 0.65,
       ease: "power2.out",
+      clearProps: "all",
       scrollTrigger: {
         trigger: footerRef.current,
-        start: "top 85%",
-        toggleActions: "play none none none",
+        start: "top 88%",
+        once: true,
       },
     });
   }, { scope: footerRef });
@@ -43,8 +44,8 @@ export function FooterContact() {
   };
 
   return (
-    <footer ref={footerRef} id="contacto" className="bg-[#000000] border-t border-[#252525] pt-14 sm:pt-20 pb-12 relative transition-colors">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10 sm:space-y-12">
+    <footer ref={footerRef} id="contacto" className="bg-[#000000] border-t border-[#252525] pt-12 sm:pt-16 pb-12 relative transition-colors">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8 sm:space-y-10">
         {/* Contact Header */}
         <div className="footer-card space-y-3">
           <div className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">

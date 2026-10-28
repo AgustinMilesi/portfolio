@@ -246,7 +246,7 @@ const APP_STICKERS: AppSticker[] = [
     solutionSummary: "Arqueos ciegos y lector < 50ms sin colas",
     colorClass: "bg-[#1f1f1f] text-[#ffffff] border-[#252525]",
     rotationDesktop: "-rotate-2 hover:rotate-0",
-    positionResponsive: "top-2 -left-1 sm:top-8 sm:-left-6 md:-left-10 lg:-left-12",
+    positionResponsive: "top-2 -left-2 sm:top-6 sm:-left-12 md:-left-20 lg:-left-26",
   },
   {
     id: "inbox",
@@ -255,7 +255,7 @@ const APP_STICKERS: AppSticker[] = [
     solutionSummary: "Ingesta segura y webhooks firmados HMAC",
     colorClass: "bg-[#1f1f1f] text-[#ffffff] border-[#252525]",
     rotationDesktop: "rotate-2 hover:rotate-0",
-    positionResponsive: "top-6 -right-1 sm:top-12 sm:-right-6 md:-right-10 lg:-right-12",
+    positionResponsive: "top-4 -right-2 sm:top-8 sm:-right-12 md:-right-20 lg:-right-26",
   },
   {
     id: "cargo",
@@ -264,7 +264,7 @@ const APP_STICKERS: AppSticker[] = [
     solutionSummary: "Control contenedores y alerta demurrage",
     colorClass: "bg-[#1f1f1f] text-[#ffffff] border-[#252525]",
     rotationDesktop: "-rotate-1 hover:rotate-0",
-    positionResponsive: "bottom-24 -left-1 sm:bottom-28 sm:-left-6 md:-left-8 lg:-left-10",
+    positionResponsive: "bottom-16 -left-2 sm:bottom-22 sm:-left-10 md:-left-18 lg:-left-22",
   },
   {
     id: "pocket",
@@ -273,7 +273,7 @@ const APP_STICKERS: AppSticker[] = [
     solutionSummary: "Registro gastos en 2s con SQLite local",
     colorClass: "bg-[#1f1f1f] text-[#ffffff] border-[#252525]",
     rotationDesktop: "rotate-1 hover:rotate-0",
-    positionResponsive: "bottom-20 -right-1 sm:bottom-24 sm:-right-6 md:-right-8 lg:-right-10",
+    positionResponsive: "bottom-14 -right-2 sm:bottom-18 sm:-right-10 md:-right-18 lg:-right-22",
   },
 ];
 
@@ -292,176 +292,105 @@ export function ArchEcosystemStage() {
     setActiveAppId(id);
   }, []);
 
-  // GSAP 1. Scroll-Triggered Reveal & Organic Floating Physics
+  // GSAP: Scroll-Triggered Reveal with clearProps to avoid inline style lock
   useGSAP(() => {
     // 1. Heading scroll-in
     gsap.from(".ecosystem-heading", {
-      y: 30,
+      y: 20,
       opacity: 0,
-      duration: 0.75,
+      duration: 0.6,
       ease: "power2.out",
+      clearProps: "all",
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 82%",
-        toggleActions: "play none none none",
+        start: "top 88%",
+        once: true,
       },
     });
 
-    // 2. Arch + Stickers Kinetic Orbital Spring Entrance
+    // 2. Arch + Stickers Choreographed Entrance
     if (archRef.current) {
       const archTl = gsap.timeline({
         scrollTrigger: {
           trigger: archRef.current,
-          start: "top 82%",
-          toggleActions: "play none none none",
+          start: "top 88%",
+          once: true,
         },
       });
 
       archTl
         .from(archRef.current, {
-          y: 60,
-          scale: 0.92,
+          y: 35,
+          scale: 0.95,
           opacity: 0,
-          duration: 0.9,
+          duration: 0.7,
           ease: "power3.out",
+          clearProps: "all",
         })
-        .from(
-          ".sticker-retail",
+        .fromTo(
+          ".app-sticker",
           {
-            x: -55,
-            y: 25,
-            rotation: -18,
-            scale: 0.35,
+            scale: 0.7,
             opacity: 0,
-            duration: 0.75,
-            ease: "back.out(2)",
+            y: 15,
           },
-          "-=0.45"
-        )
-        .from(
-          ".sticker-inbox",
           {
-            x: 55,
-            y: 25,
-            rotation: 18,
-            scale: 0.35,
-            opacity: 0,
-            duration: 0.75,
-            ease: "back.out(2)",
+            scale: 1,
+            opacity: 1,
+            y: 0,
+            stagger: 0.08,
+            duration: 0.5,
+            ease: "back.out(1.8)",
+            clearProps: "all",
           },
-          "-=0.6"
-        )
-        .from(
-          ".sticker-cargo",
-          {
-            x: -55,
-            y: 25,
-            rotation: -14,
-            scale: 0.35,
-            opacity: 0,
-            duration: 0.75,
-            ease: "back.out(2)",
-          },
-          "-=0.6"
-        )
-        .from(
-          ".sticker-pocket",
-          {
-            x: 55,
-            y: 25,
-            rotation: 14,
-            scale: 0.35,
-            opacity: 0,
-            duration: 0.75,
-            ease: "back.out(2)",
-          },
-          "-=0.6"
+          "-=0.25"
         );
     }
 
     // 3. Subtle glow parallax on scroll
     gsap.to(".arch-glow", {
-      y: -25,
+      y: -15,
       ease: "none",
       scrollTrigger: {
         trigger: archRef.current,
         start: "top bottom",
         end: "bottom top",
-        scrub: 1.2,
+        scrub: 1,
       },
     });
 
     // 4. Showcase card scroll reveal
     if (showcaseRef.current) {
       gsap.from(showcaseRef.current, {
-        y: 40,
+        y: 25,
         opacity: 0,
-        duration: 0.8,
+        duration: 0.65,
         ease: "power2.out",
+        clearProps: "all",
         scrollTrigger: {
           trigger: showcaseRef.current,
-          start: "top 88%",
-          toggleActions: "play none none none",
+          start: "top 90%",
+          once: true,
         },
       });
     }
-
-    // 5. Organic floating badges physics (continuous gentle breathing)
-    gsap.to(".sticker-retail", {
-      y: -7,
-      rotation: "-=1.5",
-      duration: 2.8,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    });
-
-    gsap.to(".sticker-inbox", {
-      y: 6,
-      rotation: "+=1.2",
-      duration: 3.2,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 0.4,
-    });
-
-    gsap.to(".sticker-cargo", {
-      y: -6,
-      rotation: "+=1.3",
-      duration: 2.6,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 0.8,
-    });
-
-    gsap.to(".sticker-pocket", {
-      y: 7,
-      rotation: "-=1.4",
-      duration: 3.0,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-      delay: 0.3,
-    });
   }, { scope: containerRef });
 
-  // GSAP 2. Tactile Transition when switching between Apps
+  // Tactile Transition when switching between Apps
   useGSAP(() => {
     if (!showcaseRef.current) return;
     gsap.fromTo(
       showcaseRef.current,
-      { opacity: 0.7, y: 15, scale: 0.985 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.5)" }
+      { opacity: 0.75, y: 12, scale: 0.99 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power2.out", clearProps: "transform,opacity" }
     );
   }, { dependencies: [activeAppId], scope: containerRef });
 
   return (
-    <section ref={containerRef} id="proyectos" className="py-14 sm:py-24 border-b border-[#252525] bg-[#060606] relative transition-colors w-full max-w-full overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-14 w-full max-w-full">
+    <section ref={containerRef} id="proyectos" className="pt-8 pb-12 sm:pt-12 sm:pb-16 border-b border-[#252525] bg-[#060606] relative transition-colors w-full max-w-full overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8 w-full max-w-full">
         {/* Section Heading */}
-        <div className="ecosystem-heading text-center space-y-3 max-w-3xl mx-auto">
+        <div className="ecosystem-heading text-center space-y-2.5 max-w-3xl mx-auto">
           <div className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
             [ ECOSISTEMA EN PRODUCCIÓN · VOUT ]
           </div>
@@ -476,20 +405,20 @@ export function ArchEcosystemStage() {
         </div>
 
         {/* Monumental Central Arch Stage Container with Floating Stickers */}
-        <div className="relative mx-auto max-w-4xl min-h-[440px] sm:min-h-[520px] flex items-center justify-center w-full px-2 sm:px-4">
+        <div className="relative mx-auto w-full max-w-[270px] sm:max-w-[340px] md:max-w-[420px] flex items-center justify-center my-1 sm:my-3">
           {/* The Arch Frame */}
-          <div ref={archRef} className="w-full max-w-[270px] sm:max-w-[380px] md:max-w-[450px] h-[400px] sm:h-[480px] md:h-[500px] rounded-t-full bg-gradient-to-b from-[#1f1f1f] via-[#161616] to-[#060606] border-t-2 border-x-2 border-[#252525] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
+          <div ref={archRef} className="w-full h-[350px] sm:h-[430px] md:h-[470px] rounded-t-full bg-gradient-to-b from-[#1f1f1f] via-[#161616] to-[#060606] border-t-2 border-x-2 border-[#252525] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
             {/* Subtle glow behind Agustín */}
-            <div className="arch-glow absolute bottom-12 inset-x-8 h-48 bg-[#c5ff4a]/15 blur-3xl rounded-full pointer-events-none" />
+            <div className="arch-glow absolute bottom-12 inset-x-8 h-44 bg-[#c5ff4a]/15 blur-3xl rounded-full pointer-events-none" />
 
             {/* Agustín Milesi Cutout Portrait */}
             <div className="relative z-10 w-full flex flex-col items-center justify-end select-none">
-              <div className="relative w-full max-w-[250px] sm:max-w-[340px] md:max-w-[380px] h-[300px] sm:h-[370px] md:h-[390px] flex items-end justify-center">
+              <div className="relative w-full max-w-[250px] sm:max-w-[320px] md:max-w-[370px] h-[270px] sm:h-[340px] md:h-[370px] flex items-end justify-center">
                 <Image
                   src={portraitImg}
                   alt="Agustín Milesi · VOUT Software Architecture"
                   priority
-                  className="w-auto h-full max-h-[390px] object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.85)] filter contrast-105"
+                  className="w-auto h-full max-h-[370px] object-contain object-bottom drop-shadow-[0_15px_30px_rgba(0,0,0,0.85)] filter contrast-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#060606] via-transparent to-transparent opacity-60 pointer-events-none" />
               </div>
@@ -524,7 +453,7 @@ export function ArchEcosystemStage() {
             <div className="w-full h-1 bg-[#252525]" />
           </div>
 
-          {/* Floating App Stickers around Agustín (Mobile & Desktop) */}
+          {/* Floating App Stickers directly hugging Agustín's Arch (Always visible with CSS keyframe floating) */}
           {APP_STICKERS.map((stk) => {
             const isSelected = stk.id === activeAppId;
             return (
@@ -535,29 +464,29 @@ export function ArchEcosystemStage() {
                 className={`app-sticker sticker-${stk.id} flex flex-col absolute ${stk.positionResponsive} ${stk.rotationDesktop} transition-all duration-300 transform cursor-pointer select-none text-left z-20 ${
                   isSelected
                     ? "scale-105 sm:scale-110 z-30"
-                    : "hover:scale-105 opacity-90 hover:opacity-100"
+                    : "hover:scale-105 opacity-95 hover:opacity-100"
                 }`}
                 aria-label={`Seleccionar aplicación: ${stk.name}`}
               >
-                <div className={`p-2.5 sm:p-3 rounded-[4px] border ${
+                <div className={`float-${stk.id} p-1.5 sm:p-2.5 md:p-3 rounded-[4px] border transition-all ${
                   isSelected
-                    ? "bg-[#1f1f1f] text-[#c5ff4a] border-[#c5ff4a] shadow-[0_0_8px_rgba(197,255,74,0.45)]"
-                    : "bg-[#1f1f1f] text-[#ffffff] border-[#252525]"
-                } font-mono max-w-[130px] sm:max-w-[170px] md:max-w-[210px]`}>
+                    ? "bg-[#1f1f1f] text-[#c5ff4a] border-[#c5ff4a] shadow-[0_0_8px_rgba(197,255,74,0.45)] ring-1 ring-[#c5ff4a]"
+                    : "bg-[#1f1f1f] text-[#ffffff] border-[#252525] hover:border-[#313131]"
+                } font-mono w-[105px] sm:w-[155px] md:w-[195px]`}>
                   <div className="flex items-center justify-between gap-1">
-                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-tight leading-none">
+                    <span className="text-[9.5px] sm:text-xs font-bold uppercase tracking-tight leading-none">
                       {stk.name}
                     </span>
                     {isSelected && (
                       <span className="size-1.5 sm:size-2 rounded-full bg-[#c5ff4a] animate-ping shrink-0" />
                     )}
                   </div>
-                  <span className={`text-[9px] sm:text-[10px] font-sans font-medium block mt-1 uppercase tracking-[0.18em] leading-tight ${
+                  <span className={`text-[8px] sm:text-[9.5px] font-sans font-medium block mt-1 uppercase tracking-[0.16em] leading-tight ${
                     isSelected ? "text-[#c5ff4a]" : "text-[#7a7a7a]"
                   }`}>
                     {stk.role}
                   </span>
-                  <span className="text-[8px] sm:text-[9.5px] block mt-1 text-[#e5e5e5]/80 leading-snug font-sans line-clamp-2">
+                  <span className="hidden sm:block text-[8px] sm:text-[9px] mt-1 text-[#e5e5e5]/80 leading-snug font-sans line-clamp-2">
                     {stk.solutionSummary}
                   </span>
                 </div>
@@ -566,8 +495,30 @@ export function ArchEcosystemStage() {
           })}
         </div>
 
+        {/* Quick App Selector Bar — bridges the Arch to Showcase Card, removing dead space */}
+        <div className="flex items-center justify-center gap-2 flex-wrap pt-2 pb-1">
+          {APP_STICKERS.map((stk) => {
+            const isSelected = stk.id === activeAppId;
+            return (
+              <button
+                key={stk.id}
+                type="button"
+                onClick={() => handleSelectApp(stk.id)}
+                className={`px-3 py-1.5 rounded-[4px] border font-mono text-[11px] sm:text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2 ${
+                  isSelected
+                    ? "bg-[#1f1f1f] text-[#c5ff4a] border-[#c5ff4a] shadow-[0_0_8px_rgba(197,255,74,0.45)] ring-1 ring-[#c5ff4a]"
+                    : "bg-[#161616] text-[#7a7a7a] border-[#252525] hover:text-[#ffffff] hover:border-[#313131]"
+                }`}
+              >
+                <span className="font-bold">{stk.name}</span>
+                <span className="hidden sm:inline text-[10px] text-[#7a7a7a]">[{stk.role}]</span>
+              </button>
+            );
+          })}
+        </div>
+
         {/* Selected App Detail & Architectural Solution Showcase */}
-        <div ref={showcaseRef} className="p-6 sm:p-10 rounded-none bg-[#1f1f1f] border border-[#252525] space-y-6 sm:space-y-8 w-full max-w-full">
+        <div ref={showcaseRef} className="p-5 sm:p-8 md:p-10 rounded-none bg-[#1f1f1f] border border-[#252525] space-y-6 sm:space-y-8 w-full max-w-full">
           {/* Header of Active App */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#252525]">
             <div className="space-y-1">

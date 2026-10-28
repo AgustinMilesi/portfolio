@@ -17,14 +17,15 @@ export function TrayectoriaTimeline() {
   useGSAP(() => {
     // 1. Heading scroll reveal
     gsap.from(".timeline-heading", {
-      y: 25,
+      y: 20,
       opacity: 0,
-      duration: 0.7,
+      duration: 0.6,
       ease: "power2.out",
+      clearProps: "all",
       scrollTrigger: {
         trigger: timelineRef.current,
-        start: "top 82%",
-        toggleActions: "play none none none",
+        start: "top 85%",
+        once: true,
       },
     });
 
@@ -34,16 +35,17 @@ export function TrayectoriaTimeline() {
     // Desktop & Tablet (>= 768px): cascade cards with physical spring snap
     mm.add("(min-width: 768px)", () => {
       gsap.from(".timeline-card", {
-        y: 40,
-        scale: 0.92,
+        y: 35,
+        scale: 0.94,
         opacity: 0,
-        stagger: 0.14,
-        duration: 0.85,
-        ease: "back.out(1.5)",
+        stagger: 0.12,
+        duration: 0.75,
+        ease: "power3.out",
+        clearProps: "all",
         scrollTrigger: {
           trigger: timelineRef.current,
-          start: "top 78%",
-          toggleActions: "play none none none",
+          start: "top 80%",
+          once: true,
         },
       });
     });
@@ -52,15 +54,16 @@ export function TrayectoriaTimeline() {
     mm.add("(max-width: 767px)", () => {
       gsap.utils.toArray<HTMLElement>(".timeline-card").forEach((card) => {
         gsap.from(card, {
-          x: -25,
+          y: 20,
           opacity: 0,
-          scale: 0.95,
-          duration: 0.65,
+          scale: 0.96,
+          duration: 0.6,
           ease: "power3.out",
+          clearProps: "all",
           scrollTrigger: {
             trigger: card,
-            start: "top 88%",
-            toggleActions: "play none none none",
+            start: "top 90%",
+            once: true,
           },
         });
       });
@@ -105,8 +108,8 @@ export function TrayectoriaTimeline() {
   ];
 
   return (
-    <section ref={timelineRef} id="trayectoria" className="py-14 sm:py-24 border-b border-[#252525] bg-[#060606] relative transition-colors">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <section ref={timelineRef} id="trayectoria" className="pt-12 pb-16 sm:pt-16 sm:pb-20 border-b border-[#252525] bg-[#060606] relative transition-colors">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
         {/* Header */}
         <div className="timeline-heading space-y-3">
           <div className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">

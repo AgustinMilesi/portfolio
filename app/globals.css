@@ -227,6 +227,40 @@ html:not(.dark) .technical-grid {
   background: var(--primary-accent);
 }
 
+/* Organic Floating Physics for Stickers (Hardware-Accelerated, zero JS conflict) */
+@keyframes stickerFloat1 {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+@keyframes stickerFloat2 {
+  0%, 100% { transform: translateY(0px) rotate(2deg); }
+  50% { transform: translateY(5px) rotate(3deg); }
+}
+
+@keyframes stickerFloat3 {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-5px) rotate(0deg); }
+}
+
+@keyframes stickerFloat4 {
+  0%, 100% { transform: translateY(0px) rotate(1deg); }
+  50% { transform: translateY(5px) rotate(2deg); }
+}
+
+.float-retail {
+  animation: stickerFloat1 3.6s ease-in-out infinite;
+}
+.float-inbox {
+  animation: stickerFloat2 4.2s ease-in-out infinite;
+}
+.float-cargo {
+  animation: stickerFloat3 3.4s ease-in-out infinite;
+}
+.float-pocket {
+  animation: stickerFloat4 3.9s ease-in-out infinite;
+}
+
 /* Animations */
 @keyframes pulseSubtle {
   0%, 100% { opacity: 1; }

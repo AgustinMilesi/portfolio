@@ -22,22 +22,26 @@ export function HeroSection() {
       opacity: 0,
       duration: 0.6,
       ease: "back.out(1.7)",
+      clearProps: "all",
     })
       .from(".hero-title-line-1", {
         yPercent: 115,
         duration: 0.85,
         ease: "power4.out",
+        clearProps: "all",
       }, "-=0.25")
       .from(".hero-title-line-2", {
         yPercent: 115,
         duration: 0.85,
         ease: "power4.out",
+        clearProps: "all",
       }, "-=0.65")
       .from(".hero-claim", {
         yPercent: 100,
         opacity: 0,
         duration: 0.7,
         ease: "power3.out",
+        clearProps: "all",
       }, "-=0.5")
       .from(".manifesto-card", {
         y: 25,
@@ -45,12 +49,13 @@ export function HeroSection() {
         stagger: 0.15,
         duration: 0.75,
         ease: "power2.out",
+        clearProps: "all",
       }, "-=0.4");
   }, { scope: heroRef });
 
   return (
     <>
-      <section ref={heroRef} className="relative pt-10 pb-16 sm:pt-16 sm:pb-24 bg-[#060606] transition-colors overflow-hidden">
+      <section ref={heroRef} className="relative pt-6 pb-10 sm:pt-12 sm:pb-12 bg-[#060606] transition-colors overflow-hidden">
         {/* Pointillist Dotted Backdrop Visual (zkPass pointillism: 1.5px white dots floating on #060606 canvas) */}
         <div className="absolute inset-0 pointer-events-none opacity-30 select-none overflow-hidden">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +69,7 @@ export function HeroSection() {
           </svg>
         </div>
 
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12 relative z-10">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8 relative z-10">
           {/* Eyebrow Bracket Label: Inter Tight 11px weight 500, 0.22em tracking, color #7a7a7a */}
           <div className="flex items-center">
             <div className="hero-badge font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
