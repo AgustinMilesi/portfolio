@@ -3,7 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import portraitImg from "../public/agustin_milesi_cutout.png";
-import { CaseStudyModal, ProjectData } from "./CaseStudyModal";
+import { ProjectData } from "./CaseStudyModal";
 import { usePreferences } from "@/components/PreferencesProvider";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -280,7 +280,6 @@ const APP_STICKERS: AppSticker[] = [
 export function ArchEcosystemStage() {
   const { t } = usePreferences();
   const [activeAppId, setActiveAppId] = useState<string>("retail");
-  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const archRef = useRef<HTMLDivElement>(null);
@@ -588,19 +587,20 @@ export function ArchEcosystemStage() {
 
               {/* Action Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
-                <button
-                  type="button"
-                  onClick={() => setSelectedProject(currentProject)}
-                  className="px-4 py-2.5 rounded-[4px] bg-[#1f1f1f] border border-[#252525] hover:border-[#c5ff4a] text-[#ffffff] font-sans font-medium text-xs uppercase tracking-[0.08em] transition cursor-pointer min-h-[42px] flex items-center justify-center text-center"
+                <a
+                  href={currentProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-[4px] bg-[#c5ff4a] text-[#000000] font-sans font-medium text-xs uppercase tracking-[0.04em] shadow-[0_0_8px_rgba(197,255,74,0.45)] hover:opacity-95 transition-all flex items-center justify-center gap-1.5 min-h-[42px] cursor-pointer"
                 >
-                  📖 {t.carouselDeepAudit}
-                </button>
+                  <span>🚀 ABRIR EN PRODUCCIÓN ↗</span>
+                </a>
 
                 <a
                   href={`https://github.com/AgustinMilesi/${currentProject.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-[4px] bg-[#1f1f1f] border border-[#252525] hover:border-[#313131] text-[#7a7a7a] hover:text-[#ffffff] font-sans font-medium text-xs uppercase tracking-[0.08em] transition min-h-[42px] flex items-center justify-center text-center gap-1"
+                  className="px-4 py-2.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#ffffff] font-sans font-medium text-xs uppercase tracking-[0.08em] transition min-h-[42px] flex items-center justify-center text-center gap-1.5"
                 >
                   <span>💻 CÓDIGO EN GITHUB ↗</span>
                 </a>
@@ -624,25 +624,13 @@ export function ArchEcosystemStage() {
                 </pre>
                 <div className="pt-1 flex items-center justify-between text-[11px] text-[#7a7a7a] font-mono">
                   <span>Stack: {currentProject.specs.engine}</span>
-                  <button
-                    type="button"
-                    onClick={() => setSelectedProject(currentProject)}
-                    className="text-[#c5ff4a] hover:underline cursor-pointer font-sans uppercase text-[11px] tracking-[0.06em]"
-                  >
-                    Ver análisis completo →
-                  </button>
+                  <span className="text-[10px] text-[#c5ff4a] font-sans uppercase tracking-[0.06em]">✓ PRODUCCIÓN ACTIVA</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Case Study Deep Audit Modal */}
-      <CaseStudyModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
     </section>
   );
 }

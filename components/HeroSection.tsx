@@ -24,25 +24,19 @@ export function HeroSection() {
       ease: "back.out(1.7)",
       clearProps: "all",
     })
-      .from(".hero-title-line-1", {
-        yPercent: 115,
+      .from(".hero-title", {
+        yPercent: 110,
         duration: 0.85,
         ease: "power4.out",
         clearProps: "all",
       }, "-=0.25")
-      .from(".hero-title-line-2", {
-        yPercent: 115,
-        duration: 0.85,
-        ease: "power4.out",
-        clearProps: "all",
-      }, "-=0.65")
       .from(".hero-claim", {
         yPercent: 100,
         opacity: 0,
         duration: 0.7,
         ease: "power3.out",
         clearProps: "all",
-      }, "-=0.5")
+      }, "-=0.45")
       .from(".manifesto-card", {
         y: 25,
         opacity: 0,
@@ -77,19 +71,15 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Display Headline: PT Serif weight 300, -0.03em tracking, tight line-height, with single italic lime accent */}
+          {/* Display Headline: Continuous inline heading in PT Serif 300 with italic lime accent */}
           <div className="space-y-3 sm:space-y-4 max-w-5xl">
             <div className="overflow-hidden">
-              <h1 className="hero-title-line-1 font-serif font-light text-3xl sm:text-5xl md:text-6xl lg:text-[76px] tracking-[-0.03em] leading-[0.92] text-[#ffffff]">
-                Software de gestión que entiende la
-              </h1>
-            </div>
-            <div className="overflow-hidden">
-              <div className="hero-title-line-2 font-serif font-light text-3xl sm:text-5xl md:text-6xl lg:text-[76px] tracking-[-0.03em] leading-[0.92]">
+              <h1 className="hero-title font-serif font-light text-3xl sm:text-5xl md:text-6xl lg:text-[76px] tracking-[-0.03em] leading-[1.04] text-[#ffffff]">
+                Software de gestión que entiende la{" "}
                 <span className="italic font-serif text-[#c5ff4a] font-normal">
                   operación.
                 </span>
-              </div>
+              </h1>
             </div>
 
             <div className="overflow-hidden pt-2 sm:pt-3">
@@ -103,7 +93,7 @@ export function HeroSection() {
           <div id="manifiesto" className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-4 border-t border-[#252525]">
             <div className="manifesto-card p-6 sm:p-8 bg-[#1f1f1f] border border-[#252525] rounded-none space-y-3 hover:border-[#313131] transition-colors">
               <div className="flex items-center justify-between">
-                <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
+                <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#c5ff4a]">
                   [ EXPERIENCIA OPERATIVA EN MOSTRADOR ]
                 </span>
                 <span className="font-mono text-[10px] text-[#7a7a7a]">B 01</span>
@@ -115,7 +105,7 @@ export function HeroSection() {
 
             <div className="manifesto-card p-6 sm:p-8 bg-[#1f1f1f] border border-[#252525] rounded-none space-y-3 hover:border-[#313131] transition-colors">
               <div className="flex items-center justify-between">
-                <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
+                <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#c5ff4a]">
                   [ EL PRINCIPIO DE INGENIERÍA VOUT ]
                 </span>
                 <span className="font-mono text-[10px] text-[#7a7a7a]">B 02</span>
