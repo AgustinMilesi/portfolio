@@ -13,7 +13,7 @@
   --bg-obsidian: #0A0E14;
   --bg-carbon: #121824;
 
-  /* Dynamic Customization Tokens */
+  /* Dynamic Customization Tokens (Default Dark) */
   --primary-accent: #C6F827;
   --primary-accent-hover: #b4e518;
   --primary-accent-text: #0A0E14;
@@ -46,52 +46,101 @@ html:not(.dark) {
   --bg-card-subtle: #f1f5f9;
   --bg-hover: #e2e8f0;
   --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-card: #e2e8f0;
+  --text-muted: #475569;
+  --border-card: #cbd5e1;
+
+  /* High-Contrast Light Mode Accents (Apple HIG compliant >= 4.5:1) */
+  --primary-accent: #3F6212;
+  --primary-accent-hover: #365314;
+  --primary-accent-text: #ffffff;
 }
 
-[data-theme="lime"] {
+/* Theme overrides in Dark Mode */
+[data-mode="dark"][data-theme="lime"],
+.dark[data-theme="lime"] {
   --primary-accent: #C6F827;
   --primary-accent-hover: #b4e518;
   --primary-accent-text: #0A0E14;
 }
 
-[data-theme="mint"] {
+[data-mode="dark"][data-theme="mint"],
+.dark[data-theme="mint"] {
   --primary-accent: #00ff88;
   --primary-accent-hover: #00e57a;
   --primary-accent-text: #0A0E14;
 }
 
-[data-theme="emerald"] {
+[data-mode="dark"][data-theme="emerald"],
+.dark[data-theme="emerald"] {
   --primary-accent: #10b981;
   --primary-accent-hover: #059669;
   --primary-accent-text: #0A0E14;
 }
 
-[data-theme="jade"] {
+[data-mode="dark"][data-theme="jade"],
+.dark[data-theme="jade"] {
   --primary-accent: #059669;
   --primary-accent-hover: #047857;
   --primary-accent-text: #ffffff;
 }
 
+/* Theme overrides in Light Mode (High Contrast for white background) */
+[data-mode="light"][data-theme="lime"],
+html:not(.dark)[data-theme="lime"] {
+  --primary-accent: #3F6212;
+  --primary-accent-hover: #365314;
+  --primary-accent-text: #ffffff;
+}
+
+[data-mode="light"][data-theme="mint"],
+html:not(.dark)[data-theme="mint"] {
+  --primary-accent: #047857;
+  --primary-accent-hover: #065f46;
+  --primary-accent-text: #ffffff;
+}
+
+[data-mode="light"][data-theme="emerald"],
+html:not(.dark)[data-theme="emerald"] {
+  --primary-accent: #059669;
+  --primary-accent-hover: #047857;
+  --primary-accent-text: #ffffff;
+}
+
+[data-mode="light"][data-theme="jade"],
+html:not(.dark)[data-theme="jade"] {
+  --primary-accent: #065f46;
+  --primary-accent-hover: #064e3b;
+  --primary-accent-text: #ffffff;
+}
+
 html, body {
-  background-color: #0A0E14;
-  color: #E9E7E0;
+  background-color: var(--bg-page);
+  color: var(--text-main);
   font-family: 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 ::selection {
-  background-color: #C6F827;
-  color: #0A0E14;
+  background-color: var(--primary-accent);
+  color: var(--primary-accent-text);
 }
 
-/* 4px Dither Matrix Simulation */
+/* 4px Dither Matrix Simulation - Adaptable */
 .dither-canvas {
   background-image: 
     radial-gradient(rgba(233, 231, 224, 0.12) 1px, transparent 1px),
     radial-gradient(rgba(198, 248, 39, 0.08) 1px, transparent 1px);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+
+[data-mode="light"] .dither-canvas,
+html:not(.dark) .dither-canvas {
+  background-image: 
+    radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+    radial-gradient(rgba(63, 98, 18, 0.07) 1px, transparent 1px);
   background-size: 8px 8px;
   background-position: 0 0, 4px 4px;
 }
@@ -101,6 +150,13 @@ html, body {
   background-image: 
     linear-gradient(to right, rgba(233, 231, 224, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(233, 231, 224, 0.03) 1px, transparent 1px);
+}
+
+[data-mode="light"] .technical-grid,
+html:not(.dark) .technical-grid {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
 }
 
 .arch-stage {
@@ -114,14 +170,14 @@ html, body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0E14;
+  background: var(--bg-page);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: var(--border-card);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C6F827;
+  background: var(--primary-accent);
 }
 
 /* Animations */

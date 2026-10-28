@@ -271,22 +271,22 @@ export function ProjectCarousel() {
   }, [selectedProject, handleNext, handlePrev, currentProject]);
 
   return (
-    <section id="proyectos" className="py-20 md:py-28 bg-[#0A0E14] border-b border-[#1E293B] relative overflow-hidden">
+    <section id="proyectos" className="py-20 md:py-28 bg-[var(--bg-page,#0A0E14)] border-b border-[var(--border-card,#1E293B)] relative overflow-hidden transition-colors">
       {/* Background Matrix */}
       <div className="absolute inset-0 dither-canvas opacity-30 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#1E293B]">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[var(--border-card,#1E293B)]">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[#121824] text-[var(--primary-accent,#C6F827)] border border-[#1E293B]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[var(--bg-card,#121824)] text-[var(--primary-accent,#C6F827)] border border-[var(--border-card,#1E293B)] shadow-xs">
               <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] animate-pulse" />
-              <span>{t.carouselBadge}</span>
+              <span className="font-semibold">{t.carouselBadge}</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#E9E7E0]">
+            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)]">
               {t.carouselTitle}
             </h2>
-            <p className="text-sm text-[#9A9E86] max-w-2xl leading-relaxed">
+            <p className="text-sm text-[var(--text-muted,#9A9E86)] max-w-2xl leading-relaxed">
               Explore cada plataforma interactuando con su simulación de hardware, esquemas de datos relacionales
               y contratos de comunicación en tiempo real.
             </p>
@@ -297,10 +297,10 @@ export function ProjectCarousel() {
             <button
               type="button"
               onClick={() => setSound(!sound)}
-              className={`px-3 py-1.5 rounded-xl border text-xs font-mono transition flex items-center gap-2 cursor-pointer ${
+              className={`px-3.5 py-2 rounded-xl border text-xs font-mono transition flex items-center gap-2 cursor-pointer min-h-[42px] ${
                 sound
-                  ? "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] border-[var(--primary-accent,#C6F827)] font-bold"
-                  : "bg-[#121824] text-slate-400 border-[#1E293B] hover:text-white"
+                  ? "bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] border-[var(--primary-accent,#C6F827)] font-bold shadow-xs"
+                  : "bg-[var(--bg-card,#121824)] text-[var(--text-muted,#9A9E86)] border-[var(--border-card,#1E293B)] hover:text-[var(--text-main,#E9E7E0)]"
               }`}
             >
               <span>{sound ? "🔊 AUDIO TÁCTIL (ON)" : "🔇 AUDIO TÁCTIL (OFF)"}</span>
@@ -311,7 +311,7 @@ export function ProjectCarousel() {
               <button
                 type="button"
                 onClick={handlePrev}
-                className="size-11 rounded-2xl bg-[#121824] border border-[#1E293B] text-[#E9E7E0] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
+                className="size-11 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
                 aria-label={t.carouselPrev}
               >
                 <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -321,7 +321,7 @@ export function ProjectCarousel() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="size-11 rounded-2xl bg-[#121824] border border-[#1E293B] text-[#E9E7E0] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
+                className="size-11 rounded-2xl bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:text-[var(--primary-accent,#C6F827)] hover:border-[var(--primary-accent,#C6F827)] flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-sm"
                 aria-label={t.carouselNext}
               >
                 <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -341,19 +341,19 @@ export function ProjectCarousel() {
                 key={project.id}
                 type="button"
                 onClick={() => handleJump(idx)}
-                className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative overflow-hidden group ${
+                className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative overflow-hidden group min-h-[44px] ${
                   isSelected
-                    ? "bg-[#121824] border-[#C6F827] shadow-lg -translate-y-0.5"
-                    : "bg-[#0D121B] border-[#1E293B] hover:border-[#334155] opacity-75 hover:opacity-100"
+                    ? "bg-[var(--bg-card,#121824)] border-[var(--primary-accent,#C6F827)] shadow-lg -translate-y-0.5"
+                    : "bg-[var(--bg-card-subtle,#0D121B)] border-[var(--border-card,#1E293B)] hover:border-[var(--primary-accent,#C6F827)]/40 opacity-75 hover:opacity-100"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${
-                    isSelected ? "bg-[#C6F827] text-[#0A0E14] font-black" : "bg-[#121824] text-slate-400"
+                  <span className={`text-xs font-mono px-2.5 py-0.5 rounded-full font-bold ${
+                    isSelected ? "bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)]" : "bg-[var(--bg-card,#121824)] text-[var(--text-muted,#9A9E86)]"
                   }`}>
                     0{idx + 1}
                   </span>
-                  <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+                  <span className="text-xs font-mono text-emerald-500 dark:text-emerald-400 flex items-center gap-1 font-semibold">
                     <span className="size-1.5 rounded-full bg-emerald-400" />
                     ONLINE
                   </span>
@@ -370,38 +370,38 @@ export function ProjectCarousel() {
         </div>
 
         {/* Monumental Active Project Showcase Card */}
-        <div className="p-6 sm:p-10 rounded-3xl bg-[#121824] border-2 border-[#1E293B] shadow-2xl relative overflow-hidden space-y-8 animate-smooth-in">
+        <div className="p-6 sm:p-10 rounded-3xl bg-[var(--bg-card,#121824)] border-2 border-[var(--border-card,#1E293B)] shadow-2xl relative overflow-hidden space-y-8 animate-smooth-in">
           {/* Top Stage Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#1E293B]">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[var(--border-card,#1E293B)]">
             <div className="flex items-center gap-3">
-              <div className="size-10 rounded-xl bg-[#0A0E14] border border-[#1E293B] flex items-center justify-center p-2 shadow-xs">
+              <div className="size-10 rounded-xl bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] flex items-center justify-center p-2 shadow-xs">
                 <svg viewBox="68 106 416 310" className="w-full h-full" fill="none">
                   <rect x="68" y="228" width="60" height="60" rx="6" fill="#E9E7E0" />
                   <rect x="132" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
                   <rect x="196" y="356" width="60" height="60" rx="6" fill="#E9E7E0" />
                   <rect x="260" y="292" width="60" height="60" rx="6" fill="#E9E7E0" />
-                  <rect x="324" y="228" width="60" height="60" rx="6" fill="#C6F827" />
-                  <rect x="390" y="166" width="46" height="46" rx="5" fill="#C6F827" />
-                  <rect x="452" y="106" width="32" height="32" rx="4" fill="#C6F827" />
+                  <rect x="324" y="228" width="60" height="60" rx="6" fill="var(--primary-accent, #C6F827)" />
+                  <rect x="390" y="166" width="46" height="46" rx="5" fill="var(--primary-accent, #C6F827)" />
+                  <rect x="452" y="106" width="32" height="32" rx="4" fill="var(--primary-accent, #C6F827)" />
                 </svg>
               </div>
               <div>
-                <span className="font-mono text-xs font-bold text-[#C6F827] uppercase tracking-wider block">
+                <span className="font-mono text-xs font-bold text-[var(--primary-accent,#C6F827)] uppercase tracking-wider block">
                   {currentProject.slug}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-black text-white">
+                <h3 className="text-xl sm:text-2xl font-black text-[var(--text-main,#E9E7E0)]">
                   {currentProject.name}
                 </h3>
               </div>
             </div>
 
             {/* Viewport Simulation Mode Selector */}
-            <div className="flex items-center p-1 rounded-xl bg-[#0A0E14] border border-[#1E293B] gap-1 text-xs font-mono">
+            <div className="flex items-center p-1 rounded-xl bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] gap-1 text-xs font-mono">
               <button
                 type="button"
                 onClick={() => setPreviewMode("desktop")}
-                className={`px-3 py-1.5 rounded-lg transition cursor-pointer ${
-                  previewMode === "desktop" ? "bg-[#1E293B] text-white font-bold" : "text-slate-400 hover:text-white"
+                className={`px-3 py-1.5 rounded-lg transition cursor-pointer min-h-[38px] ${
+                  previewMode === "desktop" ? "bg-[var(--bg-hover,#1E293B)] text-[var(--text-main,#E9E7E0)] font-bold shadow-xs" : "text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)]"
                 }`}
               >
                 💻 Escritorio
@@ -409,8 +409,8 @@ export function ProjectCarousel() {
               <button
                 type="button"
                 onClick={() => setPreviewMode("tablet")}
-                className={`px-3 py-1.5 rounded-lg transition cursor-pointer ${
-                  previewMode === "tablet" ? "bg-[#1E293B] text-white font-bold" : "text-slate-400 hover:text-white"
+                className={`px-3 py-1.5 rounded-lg transition cursor-pointer min-h-[38px] ${
+                  previewMode === "tablet" ? "bg-[var(--bg-hover,#1E293B)] text-[var(--text-main,#E9E7E0)] font-bold shadow-xs" : "text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)]"
                 }`}
               >
                 📱 Tablet
@@ -418,8 +418,8 @@ export function ProjectCarousel() {
               <button
                 type="button"
                 onClick={() => setPreviewMode("terminal")}
-                className={`px-3 py-1.5 rounded-lg transition cursor-pointer ${
-                  previewMode === "terminal" ? "bg-[#C6F827] text-[#0A0E14] font-black" : "text-slate-400 hover:text-white"
+                className={`px-3 py-1.5 rounded-lg transition cursor-pointer min-h-[38px] ${
+                  previewMode === "terminal" ? "bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black shadow-xs" : "text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)]"
                 }`}
               >
                 ⚡ Terminal API
@@ -431,40 +431,40 @@ export function ProjectCarousel() {
           <div className="grid lg:grid-cols-12 gap-8 items-start">
             {/* Left 6 Columns: Architectural Overview & Tech Specs */}
             <div className="lg:col-span-6 space-y-6">
-              <p className="text-base text-slate-300 leading-relaxed font-normal">
+              <p className="text-base text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-normal">
                 {currentProject.description}
               </p>
 
               {/* Technical Specifications Grid */}
               <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-                <div className="p-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-1">
-                  <span className="text-[10px] text-slate-500 uppercase block">{t.carouselEngine}</span>
-                  <span className="text-white font-bold">{currentProject.specs.engine}</span>
+                <div className="p-3.5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
+                  <span className="text-xs text-[var(--text-muted,#9A9E86)] uppercase block font-medium">{t.carouselEngine}</span>
+                  <span className="text-[var(--text-main,#E9E7E0)] font-bold">{currentProject.specs.engine}</span>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-1">
-                  <span className="text-[10px] text-slate-500 uppercase block">{t.carouselDatabase}</span>
-                  <span className="text-white font-bold">{currentProject.specs.database}</span>
+                <div className="p-3.5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
+                  <span className="text-xs text-[var(--text-muted,#9A9E86)] uppercase block font-medium">{t.carouselDatabase}</span>
+                  <span className="text-[var(--text-main,#E9E7E0)] font-bold">{currentProject.specs.database}</span>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-1">
-                  <span className="text-[10px] text-slate-500 uppercase block">{t.carouselSecurity}</span>
-                  <span className="text-white font-bold">{currentProject.specs.hardwareOrSecurity}</span>
+                <div className="p-3.5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
+                  <span className="text-xs text-[var(--text-muted,#9A9E86)] uppercase block font-medium">{t.carouselSecurity}</span>
+                  <span className="text-[var(--text-main,#E9E7E0)] font-bold">{currentProject.specs.hardwareOrSecurity}</span>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] space-y-1">
-                  <span className="text-[10px] text-slate-500 uppercase block">{t.carouselResilience}</span>
+                <div className="p-3.5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] space-y-1">
+                  <span className="text-xs text-[var(--text-muted,#9A9E86)] uppercase block font-medium">{t.carouselResilience}</span>
                   <span className="text-[var(--primary-accent,#C6F827)] font-bold">{currentProject.specs.resilienceMetric}</span>
                 </div>
               </div>
 
               {/* Core Features Badges */}
               <div className="space-y-2">
-                <span className="text-[11px] font-mono uppercase text-slate-400 block tracking-wider">
+                <span className="text-xs font-mono uppercase text-[var(--text-muted,#9A9E86)] block tracking-wider font-semibold">
                   {t.carouselKeySpecs}
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {currentProject.features.map((feat) => (
                     <span
                       key={feat}
-                      className="px-3 py-1.5 rounded-xl bg-[#0D121B] border border-[#1E293B] text-xs text-slate-300 flex items-center gap-1.5"
+                      className="px-3 py-1.5 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-xs text-[var(--text-main,#E9E7E0)]/90 flex items-center gap-1.5"
                     >
                       <span className="size-1.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
                       <span>{feat}</span>
@@ -479,7 +479,7 @@ export function ProjectCarousel() {
                   href={currentProject.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3.5 rounded-2xl bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] font-black text-xs uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 shadow-sm"
+                  className="px-6 py-3.5 rounded-2xl bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black text-xs uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 shadow-sm min-h-[44px]"
                 >
                   <span>🚀 {t.carouselLiveDemo}</span>
                 </a>
@@ -487,7 +487,7 @@ export function ProjectCarousel() {
                 <button
                   type="button"
                   onClick={() => setSelectedProject(currentProject)}
-                  className="px-5 py-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] text-white hover:border-[var(--primary-accent,#C6F827)] font-bold text-xs uppercase tracking-wider transition cursor-pointer"
+                  className="px-5 py-3.5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-[var(--text-main,#E9E7E0)] hover:border-[var(--primary-accent,#C6F827)] font-bold text-xs uppercase tracking-wider transition cursor-pointer min-h-[44px]"
                 >
                   📖 {t.carouselDeepAudit}
                 </button>
@@ -495,7 +495,7 @@ export function ProjectCarousel() {
                 <button
                   type="button"
                   onClick={() => handleCopyCommand(`curl -I ${currentProject.liveUrl}`)}
-                  className="px-4 py-3.5 rounded-2xl bg-[#0D121B] border border-[#1E293B] text-slate-400 hover:text-white font-mono text-xs transition cursor-pointer"
+                  className="px-4 py-3.5 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#E9E7E0)] font-mono text-xs transition cursor-pointer min-h-[44px]"
                 >
                   {copiedSlug ? "✓ CURL Copiado" : "curl -I"}
                 </button>

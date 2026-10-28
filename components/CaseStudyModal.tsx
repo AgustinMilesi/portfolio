@@ -42,19 +42,23 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/80 backdrop-blur-md animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/80 backdrop-blur-md animate-fadeIn cursor-pointer"
+      onClick={onClose}
+    >
       <div
-        className="w-full max-w-4xl max-h-[90vh] bg-[#0A0E14] border-2 border-[#1E293B] rounded-3xl shadow-2xl flex flex-col overflow-hidden text-[#E9E7E0] relative"
+        className="w-full max-w-4xl max-h-[90vh] bg-[var(--bg-page,#0A0E14)] border-2 border-[var(--border-card,#1E293B)] rounded-3xl shadow-2xl flex flex-col overflow-hidden text-[var(--text-main,#E9E7E0)] relative cursor-auto"
+        onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
       >
         {/* Modal Header */}
-        <div className="p-6 border-b border-[#1E293B] bg-[#121824] flex items-center justify-between shrink-0">
+        <div className="p-6 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-card,#121824)] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <span className="font-mono text-xs px-2.5 py-1 rounded-full bg-[#0A0E14] border border-[#1E293B] text-[#C6F827]">
+            <span className="font-mono text-xs px-2.5 py-1 rounded-full bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] text-[var(--primary-accent,#C6F827)] font-semibold">
               {project.slug}
             </span>
-            <span className="text-sm font-mono text-[#9A9E86] hidden sm:inline">
+            <span className="text-sm font-mono text-[var(--text-muted,#9A9E86)] hidden sm:inline">
               // REPORTE DE ARQUITECTURA CRÍTICA
             </span>
           </div>
@@ -62,7 +66,7 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-xl bg-[#0A0E14] border border-[#1E293B] text-[#9A9E86] hover:text-white hover:border-[#C6F827] transition-colors"
+            className="p-2.5 rounded-xl bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] text-[var(--text-muted,#9A9E86)] hover:text-[var(--text-main,#FFFFFF)] hover:border-[var(--primary-accent,#C6F827)] transition-all cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Cerrar modal"
           >
             <svg className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

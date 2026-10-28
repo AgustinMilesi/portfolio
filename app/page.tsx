@@ -8,7 +8,7 @@ import { FooterContact } from "@/components/FooterContact";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#0A0E14] text-[#E9E7E0] selection:bg-[#C6F827] selection:text-[#0A0E14]">
+    <div className="flex flex-col min-h-screen bg-[var(--bg-page,#0A0E14)] text-[var(--text-main,#E9E7E0)] selection:bg-[var(--primary-accent,#C6F827)] selection:text-[var(--primary-accent-text,#0A0E14)] transition-colors duration-200">
       {/* 1. Real-time Node Status & Latency Telemetry */}
       <TopTechnicalBar />
 

@@ -141,21 +141,21 @@ export function ArchStickerStage() {
   };
 
   return (
-    <section id="escenario" className="py-16 sm:py-24 overflow-hidden border-b border-[#1E293B] bg-[#0A0E14] relative">
+    <section id="escenario" className="py-16 sm:py-24 overflow-hidden border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors">
       {/* Background Ambience */}
       <div className="absolute inset-0 dither-canvas opacity-35 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
         {/* Section Heading Tag */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#121824] border border-[#1E293B] text-xs font-mono text-[#9A9E86]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-xs font-mono text-[var(--text-muted,#9A9E86)] shadow-xs">
             <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)] pulse-dot" />
-            <span>{t.stageBadge}</span>
+            <span className="font-semibold">{t.stageBadge}</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#E9E7E0]">
+          <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)]">
             Arquitectura Nacida para el Alto Rendimiento
           </h2>
-          <p className="text-sm sm:text-base text-[#9A9E86] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-[var(--text-muted,#9A9E86)] max-w-2xl mx-auto leading-relaxed">
             {t.stageSubtitle}
           </p>
         </div>
@@ -170,10 +170,10 @@ export function ArchStickerStage() {
                 key={cfg.id}
                 type="button"
                 onClick={() => handleSelectSticker(cfg.id)}
-                className={`px-3 py-2 rounded-xl text-xs font-mono whitespace-nowrap border transition cursor-pointer shrink-0 ${
+                className={`px-3 py-2 rounded-xl text-xs font-mono whitespace-nowrap border transition cursor-pointer shrink-0 min-h-[42px] ${
                   isSelected
-                    ? "bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] border-[var(--primary-accent,#C6F827)] font-bold shadow-sm"
-                    : "bg-[#121824] text-slate-300 border-[#1E293B]"
+                    ? "bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] border-[var(--primary-accent,#C6F827)] font-bold shadow-sm"
+                    : "bg-[var(--bg-card,#121824)] text-[var(--text-main,#E9E7E0)] border-[var(--border-card,#1E293B)]"
                 }`}
               >
                 {content.label.split("·")[0].trim()}
@@ -287,65 +287,65 @@ export function ArchStickerStage() {
         </div>
 
         {/* Detailed Technical Principle Inspector Box */}
-        <div className="max-w-4xl mx-auto rounded-3xl bg-[#121824] border-2 border-[#1E293B] p-6 sm:p-8 space-y-6 shadow-2xl animate-smooth-in">
+        <div className="max-w-4xl mx-auto rounded-3xl bg-[var(--bg-card,#121824)] border-2 border-[var(--border-card,#1E293B)] p-6 sm:p-8 space-y-6 shadow-2xl animate-smooth-in">
           {/* Header of Inspector */}
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1E293B] pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border-card,#1E293B)] pb-4">
             <div className="flex items-center gap-2">
               <span className="size-2.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--primary-accent,#C6F827)]">
                 {activeContent.category}
               </span>
             </div>
-            <span className="text-xs font-mono text-[#9A9E86] bg-[#0A0E14] px-2.5 py-1 rounded-full border border-[#1E293B]">
+            <span className="text-xs font-mono text-[var(--text-muted,#9A9E86)] bg-[var(--bg-page,#0A0E14)] px-2.5 py-1 rounded-full border border-[var(--border-card,#1E293B)]">
               {activeContent.sub}
             </span>
           </div>
 
           {/* Principle Title */}
           <div>
-            <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-black text-[var(--text-main,#E9E7E0)] uppercase tracking-tight">
               {activeContent.label}
             </h3>
           </div>
 
           {/* Two-column Comparison: Real Problem vs Engineering Solution */}
           <div className="grid sm:grid-cols-2 gap-4 text-xs">
-            <div className="p-4 rounded-2xl bg-[#0D121B] border border-red-500/20 space-y-2">
-              <span className="font-mono text-[10px] text-red-400 uppercase tracking-wider font-bold block flex items-center gap-1.5">
+            <div className="p-4 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-red-500/20 space-y-2">
+              <span className="font-mono text-xs text-red-500 dark:text-red-400 uppercase tracking-wider font-bold block flex items-center gap-1.5">
                 <span className="size-1.5 rounded-full bg-red-400" />
                 {t.stageAuditProblem}
               </span>
-              <p className="text-slate-300 leading-relaxed font-normal">
+              <p className="text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-normal">
                 {activeContent.problem}
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-[#0D121B] border border-emerald-500/20 space-y-2">
-              <span className="font-mono text-[10px] text-[var(--primary-accent,#C6F827)] uppercase tracking-wider font-bold block flex items-center gap-1.5">
+            <div className="p-4 rounded-2xl bg-[var(--bg-card-subtle,#0D121B)] border border-emerald-500/20 space-y-2">
+              <span className="font-mono text-xs text-[var(--primary-accent,#C6F827)] uppercase tracking-wider font-bold block flex items-center gap-1.5">
                 <span className="size-1.5 rounded-full bg-[var(--primary-accent,#C6F827)]" />
                 {t.stageAuditSolution}
               </span>
-              <p className="text-slate-300 leading-relaxed font-normal">
+              <p className="text-[var(--text-main,#E9E7E0)]/90 leading-relaxed font-normal">
                 {activeContent.solution}
               </p>
             </div>
           </div>
 
           {/* Live Interactive Telemetry Trigger & Terminal Output */}
-          <div className="p-4 rounded-2xl bg-[#0A0E14] border border-[#1E293B] space-y-3 font-mono text-xs">
+          <div className="p-4 rounded-2xl bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] space-y-3 font-mono text-xs">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <span className="text-slate-400 text-[11px]">
+              <span className="text-[var(--text-muted,#9A9E86)] text-xs font-semibold">
                 // TELEMETRY SIMULATION
               </span>
               <button
                 type="button"
                 onClick={handleRunSimulation}
                 disabled={simRunning}
-                className="px-4 py-2 rounded-xl bg-[var(--primary-accent,#C6F827)] text-[#0A0E14] font-black text-[11px] uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50"
+                className="px-4 py-2.5 rounded-xl bg-[var(--primary-accent,#C6F827)] text-[var(--primary-accent-text,#0A0E14)] font-black text-xs uppercase tracking-wider hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50 min-h-[42px]"
               >
                 {simRunning ? (
                   <>
-                    <svg className="animate-spin size-3" viewBox="0 0 24 24" fill="none">
+                    <svg className="animate-spin size-3.5" viewBox="0 0 24 24" fill="none">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                     </svg>
@@ -361,13 +361,13 @@ export function ArchStickerStage() {
             </div>
 
             {/* Terminal Response Screen */}
-            <div className="p-3 rounded-xl bg-[#0D121B] border border-[#1E293B] text-[11px] text-slate-300 min-h-[46px] flex items-center">
+            <div className="p-3.5 rounded-xl bg-[var(--bg-card-subtle,#0D121B)] border border-[var(--border-card,#1E293B)] text-xs text-[var(--text-main,#E9E7E0)] min-h-[48px] flex items-center">
               {simFeedback ? (
-                <span className="text-[var(--primary-accent,#C6F827)] leading-relaxed">
+                <span className="text-[var(--primary-accent,#C6F827)] leading-relaxed font-semibold">
                   &gt; {simFeedback}
                 </span>
               ) : (
-                <span className="text-slate-500">
+                <span className="text-[var(--text-muted,#9A9E86)]">
                   &gt; Press the button above to execute live architecture telemetry.
                 </span>
               )}

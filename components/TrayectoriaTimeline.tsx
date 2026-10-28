@@ -41,18 +41,18 @@ export function TrayectoriaTimeline() {
   ];
 
   return (
-    <section id="trayectoria" className="py-16 sm:py-24 border-b border-[#1E293B] bg-[#0A0E14] relative">
+    <section id="trayectoria" className="py-16 sm:py-24 border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-xs font-mono text-[var(--primary-accent,#C6F827)]">
+          <div className="flex items-center gap-2 text-xs font-mono text-[var(--primary-accent,#C6F827)] font-semibold">
             <span className="size-2 rounded-full bg-[var(--primary-accent,#C6F827)]" />
             <span>{t.timelineBadge}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[#E9E7E0]">
+          <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)]">
             {t.timelineTitle}
           </h2>
-          <p className="text-sm text-[#9A9E86] max-w-2xl">
+          <p className="text-sm text-[var(--text-muted,#9A9E86)] max-w-2xl">
             {t.timelineDesc}
           </p>
         </div>
@@ -62,34 +62,34 @@ export function TrayectoriaTimeline() {
           {steps.map((st, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-3xl bg-[#121824] border-2 border-[#1E293B] flex flex-col justify-between space-y-4 hover:border-[#C6F827]/60 transition-colors group"
+              className="p-6 rounded-3xl bg-[var(--bg-card,#121824)] border-2 border-[var(--border-card,#1E293B)] flex flex-col justify-between space-y-4 hover:border-[var(--primary-accent,#C6F827)]/60 transition-colors group shadow-sm"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-[#C6F827] font-semibold">
+                  <span className="text-xs font-mono text-[var(--primary-accent,#C6F827)] font-bold">
                     {st.period}
                   </span>
-                  <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-[#0A0E14] border border-[#1E293B] text-[#9A9E86]">
+                  <span className="text-xs font-mono font-medium px-2.5 py-0.5 rounded-full bg-[var(--bg-page,#0A0E14)] border border-[var(--border-card,#1E293B)] text-[var(--text-muted,#9A9E86)]">
                     {st.tag}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-black uppercase tracking-tight text-[#E9E7E0] group-hover:text-[#C6F827] transition-colors leading-tight">
+                <h3 className="text-lg font-black uppercase tracking-tight text-[var(--text-main,#E9E7E0)] group-hover:text-[var(--primary-accent,#C6F827)] transition-colors leading-tight">
                   {st.title}
                 </h3>
 
-                <p className="text-xs font-mono text-[#9A9E86]">
+                <p className="text-xs font-mono text-[var(--text-muted,#9A9E86)]">
                   {st.role}
                 </p>
 
-                <p className="text-xs text-[#E9E7E0]/80 leading-relaxed font-normal pt-1">
+                <p className="text-xs text-[var(--text-main,#E9E7E0)]/85 leading-relaxed font-normal pt-1">
                   {st.description}
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-[#1E293B] flex items-center justify-between text-[10px] font-mono text-[#9A9E86]">
+              <div className="pt-4 border-t border-[var(--border-card,#1E293B)] flex items-center justify-between text-xs font-mono text-[var(--text-muted,#9A9E86)]">
                 <span>{t.timelineStage} 0{idx + 1}</span>
-                <span className="text-[var(--primary-accent,#C6F827)]">{t.timelineDone}</span>
+                <span className="text-[var(--primary-accent,#C6F827)] font-bold">{t.timelineDone}</span>
               </div>
             </div>
           ))}
