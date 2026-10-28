@@ -141,11 +141,11 @@ export function ArchStickerStage() {
   };
 
   return (
-    <section id="escenario" className="py-16 sm:py-24 overflow-hidden border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors">
+    <section id="escenario" className="py-16 sm:py-24 overflow-hidden border-b border-[var(--border-card,#1E293B)] bg-[var(--bg-page,#0A0E14)] relative transition-colors w-full max-w-full">
       {/* Background Ambience */}
       <div className="absolute inset-0 dither-canvas opacity-35 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-10">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10 space-y-10 w-full max-w-full overflow-hidden">
         {/* Section Heading Tag */}
         <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--bg-card,#121824)] border border-[var(--border-card,#1E293B)] text-xs font-mono text-[var(--text-muted,#9A9E86)] shadow-xs">
@@ -183,9 +183,9 @@ export function ArchStickerStage() {
         </div>
 
         {/* Central Arch Stage Container */}
-        <div className="relative mx-auto max-w-4xl min-h-[520px] sm:min-h-[600px] flex items-center justify-center">
+        <div className="relative mx-auto max-w-4xl min-h-[500px] sm:min-h-[600px] flex items-center justify-center w-full overflow-hidden">
           {/* The Arch Background Frame */}
-          <div className="w-[320px] sm:w-[440px] md:w-[500px] h-[460px] sm:h-[540px] rounded-t-full bg-gradient-to-b from-[#161F30] via-[#121824] to-[#0A0E14] border-t-2 border-x-2 border-[#1E293B] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
+          <div className="w-full max-w-[310px] sm:max-w-[440px] md:max-w-[500px] h-[460px] sm:h-[540px] rounded-t-full bg-gradient-to-b from-[#161F30] via-[#121824] to-[#0A0E14] border-t-2 border-x-2 border-[#1E293B] relative overflow-hidden shadow-2xl flex flex-col items-center justify-end p-0">
             {/* Dither pattern fill inside the arch */}
             <div className="absolute inset-0 dither-canvas opacity-70 pointer-events-none" />
 
@@ -204,7 +204,7 @@ export function ArchStickerStage() {
 
             {/* The Cutout Portrait of Agustín Milesi */}
             <div className="relative z-10 w-full flex flex-col items-center justify-end select-none">
-              <div className="relative w-[300px] sm:w-[380px] h-[340px] sm:h-[420px] flex items-end justify-center">
+              <div className="relative w-full max-w-[290px] sm:max-w-[380px] h-[340px] sm:h-[420px] flex items-end justify-center">
                 <Image
                   src={portraitImg}
                   alt="Agustín Milesi · VOUT Software Architecture"
