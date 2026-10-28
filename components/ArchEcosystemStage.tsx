@@ -562,71 +562,46 @@ export function ArchEcosystemStage() {
             </div>
           </div>
 
-          {/* Specs (Left) & Real Prisma Schema (Right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start w-full">
-            {/* Left 6 Columns: Specs & Features */}
-            <div className="lg:col-span-6 space-y-4 w-full min-w-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
-                <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
-                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselEngine}</span>
-                  <span className="text-[#ffffff] font-medium break-words block">{currentProject.specs.engine}</span>
-                </div>
-                <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
-                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselDatabase}</span>
-                  <span className="text-[#ffffff] font-medium break-words block">{currentProject.specs.database}</span>
-                </div>
-                <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
-                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselSecurity}</span>
-                  <span className="text-[#ffffff] font-medium break-words block">{currentProject.specs.hardwareOrSecurity}</span>
-                </div>
-                <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
-                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselResilience}</span>
-                  <span className="text-[#c5ff4a] font-medium break-words block">{currentProject.specs.resilienceMetric}</span>
-                </div>
+          {/* Specs Matrix & Action Buttons */}
+          <div className="space-y-4 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs font-mono">
+              <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
+                <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselEngine}</span>
+                <span className="text-[#ffffff] font-medium break-words block">{currentProject.specs.engine}</span>
               </div>
-
-              {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
-                <a
-                  href={currentProject.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-[4px] bg-[#c5ff4a] text-[#000000] font-sans font-medium text-xs uppercase tracking-[0.04em] shadow-[0_0_8px_rgba(197,255,74,0.45)] hover:opacity-95 transition-all flex items-center justify-center gap-1.5 min-h-[42px] cursor-pointer"
-                >
-                  <span>🚀 ABRIR EN PRODUCCIÓN ↗</span>
-                </a>
-
-                <a
-                  href={`https://github.com/AgustinMilesi/${currentProject.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#ffffff] font-sans font-medium text-xs uppercase tracking-[0.08em] transition min-h-[42px] flex items-center justify-center text-center gap-1.5"
-                >
-                  <span>💻 CÓDIGO EN GITHUB ↗</span>
-                </a>
+              <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
+                <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselDatabase}</span>
+                <span className="text-[#ffffff] font-medium break-words block">{currentProject.specs.database}</span>
+              </div>
+              <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
+                <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselSecurity}</span>
+                <span className="text-[#ffffff] font-medium break-words block">{currentProject.specs.hardwareOrSecurity}</span>
+              </div>
+              <div className="p-3.5 rounded-[4px] bg-[#252525] border border-[#313131] space-y-1">
+                <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] block">{t.carouselResilience}</span>
+                <span className="text-[#c5ff4a] font-medium break-words block">{currentProject.specs.resilienceMetric}</span>
               </div>
             </div>
 
-            {/* Right 6 Columns: Code Block Panel (zkPass style: Background #252525, padding 24px, radius 4px, border #313131, JetBrains Mono) */}
-            <div className="lg:col-span-6 w-full min-w-0">
-              <div className="rounded-[4px] p-4 sm:p-5 bg-[#252525] border border-[#313131] space-y-3 font-mono">
-                <div className="flex items-center justify-between pb-2 border-b border-[#313131] text-xs">
-                  <span className="text-[#c5ff4a] font-mono text-xs uppercase tracking-[0.06em] flex items-center gap-1.5">
-                    <span className="size-1.5 rounded-full bg-[#c5ff4a]" />
-                    // MODELO DE DATOS PRISMA
-                  </span>
-                  <span className="text-[10px] font-sans uppercase tracking-[0.18em] text-[#7a7a7a] px-2 py-0.5 rounded-[2px] bg-[#1f1f1f] border border-[#313131]">
-                    {currentProject.slug}
-                  </span>
-                </div>
-                <pre className="overflow-x-auto text-[11px] text-[#e5e5e5] leading-relaxed font-mono p-3.5 bg-[#000000] rounded-[4px] max-h-[220px] border border-[#313131]">
-                  <code>{currentProject.schemaSnippet}</code>
-                </pre>
-                <div className="pt-1 flex items-center justify-between text-[11px] text-[#7a7a7a] font-mono">
-                  <span>Stack: {currentProject.specs.engine}</span>
-                  <span className="text-[10px] text-[#c5ff4a] font-sans uppercase tracking-[0.06em]">✓ PRODUCCIÓN ACTIVA</span>
-                </div>
-              </div>
+            {/* Action Buttons */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full">
+              <a
+                href={currentProject.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-[4px] bg-[#c5ff4a] text-[#000000] font-sans font-medium text-xs uppercase tracking-[0.04em] shadow-[0_0_8px_rgba(197,255,74,0.45)] hover:opacity-95 transition-all flex items-center justify-center gap-1.5 min-h-[42px] cursor-pointer"
+              >
+                <span>🚀 ABRIR EN PRODUCCIÓN ↗</span>
+              </a>
+
+              <a
+                href={`https://github.com/AgustinMilesi/${currentProject.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2.5 rounded-[4px] bg-[#252525] border border-[#313131] hover:border-[#c5ff4a] text-[#ffffff] font-sans font-medium text-xs uppercase tracking-[0.08em] transition min-h-[42px] flex items-center justify-center text-center gap-1.5"
+              >
+                <span>💻 CÓDIGO EN GITHUB ↗</span>
+              </a>
             </div>
           </div>
         </div>
