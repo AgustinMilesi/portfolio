@@ -67,7 +67,7 @@ export function HeroSection() {
           {/* Eyebrow Bracket Label: Inter Tight 11px weight 500, 0.22em tracking, color #7a7a7a */}
           <div className="flex items-center">
             <div className="hero-badge font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
-              [ TÉCNICO EN DESARROLLO DE SOFTWARE (UNER) · AUXILIAR ADMINISTRATIVO ]
+              [ TÉCNICO EN DESARROLLO DE SOFTWARE (UNER) · ESPECIALISTA EN SOLUCIONES PARA PYMES E INDIVIDUALES ]
             </div>
           </div>
 
@@ -84,7 +84,7 @@ export function HeroSection() {
 
             <div className="overflow-hidden pt-2 sm:pt-3">
               <p className="hero-claim font-sans text-sm sm:text-base text-[#e5e5e5] max-w-xl leading-[1.55] font-normal">
-                «Entra el caos. Sale el dato.» Herramientas de retail y logística diseñadas desde el mostrador para operaciones sin tolerancia a fallas.
+                «Entra el caos. Sale la solución.» Soluciones de software para PYMEs e individuos diseñadas para resolver problemas concretos con máxima confiabilidad.
               </p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export function HeroSection() {
             <div className="manifesto-card p-6 sm:p-8 bg-[#1f1f1f] border border-[#252525] rounded-none space-y-3 hover:border-[#313131] transition-colors">
               <div className="flex items-center justify-between">
                 <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#c5ff4a]">
-                  [ EXPERIENCIA OPERATIVA EN MOSTRADOR ]
+                  [ SOLUCIONES PARA PYMES E INDIVIDUALES ]
                 </span>
                 <span className="font-mono text-[10px] text-[#7a7a7a]">B 01</span>
               </div>
@@ -106,7 +106,7 @@ export function HeroSection() {
             <div className="manifesto-card p-6 sm:p-8 bg-[#1f1f1f] border border-[#252525] rounded-none space-y-3 hover:border-[#313131] transition-colors">
               <div className="flex items-center justify-between">
                 <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#c5ff4a]">
-                  [ EL PRINCIPIO DE INGENIERÍA VOUT ]
+                  [ ESTUDIO CONTINUO & INGENIERÍA ]
                 </span>
                 <span className="font-mono text-[10px] text-[#7a7a7a]">B 02</span>
               </div>

@@ -29,7 +29,7 @@ export function TrayectoriaTimeline() {
       },
     });
 
-    // 2. Responsive scroll choreography (PC grid stagger vs Cellular item-by-item)
+    // 2. Responsive scroll choreography
     const mm = gsap.matchMedia();
 
     // Desktop & Tablet (>= 768px): cascade cards with physical spring snap
@@ -78,32 +78,32 @@ export function TrayectoriaTimeline() {
       title: "Técnico Superior en Desarrollo de Software",
       role: "Universidad Nacional de Entre Ríos (UNER)",
       description:
-        "Carrera técnica superior finalizada. Formación integral en modelado de bases de datos relacionales (PostgreSQL/SQL), contratos REST, desarrollo web fullstack (TypeScript, React, Next.js) y buenas prácticas de ingeniería de software.",
+        "Carrera técnica superior finalizada. Formación integral en modelado de datos relacionales (PostgreSQL/SQL), diseño de arquitecturas de software, contratos de APIs REST, desarrollo fullstack (TypeScript, React, Next.js) y metodologías ágiles.",
       tag: "CARRERA TÉCNICA",
     },
     {
       period: "2024 — PRESENTE",
-      title: "Auxiliar Administrativo y Cajero",
-      role: "Distribuidora Mayorista de Alimentos",
+      title: "Especialización & Cursos Continuos",
+      role: "Arquitectura Cloud, Frontend Moderno & APIs",
       description:
-        "Cobranzas y pagos mediante efectivo, Posnet y Mercado Pago; conciliación de caja y cierre diario. Emisión y control de facturas y remitos; recepción de mercadería contra pedidos de proveedores y carga de precios y productos en el sistema.",
-      tag: "OPERACIÓN & CAJA",
+        "Estudio y capacitación continua en tecnologías de vanguardia: Next.js 16 con Turbopack, React 19, React Native con Expo, Prisma ORM, seguridad web bajo estándares OWASP y rendimiento frontend de alta fidelidad.",
+      tag: "CURSOS & ESTUDIO",
     },
     {
       period: "2024 — PRESENTE",
-      title: "Carga de Datos y Planillas de Gestión",
-      role: "Freelance · Excel Avanzado & Soporte IA",
+      title: "Soluciones de Software para PYMEs e Individuos",
+      role: "Desarrollo de Sistemas a Medida & Autogestión",
       description:
-        "Elaboración de planillas de cálculo avanzadas (BUSCARV, tablas dinámicas, formato condicional) para control de gastos, ventas y cuentas. Integración de herramientas de inteligencia artificial (Gemini, Claude, Copilot) como soporte analítico y operativo.",
-      tag: "DATOS & AUTOMATIZACIÓN",
+        "Creación de soluciones de software robustas orientadas a negocios y profesionales independientes: automatización de flujos de trabajo, control de stock atómico, cajas POS, auditoría financiera offline-first y portales web interactivos.",
+      tag: "SOLUCIONES PYMES",
     },
     {
-      period: "2024 — PRESENTE",
-      title: "Ecosistema VOUT · Software de Gestión",
-      role: "VOUT Retail · Cargo · Inbox · Pocket",
+      period: "2025 — EN BÚSQUEDA ACTIVA",
+      title: "Despliegue de Habilidades & Nuevos Desafíos",
+      role: "Desarrollo Full-Stack / Mobile Engineering",
       description:
-        "Creación de cuatro plataformas en producción que resuelven la operación comercial: punto de venta con arqueos ciegos, trazabilidad logística de contenedores, CRM con webhooks firmados HMAC y control de gastos offline. Stack: TypeScript, PostgreSQL y Prisma.",
-      tag: "SOFTWARE PROPIO",
+        "Con una sólida base académica y pasión por construir software limpio y resiliente, en búsqueda activa de una oportunidad donde desplegar mis habilidades técnicas, colaborar en equipo y generar impacto real.",
+      tag: "OBJETIVO PROFESIONAL",
     },
   ];
 
@@ -113,16 +113,16 @@ export function TrayectoriaTimeline() {
         {/* Header */}
         <div className="timeline-heading space-y-3">
           <div className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
-            [ TRAYECTORIA PROFESIONAL ]
+            [ FORMACIÓN & TRAYECTORIA TÉCNICA ]
           </div>
           <h2 className="font-serif font-light text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-[0.95] text-[#ffffff]">
-            De la caja y la administración al{" "}
+            Del estudio riguroso a soluciones de{" "}
             <span className="italic font-serif text-[#c5ff4a] font-normal">
-              código.
+              impacto.
             </span>
           </h2>
           <p className="font-sans text-xs sm:text-sm text-[#7a7a7a] max-w-2xl leading-relaxed">
-            Técnico Superior en Desarrollo de Software (UNER), más de 2 años de experiencia administrativa en cobranzas, facturación y caja en comercio mayorista, y desarrollador del ecosistema VOUT.
+            Especialista en soluciones de software para PYMEs e individuales. Técnico Superior en Desarrollo de Software (UNER), en constante estudio y perfeccionamiento profesional, en búsqueda de una oportunidad donde desplegar mis habilidades.
           </p>
         </div>
 

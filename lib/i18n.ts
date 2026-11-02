@@ -34,21 +34,21 @@ export const translations = {
     navContactBtn: "Let's Talk.",
 
     // Hero Section
-    heroBadge: "CRITICAL SOFTWARE ARCHITECTURE · VOUT FOUNDER",
-    heroSpec: "SPECIALIZATION: POS RETAIL · FREIGHT LOGISTICS · INBOUND CLOUD",
+    heroBadge: "SOFTWARE SOLUTIONS FOR SMBS & INDIVIDUALS",
+    heroSpec: "CONTINUOUS LEARNING · FULL-STACK ENGINEERING · SEEKING OPPORTUNITIES",
     heroH1A: "Management software that understands ",
     heroH1B: "operations.",
-    heroClaim: "«Chaos enters. Clean data leaves.»",
-    heroPillar1Title: "COUNTER OPERATIONS EXPERIENCE",
+    heroClaim: "«Chaos enters. Solutions delivered.»",
+    heroPillar1Title: "REAL-WORLD SOLUTIONS FOR SMBS & INDIVIDUALS",
     heroPillar1Desc1:
-      "The vast majority of retail and logistics software is built by engineers who have never spent eight straight hours at a checkout counter with a line of fifteen hurried customers and an unexpected internet outage.",
+      "Specialist in developing software solutions tailored to SMBs and individuals: inventory control, business management, workflow automation, and custom platforms without unnecessary friction.",
     heroPillar1Desc2:
-      "Traditional software assumes persistent connectivity and patient operators. In the real world, every second lost during checkout or container clearance is lost revenue at the counter.",
-    heroPillar2Title: "THE VOUT ENGINEERING PRINCIPLE",
+      "Focused on operational simplicity, clean interfaces, and resilient architectures that empower any business or individual to operate with complete peace of mind.",
+    heroPillar2Title: "CONTINUOUS LEARNING & TECHNICAL DISCIPLINE",
     heroPillar2Desc1:
-      "VOUT was forged directly in wholesale trade and customs logistics. We build software with resilient offline-first architecture, blind shift cash closures that eliminate discrepancies, atomic transactions, and AI vibecoding done right: with discipline, professional standards, and delivered on time and in proper form.",
+      "Higher Technician in Software Development (UNER). Dedicated to continuous learning and advanced courses, actively seeking an opportunity to deploy my technical skills and contribute to a team.",
     heroPillar2Desc2:
-      "Proprietary end-to-end typed TypeScript, strict HTTP contracts, PostgreSQL with local IndexedDB/SQLite replicas, and 100% merchant data sovereignty.",
+      "Proprietary end-to-end typed TypeScript, strict HTTP contracts, PostgreSQL with local IndexedDB/SQLite replicas, and robust production-grade architecture.",
     heroMetric1Num: "04",
     heroMetric1Label: "Flagship Platforms in Production",
     heroMetric2Num: "<45ms",
@@ -209,21 +209,21 @@ export const translations = {
     navContactBtn: "Hablemos.",
 
     // Hero Section
-    heroBadge: "ARQUITECTURA DE SOFTWARE CRÍTICO · FUNDADOR DE VOUT",
-    heroSpec: "ESPECIALIZACIÓN: POS RETAIL · FREIGHT LOGISTICS · INBOUND CLOUD",
+    heroBadge: "ESPECIALISTA EN SOLUCIONES DE SOFTWARE PARA PYMES E INDIVIDUALES",
+    heroSpec: "FORMACIÓN CONTINUA · DESARROLLO FULL-STACK · EN BÚSQUEDA DE NUEVOS DESAFÍOS",
     heroH1A: "Software de gestión que entiende la ",
     heroH1B: "operación.",
-    heroClaim: "«Entra el caos. Sale el dato.»",
-    heroPillar1Title: "EXPERIENCIA OPERATIVA EN MOSTRADOR",
+    heroClaim: "«Entra el caos. Sale la solución.»",
+    heroPillar1Title: "SOLUCIONES REALES PARA PYMES E INDIVIDUOS",
     heroPillar1Desc1:
-      "La inmensa mayoría de las herramientas de retail y logística son diseñadas por ingenieros que jamás estuvieron parados ocho horas seguidas frente a una caja registradora comercial, con una fila de quince clientes apurados y un corte imprevisto de internet.",
+      "Especialista en diseñar y construir software que resuelve necesidades reales de negocios y profesionales: control de stock, gestión comercial, automatización de tareas y plataformas a medida sin fricciones.",
     heroPillar1Desc2:
-      "El software tradicional asume conectividad perfecta y operadores pacientes. En el mundo real, cada segundo de demora en cobrar o en despachar un contenedor es dinero que se pierde en el mostrador.",
-    heroPillar2Title: "EL PRINCIPIO DE INGENIERÍA VOUT",
+      "Enfocado en la simplicidad operativa, interfaces intuitivas y arquitecturas estables que permiten a cualquier negocio o particular operar con total confiabilidad.",
+    heroPillar2Title: "ESTUDIO CONSTANTE & DISCIPLINA TÉCNICA",
     heroPillar2Desc1:
-      "VOUT nació en el comercio mayorista y la logística aduanera de Buenos Aires. Construimos software con arquitectura offline-first resiliente, arqueos ciegos de caja que eliminan descuadres, transacciones atómicas y vibecoding profesional: con buenos modos, tiempo y forma.",
+      "Técnico Superior en Desarrollo de Software (UNER). En constante estudio, actualización y perfeccionamiento mediante cursos especializados, en búsqueda activa de una oportunidad donde desplegar mis habilidades y seguir evolucionando profesionalmente.",
     heroPillar2Desc2:
-      "Código propio tipado en TypeScript de punta a punta, contratos HTTP estrictos, bases de datos PostgreSQL con réplicas locales en IndexedDB/SQLite y 100% de soberanía sobre los datos del comercio.",
+      "Código propio tipado en TypeScript de punta a punta, contratos HTTP estrictos, bases de datos PostgreSQL con réplicas locales en IndexedDB/SQLite y 100% de soberanía sobre los datos del negocio.",
     heroMetric1Num: "04",
     heroMetric1Label: "Plataformas Insignia en Producción",
     heroMetric2Num: "<45ms",
@@ -384,19 +384,19 @@ export const translations = {
     navContactBtn: "Vamos Conversar.",
 
     // Hero Section
-    heroBadge: "ARQUITETURA DE SOFTWARE CRÍTICO · FUNDADOR DA VOUT",
-    heroSpec: "ESPECIALIZAÇÃO: POS RETAIL · FREIGHT LOGISTICS · INBOUND CLOUD",
+    heroBadge: "ESPECIALISTA EM SOLUÇÕES DE SOFTWARE PARA PMEs E INDIVÍDUOS",
+    heroSpec: "FORMAÇÃO CONTÍNUA · DESENVOLVIMENTO FULL-STACK · EM BUSCA DE OPORTUNIDADES",
     heroH1A: "Software de gestão que entende a ",
     heroH1B: "operação.",
-    heroClaim: "«Entra o caos. Sai o dado.»",
-    heroPillar1Title: "EXPERIÊNCIA OPERACIONAL NO BALCÃO",
+    heroClaim: "«Entra o caos. Sai a solução.»",
+    heroPillar1Title: "SOLUÇÕES REAIS PARA PMEs E INDIVÍDUOS",
     heroPillar1Desc1:
-      "A grande maioria dos softwares de varejo e logística é projetada por engenheiros que nunca passaram oito horas seguidas atrás de um caixa, com fila de quinze clientes apressados e queda repentina de internet.",
+      "Especialista em projetar e construir software adaptado às necessidades reais de empresas e profissionais: estoque, gestão comercial, automação de processos e plataformas sob medida.",
     heroPillar1Desc2:
-      "O software tradicional presume conectividade contínua e operadores pacientes. No mundo real, cada segundo de atraso no pagamento ou desembaraço é receita perdida no balcão.",
-    heroPillar2Title: "O PRINCÍPIO DE ENGENHARIA VOUT",
+      "Focado em simplicidade operacional, interfaces intuitivas e arquiteturas resilientes que permitem que qualquer negócio ou indivíduo opere com total confiança.",
+    heroPillar2Title: "ESTUDO CONSTANTE & DISCIPLINA TÉCNICA",
     heroPillar2Desc1:
-      "VOUT nasceu no comércio atacadista e na logística aduaneira. Construímos software com arquitetura offline-first resiliente, fechamentos cegos de caixa que eliminam discrepâncias e vibecoding profissional: com bons modos, tempo e forma.",
+      "Técnico Superior em Desenvolvimento de Software (UNER). Sempre em estudo contínuo e aprimoramento por meio de cursos especializados, em busca ativa de uma oportunidade onde aplicar minhas habilidades.",
     heroPillar2Desc2:
       "Código em TypeScript estrito de ponta a ponta, contratos HTTP rigorosos, bancos PostgreSQL com réplicas locais em IndexedDB/SQLite e 100% de soberania sobre os dados da empresa.",
     heroMetric1Num: "04",
@@ -559,21 +559,21 @@ export const translations = {
     navContactBtn: "与我联系",
 
     // Hero Section
-    heroBadge: "关键软件架构 · VOUT 创始人",
-    heroSpec: "专长领域: POS 零售系统 · 货运物流 · 入站云服务",
+    heroBadge: "中小企业与个人定制软件解决方案专家",
+    heroSpec: "持续学习 · 全栈工程 · 积极寻求发展机会",
     heroH1A: "真正理解实体商业",
     heroH1B: "运营的软件。",
-    heroClaim: "«混乱进入。精准数据产出。»",
-    heroPillar1Title: "柜台一线运营实战经验",
+    heroClaim: "«解决复杂。交付可靠方案。»",
+    heroPillar1Title: "针对中小企业与个人的实用解决方案",
     heroPillar1Desc1:
-      "绝大多数零售和物流工具都是由从未在收银台前站过8小时的工程师开发的——面对排着十几个急躁客户的长队以及突如其来的网络中断。",
+      "专注于为中小企业和独立专业人士设计与开发软件，解决实际业务痛点：库存管理、商业管道、流程自动化与定制平台。",
     heroPillar1Desc2:
-      "传统软件默认网络恒定连接且操作员耐心。但在现实世界中，结账或清关每延迟一秒，柜台都在实实在在地损失金钱。",
-    heroPillar2Title: "VOUT 工程核心原则",
+      "注重操作简便性、直观界面和高可用架构，让企业与个人业务高效稳定运行。",
+    heroPillar2Title: "持续深造与严谨工程素养",
     heroPillar2Desc1:
-      "VOUT 诞生于批发贸易和海关物流一线。我们构建具有离线优先韧性的软件，采用杜绝账实不符的盲盘交接班、原子化事务，并以严谨、得体、按时保质的方式践行 Vibecoding 开发。",
+      "软件开发高等技术专业毕业（UNER）。始终坚持自我深造与前沿技术学习，积极寻找能充分施展技术实力、持续进化并为团队创造价值的职业机遇。",
     heroPillar2Desc2:
-      "全链路严格 TypeScript 类型化、严苛的 HTTP 契约、PostgreSQL 搭配本地 IndexedDB/SQLite 副本，实现商业数据 100% 自主掌控。",
+      "端到端严格 TypeScript 类型化、严苛的 HTTP 契约、PostgreSQL 搭配本地 IndexedDB/SQLite 副本，实现高标准生产级架构。",
     heroMetric1Num: "04",
     heroMetric1Label: "在产旗舰平台",
     heroMetric2Num: "<45ms",
