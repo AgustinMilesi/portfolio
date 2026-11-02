@@ -78,32 +78,32 @@ export function TrayectoriaTimeline() {
       title: "Técnico Superior en Desarrollo de Software",
       role: "Universidad Nacional de Entre Ríos (UNER)",
       description:
-        "Carrera técnica superior finalizada. Formación integral en modelado de datos relacionales (PostgreSQL/SQL), diseño de arquitecturas de software, contratos de APIs REST, desarrollo fullstack (TypeScript, React, Next.js) y metodologías ágiles.",
+        "Carrera técnica finalizada. Programación estructurada y orientada a objetos, modelado de bases de datos relacionales con SQL, diseño de software y desarrollo web full-stack.",
       tag: "CARRERA TÉCNICA",
     },
     {
       period: "2024 — PRESENTE",
-      title: "Especialización & Cursos Continuos",
-      role: "Arquitectura Cloud, Frontend Moderno & APIs",
+      title: "Desarrollo Web Full-Stack & APIs",
+      role: "TypeScript · Next.js · React · Node.js",
       description:
-        "Estudio y capacitación continua en tecnologías de vanguardia: Next.js 16 con Turbopack, React 19, React Native con Expo, Prisma ORM, seguridad web bajo estándares OWASP y rendimiento frontend de alta fidelidad.",
-      tag: "CURSOS & ESTUDIO",
+        "Desarrollo de aplicaciones web modernas con TypeScript, React y Next.js. Creación de APIs REST, tipado estricto, autenticación y modelado de datos con PostgreSQL y Prisma ORM.",
+      tag: "WEB & APIS",
     },
     {
       period: "2024 — PRESENTE",
-      title: "Soluciones de Software para PYMEs e Individuos",
-      role: "Desarrollo de Sistemas a Medida & Autogestión",
+      title: "Desarrollo Móvil Multiplataforma",
+      role: "React Native · Expo · SQLite",
       description:
-        "Creación de soluciones de software robustas orientadas a negocios y profesionales independientes: automatización de flujos de trabajo, control de stock atómico, cajas POS, auditoría financiera offline-first y portales web interactivos.",
-      tag: "SOLUCIONES PYMES",
+        "Desarrollo de aplicaciones móviles para Android con React Native y Expo. Implementación de bases de datos SQLite locales para persistencia offline y sincronización con APIs en la nube.",
+      tag: "MOBILE",
     },
     {
-      period: "2025 — EN BÚSQUEDA ACTIVA",
-      title: "Despliegue de Habilidades & Nuevos Desafíos",
-      role: "Desarrollo Full-Stack / Mobile Engineering",
+      period: "2024 — PRESENTE",
+      title: "Proyectos en Producción",
+      role: "Ecosistema VOUT · Electroborr · Sombrero 3D",
       description:
-        "Con una sólida base académica y pasión por construir software limpio y resiliente, en búsqueda activa de una oportunidad donde desplegar mis habilidades técnicas, colaborar en equipo y generar impacto real.",
-      tag: "OBJETIVO PROFESIONAL",
+        "Desarrollo y puesta en producción de sistemas reales: suites de gestión comercial y logística (VOUT), portal web para taller automotriz (Electroborr) y experiencia 3D interactiva con Three.js.",
+      tag: "PROYECTOS",
     },
   ];
 
@@ -113,16 +113,16 @@ export function TrayectoriaTimeline() {
         {/* Header */}
         <div className="timeline-heading space-y-3">
           <div className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#7a7a7a]">
-            [ FORMACIÓN & TRAYECTORIA TÉCNICA ]
+            [ FORMACIÓN ACADÉMICA & TRAYECTORIA ]
           </div>
           <h2 className="font-serif font-light text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-[0.95] text-[#ffffff]">
-            Del estudio riguroso a soluciones de{" "}
+            Formación técnica y proyectos de{" "}
             <span className="italic font-serif text-[#c5ff4a] font-normal">
-              impacto.
+              software.
             </span>
           </h2>
           <p className="font-sans text-xs sm:text-sm text-[#7a7a7a] max-w-2xl leading-relaxed">
-            Especialista en soluciones de software para PYMEs e individuales. Técnico Superior en Desarrollo de Software (UNER), en constante estudio y perfeccionamiento profesional, en búsqueda de una oportunidad donde desplegar mis habilidades.
+            Técnico Superior en Desarrollo de Software (UNER). Especializado en desarrollo de software para PYMEs e independientes, con tecnologías modernas de frontend, backend y mobile.
           </p>
         </div>
 

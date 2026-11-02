@@ -34,21 +34,21 @@ export const translations = {
     navContactBtn: "Let's Talk.",
 
     // Hero Section
-    heroBadge: "SOFTWARE SOLUTIONS FOR SMBS & INDIVIDUALS",
-    heroSpec: "CONTINUOUS LEARNING · FULL-STACK ENGINEERING · SEEKING OPPORTUNITIES",
-    heroH1A: "Management software that understands ",
-    heroH1B: "operations.",
-    heroClaim: "«Chaos enters. Solutions delivered.»",
-    heroPillar1Title: "REAL-WORLD SOLUTIONS FOR SMBS & INDIVIDUALS",
+    heroBadge: "SOFTWARE DEVELOPER · FULL-STACK & MOBILE",
+    heroSpec: "TECHNICAL HIGHER DEGREE (UNER) · TYPESCRIPT · NEXT.JS · POSTGRESQL",
+    heroH1A: "Software development and web ",
+    heroH1B: "applications.",
+    heroClaim: "Full-stack web and mobile development with Next.js, React Native, and PostgreSQL.",
+    heroPillar1Title: "SOLUTIONS FOR SMBS & INDIVIDUALS",
     heroPillar1Desc1:
-      "Specialist in developing software solutions tailored to SMBs and individuals: inventory control, business management, workflow automation, and custom platforms without unnecessary friction.",
+      "Web applications and management tools for businesses and independent professionals: inventory tracking, commercial portals, and tailored platforms.",
     heroPillar1Desc2:
-      "Focused on operational simplicity, clean interfaces, and resilient architectures that empower any business or individual to operate with complete peace of mind.",
-    heroPillar2Title: "CONTINUOUS LEARNING & TECHNICAL DISCIPLINE",
+      "Clear interfaces, strict typing, and stable architectures designed for reliable day-to-day operation.",
+    heroPillar2Title: "TECHNICAL EDUCATION & STACK",
     heroPillar2Desc1:
-      "Higher Technician in Software Development (UNER). Dedicated to continuous learning and advanced courses, actively seeking an opportunity to deploy my technical skills and contribute to a team.",
+      "Higher Technician in Software Development (UNER). Dedicated to continuous technical practice across modern frontend, backend, and mobile technologies.",
     heroPillar2Desc2:
-      "Proprietary end-to-end typed TypeScript, strict HTTP contracts, PostgreSQL with local IndexedDB/SQLite replicas, and robust production-grade architecture.",
+      "End-to-end typed TypeScript, Next.js, React, React Native, PostgreSQL, and schema-validated APIs.",
     heroMetric1Num: "04",
     heroMetric1Label: "Flagship Platforms in Production",
     heroMetric2Num: "<45ms",
@@ -162,17 +162,17 @@ export const translations = {
     simAuditDiff: "⚠️ DISCREPANCY AUDIT: System $",
 
     // Trayectoria
-    timelineBadge: "// FROM THE REGISTER TO THE CODE",
-    timelineTitle: "Founder's Trajectory",
-    timelineDesc: "How frontline commercial operation and daily register auditing evolved into a high-availability software architecture.",
+    timelineBadge: "// EDUCATION & PROJECTS",
+    timelineTitle: "Academic Education and Projects",
+    timelineDesc: "Technical degree at UNER, ongoing training in web and mobile stacks, and production projects.",
     timelineStage: "STAGE",
     timelineDone: "✓ COMPLETED",
 
     // Footer
-    footerBadge: "DIRECT CHANNEL WITH AGUSTÍN MILESI",
-    footerH2: "Let's talk.",
-    footerClaim: "«Chaos enters. Clean data leaves.»",
-    footerDesc: "Have a business with checkout and stock headaches, a freight operation bleeding cash in demurrage, or need mission-critical software built with precision and on time? Reach out directly.",
+    footerBadge: "CONTACT CHANNEL",
+    footerH2: "Let's connect.",
+    footerClaim: "Software development for SMBs and independent professionals.",
+    footerDesc: "Have a project or looking for a developer with solid technical foundations? Feel free to reach out directly.",
     footerEmailTitle: "OFFICIAL INBOUND EMAIL:",
     footerCopyBtn: "COPY ADDRESS",
     footerCopied: "✓ COPIED TO CLIPBOARD",
@@ -209,21 +209,21 @@ export const translations = {
     navContactBtn: "Hablemos.",
 
     // Hero Section
-    heroBadge: "ESPECIALISTA EN SOLUCIONES DE SOFTWARE PARA PYMES E INDIVIDUALES",
-    heroSpec: "FORMACIÓN CONTINUA · DESARROLLO FULL-STACK · EN BÚSQUEDA DE NUEVOS DESAFÍOS",
-    heroH1A: "Software de gestión que entiende la ",
-    heroH1B: "operación.",
-    heroClaim: "«Entra el caos. Sale la solución.»",
-    heroPillar1Title: "SOLUCIONES REALES PARA PYMES E INDIVIDUOS",
+    heroBadge: "DESARROLLADOR DE SOFTWARE · FULL-STACK & MOBILE",
+    heroSpec: "TÉCNICO SUPERIOR (UNER) · TYPESCRIPT · NEXT.JS · POSTGRESQL",
+    heroH1A: "Desarrollo de software y soluciones ",
+    heroH1B: "web.",
+    heroClaim: "Desarrollo web y móvil full-stack con Next.js, React Native y PostgreSQL.",
+    heroPillar1Title: "SOLUCIONES PARA PYMES E INDIVIDUALES",
     heroPillar1Desc1:
-      "Especialista en diseñar y construir software que resuelve necesidades reales de negocios y profesionales: control de stock, gestión comercial, automatización de tareas y plataformas a medida sin fricciones.",
+      "Aplicaciones web y herramientas de gestión para comercios y profesionales: control de stock, portales comerciales y plataformas a medida.",
     heroPillar1Desc2:
-      "Enfocado en la simplicidad operativa, interfaces intuitivas y arquitecturas estables que permiten a cualquier negocio o particular operar con total confiabilidad.",
-    heroPillar2Title: "ESTUDIO CONSTANTE & DISCIPLINA TÉCNICA",
+      "Interfaces claras, tipado estricto y arquitecturas estables diseñadas para una operación confiable.",
+    heroPillar2Title: "FORMACIÓN TÉCNICA & STACK",
     heroPillar2Desc1:
-      "Técnico Superior en Desarrollo de Software (UNER). En constante estudio, actualización y perfeccionamiento mediante cursos especializados, en búsqueda activa de una oportunidad donde desplegar mis habilidades y seguir evolucionando profesionalmente.",
+      "Técnico Superior en Desarrollo de Software (UNER). Práctica y capacitación técnica continua en desarrollo frontend, backend y mobile.",
     heroPillar2Desc2:
-      "Código propio tipado en TypeScript de punta a punta, contratos HTTP estrictos, bases de datos PostgreSQL con réplicas locales en IndexedDB/SQLite y 100% de soberanía sobre los datos del negocio.",
+      "TypeScript de punta a punta, Next.js, React, React Native, PostgreSQL y contratos de APIs validados con esquemas.",
     heroMetric1Num: "04",
     heroMetric1Label: "Plataformas Insignia en Producción",
     heroMetric2Num: "<45ms",
@@ -337,17 +337,17 @@ export const translations = {
     simAuditDiff: "⚠️ DESCUADRE DETECTADO: Sistema $",
 
     // Trayectoria
-    timelineBadge: "// DE LA CAJA AL CÓDIGO",
-    timelineTitle: "Trayectoria del Fundador",
-    timelineDesc: "La historia de cómo la experiencia real atendiendo clientes y auditando cajas registradoras se transformó en una suite de software de alta exigencia.",
+    timelineBadge: "// FORMACIÓN Y PROYECTOS",
+    timelineTitle: "Formación Académica y Proyectos",
+    timelineDesc: "Recorrido formativo en UNER, capacitación continua en tecnologías web y móviles, y desarrollo de plataformas en producción.",
     timelineStage: "ETAPA",
     timelineDone: "✓ COMPLETADO",
 
     // Footer
-    footerBadge: "CANAL DIRECTO CON AGUSTÍN MILESI",
-    footerH2: "Hablemos.",
-    footerClaim: "«Entra el caos. Sale el dato.»",
-    footerDesc: "¿Tenés un comercio con problemas de caja y stock, una operación logística que pierde dinero en demurrage, o necesitás software de misión crítica entregado en tiempo y forma? Escribime directamente.",
+    footerBadge: "CANAL DE CONTACTO",
+    footerH2: "Hablemos de tus proyectos.",
+    footerClaim: "Desarrollo de software para PYMEs e individuales.",
+    footerDesc: "¿Tenés un proyecto en mente o buscás sumar un desarrollador con base técnica sólida a tu equipo? Escribime directamente.",
     footerEmailTitle: "CORREO ELECTRÓNICO OFICIAL:",
     footerCopyBtn: "COPIAR DIRECCIÓN",
     footerCopied: "✓ COPIADO AL PORTAPAPELES",
@@ -384,21 +384,21 @@ export const translations = {
     navContactBtn: "Vamos Conversar.",
 
     // Hero Section
-    heroBadge: "ESPECIALISTA EM SOLUÇÕES DE SOFTWARE PARA PMEs E INDIVÍDUOS",
-    heroSpec: "FORMAÇÃO CONTÍNUA · DESENVOLVIMENTO FULL-STACK · EM BUSCA DE OPORTUNIDADES",
-    heroH1A: "Software de gestão que entende a ",
-    heroH1B: "operação.",
-    heroClaim: "«Entra o caos. Sai a solução.»",
-    heroPillar1Title: "SOLUÇÕES REAIS PARA PMEs E INDIVÍDUOS",
+    heroBadge: "DESENVOLVEDOR DE SOFTWARE · FULL-STACK & MOBILE",
+    heroSpec: "TÉCNICO SUPERIOR (UNER) · TYPESCRIPT · NEXT.JS · POSTGRESQL",
+    heroH1A: "Desenvolvimento de software e soluções ",
+    heroH1B: "web.",
+    heroClaim: "Desenvolvimento web e mobile full-stack com Next.js, React Native e PostgreSQL.",
+    heroPillar1Title: "SOLUÇÕES PARA PMEs E INDIVÍDUOS",
     heroPillar1Desc1:
-      "Especialista em projetar e construir software adaptado às necessidades reais de empresas e profissionais: estoque, gestão comercial, automação de processos e plataformas sob medida.",
+      "Aplicações web e ferramentas de gestão adaptadas para empresas e profissionais: controle de estoque, portais comerciais e sistemas sob medida.",
     heroPillar1Desc2:
-      "Focado em simplicidade operacional, interfaces intuitivas e arquiteturas resilientes que permitem que qualquer negócio ou indivíduo opere com total confiança.",
-    heroPillar2Title: "ESTUDO CONSTANTE & DISCIPLINA TÉCNICA",
+      "Interfaces claras, tipagem estrita e arquiteturas estáveis projetadas para operação confiável no dia a dia.",
+    heroPillar2Title: "FORMAÇÃO TÉCNICA CONTÍNUA",
     heroPillar2Desc1:
-      "Técnico Superior em Desenvolvimento de Software (UNER). Sempre em estudo contínuo e aprimoramento por meio de cursos especializados, em busca ativa de uma oportunidade onde aplicar minhas habilidades.",
+      "Técnico Superior em Desenvolvimento de Software (UNER). Capacitação técnica contínua em desenvolvimento frontend, backend e mobile.",
     heroPillar2Desc2:
-      "Código em TypeScript estrito de ponta a ponta, contratos HTTP rigorosos, bancos PostgreSQL com réplicas locais em IndexedDB/SQLite e 100% de soberania sobre os dados da empresa.",
+      "TypeScript de ponta a ponta, Next.js, React, React Native, PostgreSQL e contratos de APIs validados.",
     heroMetric1Num: "04",
     heroMetric1Label: "Plataformas Insígnia em Produção",
     heroMetric2Num: "<45ms",
@@ -512,17 +512,17 @@ export const translations = {
     simAuditDiff: "⚠️ DISCREPÂNCIA DETECTADA: Sistema $",
 
     // Trayectoria
-    timelineBadge: "// DO CAIXA AO CÓDIGO",
-    timelineTitle: "Trajetória do Fundador",
-    timelineDesc: "A jornada de como a vivência real em caixas e na auditoria operacional se transformou em uma suíte de software de alta resiliência.",
+    timelineBadge: "// EDUCAÇÃO E PROJETOS",
+    timelineTitle: "Formação Acadêmica e Projetos",
+    timelineDesc: "Formação técnica na UNER, capacitação contínua em stacks web e mobile, e desenvolvimento de plataformas em produção.",
     timelineStage: "ETAPA",
     timelineDone: "✓ CONCLUÍDO",
 
     // Footer
-    footerBadge: "CANAL DIRETO COM AGUSTÍN MILESI",
+    footerBadge: "CANAL DE CONTATO",
     footerH2: "Vamos conversar.",
-    footerClaim: "«Entra o caos. Sai o dado.»",
-    footerDesc: "Tem um comércio com gargalos de estoque e caixa, uma operação logística com demurrage, ou precisa de software de missão crítica entregue em tempo e forma? Fale diretamente comigo.",
+    footerClaim: "Desenvolvimento de software para PMEs e profissionais independentes.",
+    footerDesc: "Tem um projeto em mente ou busca integrar um desenvolvedor com base técnica sólida à sua equipe? Fale diretamente comigo.",
     footerEmailTitle: "E-MAIL OFICIAL DE CONTATO:",
     footerCopyBtn: "COPIAR E-MAIL",
     footerCopied: "✓ COPIADO PARA A ÁREA DE TRANSFERÊNCIA",
@@ -559,21 +559,21 @@ export const translations = {
     navContactBtn: "与我联系",
 
     // Hero Section
-    heroBadge: "中小企业与个人定制软件解决方案专家",
-    heroSpec: "持续学习 · 全栈工程 · 积极寻求发展机会",
-    heroH1A: "真正理解实体商业",
-    heroH1B: "运营的软件。",
-    heroClaim: "«解决复杂。交付可靠方案。»",
-    heroPillar1Title: "针对中小企业与个人的实用解决方案",
+    heroBadge: "软件开发工程师 · 全栈与移动端",
+    heroSpec: "高等技术专业 (UNER) · TYPESCRIPT · NEXT.JS · POSTGRESQL",
+    heroH1A: "软件开发与网络",
+    heroH1B: "应用解决方案。",
+    heroClaim: "基于 Next.js、React Native 和 PostgreSQL 的全栈开发。",
+    heroPillar1Title: "面向中小企业与个人的实用系统",
     heroPillar1Desc1:
-      "专注于为中小企业和独立专业人士设计与开发软件，解决实际业务痛点：库存管理、商业管道、流程自动化与定制平台。",
+      "为企业与独立专业人士开发管理软件：库存核算、商业门户与定制平台，杜绝繁复冗余流程。",
     heroPillar1Desc2:
-      "注重操作简便性、直观界面和高可用架构，让企业与个人业务高效稳定运行。",
-    heroPillar2Title: "持续深造与严谨工程素养",
+      "清晰界面、严格类型约束与稳定架构，保障日常稳定可靠运行。",
+    heroPillar2Title: "持续技术深造与工程实践",
     heroPillar2Desc1:
-      "软件开发高等技术专业毕业（UNER）。始终坚持自我深造与前沿技术学习，积极寻找能充分施展技术实力、持续进化并为团队创造价值的职业机遇。",
+      "软件开发高等技术专业毕业（UNER）。始终坚持自我深造与前沿技术学习，注重工程实践。",
     heroPillar2Desc2:
-      "端到端严格 TypeScript 类型化、严苛的 HTTP 契约、PostgreSQL 搭配本地 IndexedDB/SQLite 副本，实现高标准生产级架构。",
+      "端到端严格 TypeScript 类型化、Next.js、React、React Native、PostgreSQL 及规范 API 契约。",
     heroMetric1Num: "04",
     heroMetric1Label: "在产旗舰平台",
     heroMetric2Num: "<45ms",
@@ -687,17 +687,17 @@ export const translations = {
     simAuditDiff: "⚠️ 检测到账实差额: 系统账面 $",
 
     // Trayectoria
-    timelineBadge: "// 从柜台到代码",
-    timelineTitle: "创始人履历与历程",
-    timelineDesc: "从收银台一线服务与每日对账的真实运营，蜕变为高可用软件架构体系的历程。",
+    timelineBadge: "// 教育与项目",
+    timelineTitle: "学术教育与开发项目",
+    timelineDesc: "UNER 专业技术深造，持续进修现代网络与移动端技术，主导多个已上线项目开发。",
     timelineStage: "阶段",
     timelineDone: "✓ 已完成",
 
     // Footer
-    footerBadge: "与 AGUSTÍN MILESI 直接沟通",
-    footerH2: "与我联系。",
-    footerClaim: "«混乱进入。精准数据产出。»",
-    footerDesc: "您的商业实体是否正遭受库存与账实不符困扰？货运业务是否因滞箱费蒙受损失？或者需要一套按时保质、严谨可靠的关键业务系统？欢迎直接来信。",
+    footerBadge: "联系沟通",
+    footerH2: "欢迎与我联系。",
+    footerClaim: "面向中小企业与独立专业人士的软件开发。",
+    footerDesc: "若您有项目构想，或希望为团队引入具备扎实工程基础的技术人员，欢迎直接来信沟通。",
     footerEmailTitle: "官方沟通邮箱:",
     footerCopyBtn: "复制地址",
     footerCopied: "✓ 已复制到剪贴板",

@@ -53,14 +53,14 @@ export function FooterContact() {
           </div>
 
           <h2 className="font-serif font-light text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] leading-tight text-[#ffffff]">
-            Hablemos de nuevos{" "}
+            Hablemos de tus{" "}
             <span className="italic font-serif text-[#c5ff4a] font-normal">
-              desafíos.
+              proyectos.
             </span>
           </h2>
 
           <p className="font-sans text-sm sm:text-base text-[#e5e5e5] max-w-2xl leading-[1.55]">
-            Especialista en soluciones de software para PYMEs e individuales. Disponible para incorporarme a equipos de desarrollo (Next.js, React, TypeScript, React Native, PostgreSQL), en constante estudio y en busca de una oportunidad donde desplegar mis habilidades y generar impacto.
+            Especialista en soluciones de software para PYMEs e individuales. Disponible para proyectos y oportunidades en desarrollo de software con Next.js, React, TypeScript, React Native y PostgreSQL.
           </p>
         </div>
 

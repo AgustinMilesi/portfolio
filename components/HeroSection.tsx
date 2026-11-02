@@ -75,16 +75,16 @@ export function HeroSection() {
           <div className="space-y-3 sm:space-y-4 max-w-5xl">
             <div className="overflow-hidden">
               <h1 className="hero-title font-serif font-light text-3xl sm:text-5xl md:text-6xl lg:text-[76px] tracking-[-0.03em] leading-[1.04] text-[#ffffff]">
-                Software de gestión que entiende la{" "}
+                Desarrollo de software y soluciones{" "}
                 <span className="italic font-serif text-[#c5ff4a] font-normal">
-                  operación.
+                  web.
                 </span>
               </h1>
             </div>
 
             <div className="overflow-hidden pt-2 sm:pt-3">
               <p className="hero-claim font-sans text-sm sm:text-base text-[#e5e5e5] max-w-xl leading-[1.55] font-normal">
-                «Entra el caos. Sale la solución.» Soluciones de software para PYMEs e individuos diseñadas para resolver problemas concretos con máxima confiabilidad.
+                Desarrollo de plataformas web y móviles para PYMEs y profesionales independientes. Sistemas estables enfocados en simplificar la gestión comercial y operativa.
               </p>
             </div>
           </div>
@@ -106,7 +106,7 @@ export function HeroSection() {
             <div className="manifesto-card p-6 sm:p-8 bg-[#1f1f1f] border border-[#252525] rounded-none space-y-3 hover:border-[#313131] transition-colors">
               <div className="flex items-center justify-between">
                 <span className="font-sans text-[11px] font-medium uppercase tracking-[0.22em] text-[#c5ff4a]">
-                  [ ESTUDIO CONTINUO & INGENIERÍA ]
+                  [ FORMACIÓN TÉCNICA CONTINUA ]
                 </span>
                 <span className="font-mono text-[10px] text-[#7a7a7a]">B 02</span>
               </div>
